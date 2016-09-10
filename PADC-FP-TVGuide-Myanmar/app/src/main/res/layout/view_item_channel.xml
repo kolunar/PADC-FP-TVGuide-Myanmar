@@ -15,13 +15,13 @@
         android:orientation="vertical"
         android:padding="@dimen/margin_medium">
 
-        <TextView
+        <com.padc.tvguide.components.MMTextView
             android:id="@+id/tv_channel_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mandalay"
-            android:textSize="@dimen/text_heading_1x"
-            android:textColor="@color/primary_text"
+            android:textSize="@dimen/text_regular_2x"
+            android:textColor="@color/text_white_ish"
             />
 
         <ImageView

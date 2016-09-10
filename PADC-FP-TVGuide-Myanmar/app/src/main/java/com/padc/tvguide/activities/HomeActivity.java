@@ -41,9 +41,6 @@ public class HomeActivity extends BaseActivity
     @BindView(R.id.navigation_view)
     NavigationView navigationView;
 
-    @BindView(R.id.fab)
-    FloatingActionButton fab;
-
     private ViewPodAccountControl vpAccountControl;
 
     @Override
@@ -53,14 +50,6 @@ public class HomeActivity extends BaseActivity
         ButterKnife.bind(this, this);
 
         setSupportActionBar(toolbar);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         Menu leftMenu = navigationView.getMenu();
         navigationView.setNavigationItemSelectedListener(this);
@@ -124,7 +113,7 @@ public class HomeActivity extends BaseActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        fab.setVisibility(View.VISIBLE);
+
         switch (item.getItemId()) {
             case R.id.nav_tv_guide_home:
                 navigateToHome();

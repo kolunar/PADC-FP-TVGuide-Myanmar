@@ -35,4 +35,13 @@
     <style name="AccentButton" parent="TVGuideButton">
         <item name="android:background">@color/accent_dark</item>
     </style>
+
+    <style name="ProgramDescStyle">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:maxLines">4</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
 </resources>

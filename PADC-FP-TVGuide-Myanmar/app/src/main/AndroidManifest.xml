@@ -28,6 +28,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.padc.tvguide.activities.HomeActivity" />
         </activity>
+        <activity
+            android:name=".activities.ProgramDetailActivity"
+            android:label="@string/title_activity_program_detail"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.padc.tvguide.activities.ChannelDetailActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ProgramParentActivity"
+            android:label="@string/title_activity_program_parent"
+            android:parentActivityName=".activities.ProgramDetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.padc.tvguide.activities.ProgramDetailActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="scrollable"
-        app:tabTextColor="@color/primary_dark"
-        app:tabSelectedTextColor="@color/primary_bright"
+        app:tabTextColor="@color/primary_bright"
+        app:tabSelectedTextColor="@color/primary_dark"
         app:tabIndicatorColor="@color/primary"
         app:tabTextAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle"
         />
