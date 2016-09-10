@@ -3,9 +3,26 @@
     <color name="primary">#F44336</color>
     <color name="primary_dark">#D32F2F</color>
     <color name="primary_light">#FFCDD2</color>
-    <color name="accent">#FFEB3B</color>
+    <color name="accent">#FF9800</color>
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
+    <color name="white_overlay">#33FFFFFF</color>
+
+    <!-- theme adjacent color -->
+    <color name="primary_bright">#FFCDD2</color>
+    <color name="accent_dark">#DF7800</color>
+
+    <!-- theme on white -->
+    <color name="text_white_ish">#EEE</color>
+    <color name="white_full">#FFF</color>
+
+    <!-- theme on black -->
+    <color name="text_black_ish">#111</color>
+    <color name="black_full">#F000</color>
+
+    <!-- overlays -->
+    <color name="black_overlay">#9000</color>
+    <color name="black_overlay_light">#6000</color>
 </resources>
