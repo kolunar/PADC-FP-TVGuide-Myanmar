@@ -1,9 +1,11 @@
 package com.padc.tvguide.fragments;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,6 +31,9 @@ public class ChannelListFragment extends BaseFragment {
     @BindView(R.id.rv_channels)
     RecyclerView rvChannels;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout srLayout;
+
     private ChannelAdapter mChannelAdapter;
     private ChannelViewHolder.ControllerChannelItem controllerChannelItem;
 
@@ -49,11 +54,25 @@ public class ChannelListFragment extends BaseFragment {
         ButterKnife.bind(this, rootView);
 
         List<ChannelVO> channelList = getChannelList();
+        if(rvChannels != null) {
+            rvChannels.removeAllViews();
+        }
         mChannelAdapter = new ChannelAdapter(channelList, controllerChannelItem);
         rvChannels.setAdapter(mChannelAdapter);
 
         int gridColumnSpanCount = 2;
         rvChannels.setLayoutManager(new GridLayoutManager(getContext(), gridColumnSpanCount));
+        srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        srLayout.setRefreshing(false);
+                    }
+                }, 1500);
+            }
+        });
 
         return rootView;
     }

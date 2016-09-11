@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 
 import com.padc.tvguide.R;
@@ -66,6 +67,13 @@ public class ProgramDetailActivity extends AppCompatActivity {
         mProgramTitle = getIntent().getStringExtra(IE_PROGRAM_NAME);
         collapsingToolbar.setTitle(mProgramTitle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.top_right_menu_program_detail, menu);
+        return true;
     }
 
 }
