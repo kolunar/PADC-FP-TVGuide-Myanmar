@@ -24,7 +24,7 @@
         android:layout_marginRight="@dimen/margin_medium"
         android:layout_centerVertical="true"
         android:elevation="4dp"
-        android:src="@drawable/ic_account_circle_black_24dp" />
+        android:src="@drawable/ic_account_circle_white_24dp" />
 
     <TextView
         android:id="@+id/tv_name"

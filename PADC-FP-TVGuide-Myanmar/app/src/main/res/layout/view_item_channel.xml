@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_small"
-    card_view:cardCornerRadius="5dp"
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardCornerRadius="2dp"
     card_view:cardElevation="@dimen/cardview_default_elevation"
     card_view:cardUseCompatPadding="true">
 
@@ -13,14 +14,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/margin_medium">
+        android:padding="@dimen/margin_small">
 
-        <TextView
+        <com.padc.tvguide.components.MMTextView
             android:id="@+id/tv_channel_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mandalay"
-            android:textSize="@dimen/text_heading_1x"
+            android:text="Channel Name"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_regular_2x"
             android:textColor="@color/primary_text"
             />
 

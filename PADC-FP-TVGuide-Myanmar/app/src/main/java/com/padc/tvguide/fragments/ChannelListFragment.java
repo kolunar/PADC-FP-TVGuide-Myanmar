@@ -60,18 +60,18 @@ public class ChannelListFragment extends BaseFragment {
 
     private List<ChannelVO> getChannelList(){
         List<ChannelVO> dummy = new ArrayList<ChannelVO>();
-        dummy.add(new ChannelVO(1, "", ""));
-        dummy.add(new ChannelVO(2, "", ""));
-        dummy.add(new ChannelVO(3, "", ""));
-        dummy.add(new ChannelVO(4, "", ""));
-        dummy.add(new ChannelVO(5, "", ""));
-        dummy.add(new ChannelVO(6, "", ""));
-        dummy.add(new ChannelVO(7, "", ""));
-        dummy.add(new ChannelVO(8, "", ""));
-        dummy.add(new ChannelVO(9, "", ""));
-        dummy.add(new ChannelVO(10, "", ""));
-        dummy.add(new ChannelVO(11, "", ""));
-        dummy.add(new ChannelVO(12, "", ""));
+        dummy.add(new ChannelVO(1, "4 TV", ""));
+        dummy.add(new ChannelVO(2, "4 Comedy", ""));
+        dummy.add(new ChannelVO(3, "4 Edu", ""));
+        dummy.add(new ChannelVO(4, "4 Info", ""));
+        dummy.add(new ChannelVO(5, "4 Ladies", ""));
+        dummy.add(new ChannelVO(6, "4 Sports", ""));
+        dummy.add(new ChannelVO(7, "4 Tunes", ""));
+        dummy.add(new ChannelVO(8, "5 Cartoons", ""));
+        dummy.add(new ChannelVO(9, "5 Movies", ""));
+        dummy.add(new ChannelVO(10, "5 Plus", ""));
+        dummy.add(new ChannelVO(11, "5 Special", ""));
+        dummy.add(new ChannelVO(12, "Buddha tv", ""));
         return dummy;
     }
 }
