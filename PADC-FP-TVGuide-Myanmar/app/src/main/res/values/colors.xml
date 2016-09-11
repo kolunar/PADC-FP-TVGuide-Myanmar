@@ -15,6 +15,7 @@
     <color name="accent_dark">#DF7800</color>
 
     <!-- theme on white -->
+    <color name="bg_white_ish">#EEE</color>
     <color name="text_white_ish">#EEE</color>
     <color name="white_full">#FFF</color>
 

@@ -2,6 +2,7 @@ package com.padc.tvguide.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -24,11 +25,18 @@ public class ProgramDetailActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbar;
+
     @BindView(R.id.fab_share)
     FloatingActionButton fab;
 
-    public static Intent newIntent(){
+    private String mProgramTitle;
+    private static final String IE_PROGRAM_NAME = "IE_PROGRAM_NAME";
+
+    public static Intent newIntent(String programName){
         Intent intent = new Intent(TVGuideApp.getContext(),ProgramDetailActivity.class);
+        intent.putExtra(IE_PROGRAM_NAME, programName);
         return intent;
     }
 
@@ -55,6 +63,8 @@ public class ProgramDetailActivity extends AppCompatActivity {
             }
         });
 
+        mProgramTitle = getIntent().getStringExtra(IE_PROGRAM_NAME);
+        collapsingToolbar.setTitle(mProgramTitle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

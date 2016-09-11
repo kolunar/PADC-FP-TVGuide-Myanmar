@@ -22,8 +22,8 @@ import butterknife.ButterKnife;
  */
 public class ChannelDetailFragment extends BaseFragment {
 
-    @BindView(R.id.cv_parent)
-    CardView cvParent;
+    @BindView(R.id.cv_channel)
+    CardView cvChannel;
 
     public static ChannelDetailFragment newInstance() {
         ChannelDetailFragment fragment = new ChannelDetailFragment();
@@ -35,10 +35,10 @@ public class ChannelDetailFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_channel_detail, container, false);
         ButterKnife.bind(this, rootView);
 
-        cvParent.setOnClickListener(new View.OnClickListener() {
+        cvChannel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = ProgramDetailActivity.newIntent();
+                Intent intent = ProgramDetailActivity.newIntent("Program Detail");
                 startActivity(intent);
             }
         });

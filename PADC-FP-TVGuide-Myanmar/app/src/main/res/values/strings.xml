@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TVGuide Myanmar</string>
+    <string name="app_name">TV Guide</string>
     <string name="action_settings">Settings</string>
 
     <string name="title_activity_channel_detail">Channel Detail</string>
