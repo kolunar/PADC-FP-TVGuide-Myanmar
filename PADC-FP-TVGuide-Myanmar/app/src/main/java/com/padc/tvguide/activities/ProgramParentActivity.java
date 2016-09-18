@@ -5,27 +5,36 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.adapters.ProgramAdapter;
+import com.padc.tvguide.data.vos.ProgramVO;
+import com.padc.tvguide.fragments.ProgramListFragment;
+import com.padc.tvguide.views.holders.ProgramViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ProgramParentActivity extends AppCompatActivity {
+public class ProgramParentActivity extends BaseActivity
+        implements ProgramViewHolder.ControllerProgramItem {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+//    @BindView(R.id.rv_program_detail)
+//    RecyclerView rvProgram;
+
     @BindView(R.id.fab_share)
     FloatingActionButton fab;
 
-    private ProgramAdapter programAdapter;
+    private ProgramAdapter mProgramAdapter;
+    private ProgramViewHolder.ControllerProgramItem controllerProgramItem;
 
     public static Intent newIntent(){
         Intent intent = new Intent(TVGuideApp.getContext(),ProgramParentActivity.class);
@@ -37,13 +46,8 @@ public class ProgramParentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_parent);
         ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
-
-        programAdapter = new ProgramAdapter();
-
-        RecyclerView rvProgram = (RecyclerView) findViewById(R.id.rv_programs);
-        rvProgram.setAdapter(programAdapter);
-        rvProgram.setLayoutManager(new LinearLayoutManager(TVGuideApp.getContext(), LinearLayoutManager.VERTICAL, false));
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,7 +56,37 @@ public class ProgramParentActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fl_programs_container, ProgramListFragment.newInstance())
+                    .commit();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    ProgramListFragment mProgramListFragment;
+
+    private void loadProgramListFragment() {
+        if(mProgramListFragment == null) {
+            mProgramListFragment = ProgramListFragment.newInstance();
+        }
+        if(mProgramListFragment != null){
+//            myFragment.onDestroy();
+
+//            getSupportFragmentManager().beginTransaction().remove(myFragment).commit();
+//            mFrameLayout.removeAllViews();
+//            mFrameLayout.refreshDrawableState();
+        }
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_programs_container, mProgramListFragment)
+                .commit();
+    }
+
+    @Override
+    public void onTapProgram(ProgramVO attraction, ImageView ivProgram) {
+
+    }
 }

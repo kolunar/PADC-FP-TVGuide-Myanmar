@@ -1,9 +1,9 @@
 package com.padc.tvguide.fragments;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,7 +25,7 @@ import butterknife.ButterKnife;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ChannelListFragment extends BaseFragment {
+public class MyChannelFragment extends BaseFragment {
 
     @BindView(R.id.rv_channel_list)
     RecyclerView rvChannels;
@@ -36,8 +36,8 @@ public class ChannelListFragment extends BaseFragment {
     private ChannelAdapter mChannelAdapter;
     private ChannelViewHolder.ControllerChannelItem controllerChannelItem;
 
-    public static ChannelListFragment newInstance() {
-        ChannelListFragment fragment = new ChannelListFragment();
+    public static MyChannelFragment newInstance() {
+        MyChannelFragment fragment = new MyChannelFragment();
         return fragment;
     }
 
@@ -82,7 +82,7 @@ public class ChannelListFragment extends BaseFragment {
 
     private List<ChannelVO> getChannelList(){
         List<ChannelVO> dummy = new ArrayList<ChannelVO>();
-        String[] channelListArray = getResources().getStringArray(R.array.dummy_channel_list);
+        String[] channelListArray = getResources().getStringArray(R.array.dummy_my_channel);
         for (int i = 0; i < channelListArray.length; i++) {
             dummy.add(new ChannelVO(i, channelListArray[i], ""));
         }

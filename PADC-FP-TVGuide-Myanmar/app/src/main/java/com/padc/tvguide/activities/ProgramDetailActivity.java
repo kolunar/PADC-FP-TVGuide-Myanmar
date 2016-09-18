@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
+import com.padc.tvguide.dialogs.TimePrefixDialog;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,4 +79,21 @@ public class ProgramDetailActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_reminder:
+                showTimePrefixPicker();
+                return true;
+            case R.id.action_watchlist:
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showTimePrefixPicker() {
+        DialogFragment newFragment = new TimePrefixDialog();
+        newFragment.show(getSupportFragmentManager(), "TimePrefixPicker");
+    }
 }

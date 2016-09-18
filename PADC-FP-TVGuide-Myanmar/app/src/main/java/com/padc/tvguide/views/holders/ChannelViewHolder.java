@@ -41,29 +41,29 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
 
     private int getImageResourceById(int id){
         switch(id){
-            case 1:
+            case 0:
                 return R.drawable.logo_4_tv_mm;
-            case 2:
+            case 1:
                 return R.drawable.logo_4_tv_mm_comedy;
-            case 3:
+            case 2:
                 return R.drawable.logo_4_tv_mm_edu;
-            case 4:
+            case 3:
                 return R.drawable.logo_4_tv_mm_info;
-            case 5:
+            case 4:
                 return R.drawable.logo_4_tv_mm_ladies;
-            case 6:
+            case 5:
                 return R.drawable.logo_4_tv_mm_sports;
-            case 7:
+            case 6:
                 return R.drawable.logo_4_tv_mm_tunes;
-            case 8:
+            case 7:
                 return R.drawable.logo_5_cartoons;
-            case 9:
+            case 8:
                 return R.drawable.logo_5_movies;
-            case 10:
+            case 9:
                 return R.drawable.logo_5_plus_mm;
-            case 11:
+            case 10:
                 return R.drawable.logo_5_special_mm;
-            case 12:
+            case 11:
                 return R.drawable.logo_buddha_tv_mm;
         }
         return R.drawable.drawer_background;
@@ -71,10 +71,11 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
 
     @Override
     public void onClick(View view) {
-        mController.onTapChannel(mChannel, ivChannel);
+        mController.onTapChannel(mChannel, getImageResourceById(mChannel.getId()));
     }
 
     public interface ControllerChannelItem {
-        void onTapChannel(ChannelVO attraction, ImageView ivChannel);
+        void onTapChannel(ChannelVO attraction, int drawableID);
+        void onLongPressChannel(ChannelVO attraction, ImageView ivChannel);
     }
 }
