@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TV Guide</string>
     <string name="action_settings">Settings</string>
+    <string name="menu_title_save">Save</string>
 
     <string name="title_activity_channel_detail">Channel Detail</string>
 
@@ -20,5 +21,46 @@
 
     <string name="title_activity_program_detail">ProgramDetailActivity</string>
     <string name="title_activity_program_parent">ProgramParentActivity</string>
+
+    <string-array name="dummy_channel_list">
+        <item>4 TV</item>
+        <item>4 Comedy</item>
+        <item>4 Edu</item>
+        <item>4 Info</item>
+        <item>4 Ladies</item>
+        <item>4 Sports</item>
+        <item>4 Tunes</item>
+        <item>5 Cartoons</item>
+        <item>5 Movies</item>
+        <item>5 Plus</item>
+        <item>5 Special</item>
+        <item>Buddha tv</item>
+    </string-array>
+
+    <string-array name="dummy_my_channel">
+        <item>4 Comedy</item>
+        <item>4 Edu</item>
+        <item>4 Sports</item>
+        <item>4 Tunes</item>
+        <item>5 Cartoons</item>
+        <item>5 Movies</item>
+    </string-array>
+
+    <string-array name="dummy_channel_detail_list">
+        <item>Winter is coming</item>
+        <item>အစဥ္အလာႀကီးမား ျမန္မာ့ဓေလ့မ်ား</item>
+        <item>သူမတူတဲ႔ ေခြ်းမမ်ား (အပိုင္း-၈၀)</item>
+        <item>ဂီတရဲ႕ ၾကယ္စင္</item>
+        <item>Japanese food</item>
+        <item>Trip to Korea</item>
+        <item>International News</item>
+    </string-array>
+
+    <string-array name="dummy_program_list">
+        <item>ProgramName One SE1 Episode1</item>
+        <item>ProgramName Two SE1 Episode-2</item>
+        <item>ProgramName Three SE1 EP-3</item>
+        <item>ProgramName Four SE1 EP4</item>
+    </string-array>
 
 </resources>

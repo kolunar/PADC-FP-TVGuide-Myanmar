@@ -37,7 +37,7 @@
                 tools:src="@drawable/stock_photo_placeholder" />
 
             <ImageView
-                android:id="@+id/iv_program_photo"
+                android:id="@+id/iv_channel_icon"
                 android:layout_width="@dimen/program_width"
                 android:layout_height="@dimen/program_height"
                 android:layout_marginTop="50dp"

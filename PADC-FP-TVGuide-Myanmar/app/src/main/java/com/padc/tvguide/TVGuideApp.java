@@ -9,6 +9,7 @@ import android.content.Context;
 public class TVGuideApp extends Application {
 
     private static Context context;
+    public static final String TAG = "TVGuideApp";
 
     @Override
     public void onCreate() {
