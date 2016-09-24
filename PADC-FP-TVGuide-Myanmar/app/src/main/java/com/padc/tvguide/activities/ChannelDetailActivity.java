@@ -2,18 +2,15 @@ package com.padc.tvguide.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.vos.ProgramVO;
-import com.padc.tvguide.fragments.ChannelDetailFragment;
 import com.padc.tvguide.fragments.DayPagerFragment;
 import com.padc.tvguide.views.holders.ProgramViewHolder;
 
@@ -32,17 +29,17 @@ public class ChannelDetailActivity extends BaseActivity
     @BindView(R.id.iv_channel_icon)
     ImageView ivChannelIcon;
 
-    static final String STATE_IMG_SRC = "IMG_SRC";
+    static final String IE_IMG_SRC = "IMG_SRC";
     int imgSRC = 0;
 
-    public static Intent newIntent(){
+/*    public static Intent newIntent(){
         Intent intent = new Intent(TVGuideApp.getContext(),ChannelDetailActivity.class);
         return intent;
-    }
+    }*/
 
     public static Intent newIntent(int imgSRC){
         Intent intent = new Intent(TVGuideApp.getContext(),ChannelDetailActivity.class);
-        intent.putExtra(STATE_IMG_SRC, imgSRC);
+        intent.putExtra(IE_IMG_SRC, imgSRC);
         return intent;
     }
 
@@ -61,13 +58,13 @@ public class ChannelDetailActivity extends BaseActivity
 
             Bundle extras = getIntent().getExtras();
             if(extras != null) {
-                imgSRC = extras.getInt(STATE_IMG_SRC, 0);
+                imgSRC = extras.getInt(IE_IMG_SRC, 0);
             }
         }
         else{
-            imgSRC = savedInstanceState.getInt(STATE_IMG_SRC, 0);
+            imgSRC = savedInstanceState.getInt(IE_IMG_SRC, 0);
         }
-        if(imgSRC > 0)
+        if(imgSRC != 0)
             ivChannelIcon.setImageResource(imgSRC);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -77,7 +74,7 @@ public class ChannelDetailActivity extends BaseActivity
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putInt(STATE_IMG_SRC, imgSRC);
+        outState.putInt(IE_IMG_SRC, imgSRC);
         super.onSaveInstanceState(outState);
     }
 
@@ -89,8 +86,22 @@ public class ChannelDetailActivity extends BaseActivity
     }
 
     @Override
-    public void onTapProgram(ProgramVO attraction, ImageView ivProgram) {
-        Intent intent = ProgramDetailActivity.newIntent("Program Detail");
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.action_settings:
+                return true;
+            case android.R.id.home:
+//                Toast.makeText(TVGuideApp.getContext(), "ChannelDetailActivity:onOptionsItemSelected():android.R.id.home ", Toast.LENGTH_LONG).show();
+                super.onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTapProgram(ProgramVO program, ImageView ivProgram) {
+        Intent intent = ProgramDetailActivity.newIntent(program.getName());
         startActivity(intent);
     }
 }

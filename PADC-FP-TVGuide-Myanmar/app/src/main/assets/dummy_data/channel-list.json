@@ -1,0 +1,85 @@
+{
+	"code" : 200,
+	"messages" : "OK",
+	"channel_list" : [{
+		"channel_id" : 101,
+		"channel_name" : "4 Cinema",
+		"channel_icon" : "http://www.lyngsat-logo.com/logo/tv/num/4_tv_mm_cinema.png",
+		"sort_order" : 1,
+		"channel_banner" : "http://",
+		"channel_desc" : "4 Cinema is one of many Digital Channels which is part of 4TV HD Package.",
+		"start_time" : "06:00",
+		"end_time" : "04:18",
+		"is_published" : true
+	},{
+		"channel_id" : 102,
+		"channel_name" : "MRTV-4",
+		"channel_icon" : "http://www.lyngsat-logo.com/logo/tv/mm/mrtv_mm_4.png",
+		"sort_order" : 2,
+		"channel_banner" : "http://",
+		"channel_desc" : "First Myanmar 24-hour Free-to-Air Channel. We launched MRTV-4 new broadcasting channel joint venture with Ministry of Information, Myanmar Radio and Television.",
+		"start_time" : "05:00",
+		"end_time" : "04:15",
+		"is_published" : true
+	},{
+		"channel_id" : 103,
+		"channel_name" : "4 Comedy",
+		"channel_icon" : "http://www.lyngsat-logo.com/logo/tv/num/4_tv_mm_comedy.png",
+		"sort_order" : 3,
+		"channel_banner" : "http://",
+		"channel_desc" : "4 Comedy is one of many Digital Channels which is part of 4TV HD Package.",
+		"start_time" : "06:00",
+		"end_time" : "05:00",
+		"is_published" : true
+	},{
+		"channel_id" : 104,
+		"channel_name" : "Channel 7",
+		"channel_icon" : "http://www.lyngsat-logo.com/logo/tv/cc/channel7_mm.png",
+		"sort_order" : 4,
+		"channel_banner" : "http://",
+		"channel_desc" : "24-Hour Free-to-Air Channel in Myanmar. In 2012, Channel 7 channel was started broadcasting with the cooperation of Forever BEC-TERO Co.,Ltd.",
+		"start_time" : "05:00",
+		"end_time" : "02:00",
+		"is_published" : true
+	},{
+		"channel_id" : 105,
+		"channel_name" : "4 Ladies",
+		"channel_icon" : "http://www.lyngsat-logo.com/logo/tv/num/4_tv_mm_ladies.png",
+		"sort_order" : 5,
+		"channel_banner" : "http://",
+		"channel_desc" : "4 Comedy is one of many Digital Channels which is part of 4TV HD Package.",
+		"start_time" : "06:00",
+		"end_time" : "04:00",
+		"is_published" : true
+	},{
+		"channel_id" : 106,
+		"channel_name" : "Fox Sports 2 Myanmar",
+		"channel_icon" : "http://www.lyngsat-logo.com/logo/tv/ff/fox_sports_2_mm.png",
+		"sort_order" : 6,
+		"channel_banner" : "http://",
+		"channel_desc" : "Second Fox Sport channel which is part of 4TV HD Package.",
+		"start_time" : "05:00",
+		"end_time" : "04:00",
+		"is_published" : true
+	},{
+		"channel_id" : 107,
+		"channel_name" : "Readers Channel",
+		"channel_icon" : "http://www.forevergroup.com.mm/assets/cache/images/channel/160x120-readerschannel.1d4.jpg",
+		"sort_order" : 7,
+		"channel_banner" : "http://",
+		"channel_desc" : "Readers Channel was launched for audience who have interest in literature.",
+		"start_time" : "06:00",
+		"end_time" : "02:00",
+		"is_published" : true
+	},{
+		"channel_id" : 108,
+		"channel_name" : "Maha Bawdi",
+		"channel_icon" : "http://www.forevergroup.com.mm/assets/cache/images/channel/160x120-10867227_1524715091147145_1575865891_n.1d4.jpg",
+		"sort_order" : 8,
+		"channel_banner" : "http://",
+		"channel_desc" : "Free to Air channel in Myanmar and was aim to viewers who are devout in Buddha.",
+		"start_time" : "05:00",
+		"end_time" : "24:00",
+		"is_published" : true
+	}]
+}

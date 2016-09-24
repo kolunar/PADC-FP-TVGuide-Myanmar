@@ -13,14 +13,21 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.padc.tvguide.R;
+import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.controllers.UserController;
 import com.padc.tvguide.data.vos.ChannelVO;
+import com.padc.tvguide.data.vos.ProgramVO;
 import com.padc.tvguide.events.DataEvent;
+import com.padc.tvguide.fragments.BaseFragment;
 import com.padc.tvguide.fragments.ChannelListFragment;
 import com.padc.tvguide.fragments.MyChannelFragment;
+import com.padc.tvguide.fragments.MyReminderFragment;
+import com.padc.tvguide.fragments.MyWatchListFragment;
 import com.padc.tvguide.views.holders.ChannelViewHolder;
+import com.padc.tvguide.views.holders.ProgramViewHolder;
 import com.padc.tvguide.views.pods.ViewPodAccountControl;
 
 import java.util.ArrayList;
@@ -32,6 +39,7 @@ import de.greenrobot.event.EventBus;
 
 public class HomeActivity extends BaseActivity
         implements ChannelViewHolder.ControllerChannelItem,
+        ProgramViewHolder.ControllerProgramItem,
         UserController,
         NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,6 +83,7 @@ public class HomeActivity extends BaseActivity
         vpAccountControl.setUserController(this);
 
         if (savedInstanceState == null) {
+            Toast.makeText(TVGuideApp.getContext(), "HomeActivity:onCreate():savedInstanceState==null ", Toast.LENGTH_LONG).show();
             selectedItemIdList = new ArrayList<>();
             isInChoiceMode = false;
             navigateToHome();
@@ -138,7 +147,7 @@ public class HomeActivity extends BaseActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the Home/Up button, as long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -168,6 +177,12 @@ public class HomeActivity extends BaseActivity
     }
 
     @Override
+    public void onTapProgram(ProgramVO program, ImageView ivProgram) {
+        Intent intent = ProgramDetailActivity.newIntent("Program Detail");
+        startActivity(intent);
+    }
+
+    @Override
     public void onTapChannel(ChannelVO channel, int drawableID) {
 //        Toast.makeText(TVGuideApp.getContext(), "HomeActivity:onTapChannel(): ", Toast.LENGTH_LONG).show();
         Intent intent = ChannelDetailActivity.newIntent(drawableID);
@@ -175,7 +190,7 @@ public class HomeActivity extends BaseActivity
     }
 
     @Override
-    public void onLongPressChannel(ChannelVO attraction, ImageView ivChannel) {
+    public void onLongPressChannel(ChannelVO channel, ImageView ivChannel) {
 
     }
 
@@ -212,45 +227,81 @@ public class HomeActivity extends BaseActivity
             case R.id.nav_tv_guide_my_watchlist:
                 navigateToMyWatchlist();
                 return true;
+            case R.id.nav_tv_guide_my_reminders:
+                navigateToMyReminder();
+                return true;
         }
         return false;
     }
 
     ChannelListFragment mChannelListFragment = null;
     MyChannelFragment mMyChannelFragment = null;
+    MyWatchListFragment mMyWatchListFragment = null;
+    MyReminderFragment mMyReminderFragment = null;
+    BaseFragment mActiveFragment = null;
 
     private void navigateToHome() {
         if(mChannelListFragment == null) {
             mChannelListFragment = ChannelListFragment.newInstance();
+/*            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fl_container, mChannelListFragment)
+                    .commit(); */
+/*            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fl_container, mChannelListFragment, "HOME")
+                    .commit();*/
         }
         if(mChannelListFragment != null){
 //            myFragment.onDestroy();
-
-//            getSupportFragmentManager().beginTransaction().remove(myFragment).commit();
+//            getSupportFragmentManager().beginTransaction().remove(mChannelListFragment).commit();
 //            mFrameLayout.removeAllViews();
-            mFrameLayout.refreshDrawableState();
+//            mFrameLayout.refreshDrawableState();
         }
+//        mActiveFragment = mChannelListFragment;
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fl_container, mChannelListFragment)
+                .replace(R.id.fl_container, mChannelListFragment, "HOME")
                 .commit();
+
+        toolbar.setTitle(R.string.app_name);
     }
 
     private void navigateToMyChannel() {
-/*        if(mMyChannelFragment == null) {
+        if(mMyChannelFragment == null) {
             mMyChannelFragment = MyChannelFragment.newInstance();
         }
         if(mMyChannelFragment != null){
-            mFrameLayout.refreshDrawableState();
+//            mFrameLayout.refreshDrawableState();
         }
-
+        toolbar.setTitle("My Channels");
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fl_container, mMyChannelFragment)
-                .commit();*/
+                .commit();
     }
 
     private void navigateToMyWatchlist() {
+        if(mMyWatchListFragment == null) {
+            mMyWatchListFragment = MyWatchListFragment.newInstance();
+        }
+        if(mMyWatchListFragment != null){
+//            mFrameLayout.refreshDrawableState();
+        }
+        toolbar.setTitle("My Watchlist");
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, mMyWatchListFragment)
+                .commit();
+    }
 
+    private void navigateToMyReminder() {
+        if(mMyReminderFragment == null) {
+            mMyReminderFragment = MyReminderFragment.newInstance();
+        }
+        if(mMyReminderFragment != null){
+//            mFrameLayout.refreshDrawableState();
+        }
+        toolbar.setTitle("My Reminder");
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_container, mMyReminderFragment)
+                .commit();
     }
 
     /*cancel any selections*/

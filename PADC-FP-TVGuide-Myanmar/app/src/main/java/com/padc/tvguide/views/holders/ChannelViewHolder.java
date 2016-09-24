@@ -75,7 +75,7 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
     }
 
     public interface ControllerChannelItem {
-        void onTapChannel(ChannelVO attraction, int drawableID);
-        void onLongPressChannel(ChannelVO attraction, ImageView ivChannel);
+        void onTapChannel(ChannelVO channel, int drawableID);
+        void onLongPressChannel(ChannelVO channel, ImageView ivChannel);
     }
 }

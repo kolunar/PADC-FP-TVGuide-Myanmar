@@ -27,6 +27,10 @@ public class MMFontUtils {
         mmTypeFace = Typeface.createFromAsset(context.getAssets(), "fonts/Zawgyi.ttf");
     }
 
+    public static final Typeface getMMTypeFace() {
+        return mmTypeFace;
+    }
+
     public static void setMMFont(TextView view) {
         view.setTypeface(mmTypeFace);
     }
