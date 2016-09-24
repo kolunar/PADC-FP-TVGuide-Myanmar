@@ -64,6 +64,7 @@ public class ProgramViewHolder extends RecyclerView.ViewHolder implements View.O
     }
 
     public interface ControllerProgramItem {
-        void onTapProgram(ProgramVO attraction, ImageView ivProgram);
+        void onTapProgram(ProgramVO program, ImageView ivProgram);
+//        void onTapReminder(ProgramVO program);
     }
 }

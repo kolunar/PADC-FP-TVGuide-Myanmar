@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.padc.tvguide.R;
+import com.padc.tvguide.activities.HomeActivity;
 import com.padc.tvguide.adapters.ChannelAdapter;
 import com.padc.tvguide.data.vos.ChannelVO;
 import com.padc.tvguide.views.holders.ChannelViewHolder;
@@ -44,7 +45,8 @@ public class ChannelListFragment extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        controllerChannelItem = (ChannelViewHolder.ControllerChannelItem) context;
+        if (context instanceof HomeActivity)
+            controllerChannelItem = (ChannelViewHolder.ControllerChannelItem) context;
     }
 
     @Override

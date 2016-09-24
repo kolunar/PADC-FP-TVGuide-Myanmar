@@ -16,12 +16,13 @@ import android.view.View;
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.dialogs.TimePrefixDialog;
+import com.padc.tvguide.utils.MMFontUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ProgramDetailActivity extends AppCompatActivity {
+public class ProgramDetailActivity extends BaseActivity {
 
     @BindView(R.id.cv_parent)
     CardView cvParent;
@@ -68,6 +69,8 @@ public class ProgramDetailActivity extends AppCompatActivity {
         });
 
         mProgramTitle = getIntent().getStringExtra(IE_PROGRAM_NAME);
+        collapsingToolbar.setCollapsedTitleTypeface(MMFontUtils.getMMTypeFace());
+        collapsingToolbar.setExpandedTitleTypeface(MMFontUtils.getMMTypeFace());
         collapsingToolbar.setTitle(mProgramTitle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -87,6 +90,9 @@ public class ProgramDetailActivity extends AppCompatActivity {
                 showTimePrefixPicker();
                 return true;
             case R.id.action_watchlist:
+                return true;
+            case android.R.id.home:
+                super.onBackPressed();
                 return true;
         }
         return super.onOptionsItemSelected(item);

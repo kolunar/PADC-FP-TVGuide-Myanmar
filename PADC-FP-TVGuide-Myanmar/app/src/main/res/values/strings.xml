@@ -56,11 +56,34 @@
         <item>International News</item>
     </string-array>
 
+    <string-array name="dummy_my_watch_list">
+        <item>Winter is coming</item>
+        <item>သူမတူတဲ႔ ေခြ်းမမ်ား (အပိုင္း-၈၀)</item>
+        <item>ဂီတရဲ႕ ၾကယ္စင္</item>
+        <item>Trip to Korea</item>
+        <item>International News</item>
+    </string-array>
+
+    <string-array name="dummy_my_reminder_list">
+        <item>Winter is coming</item>
+        <item>ဂီတရဲ႕ ၾကယ္စင္</item>
+    </string-array>
+
     <string-array name="dummy_program_list">
         <item>ProgramName One SE1 Episode1</item>
         <item>ProgramName Two SE1 Episode-2</item>
         <item>ProgramName Three SE1 EP-3</item>
         <item>ProgramName Four SE1 EP4</item>
+    </string-array>
+
+    <string-array name="dummy_alarm_prefix">
+        <item>when program starts</item>
+        <item>5 mins to start</item>
+        <item>15 mins to start</item>
+        <item>30 mins to start</item>
+        <item>45 mins to start</item>
+        <item>1 hour to start</item>
+        <item>none</item>
     </string-array>
 
 </resources>

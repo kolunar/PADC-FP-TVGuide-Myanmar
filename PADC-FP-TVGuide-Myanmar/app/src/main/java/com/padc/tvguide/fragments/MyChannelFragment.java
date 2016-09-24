@@ -6,13 +6,16 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.padc.tvguide.R;
+import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.adapters.ChannelAdapter;
+import com.padc.tvguide.adapters.MyChannelAdapter;
 import com.padc.tvguide.data.vos.ChannelVO;
 import com.padc.tvguide.views.holders.ChannelViewHolder;
 
@@ -33,7 +36,7 @@ public class MyChannelFragment extends BaseFragment {
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout srLayout;
 
-    private ChannelAdapter mChannelAdapter;
+    private MyChannelAdapter mChannelAdapter;
     private ChannelViewHolder.ControllerChannelItem controllerChannelItem;
 
     public static MyChannelFragment newInstance() {
@@ -56,11 +59,11 @@ public class MyChannelFragment extends BaseFragment {
         if(rvChannels != null) {
             rvChannels.removeAllViews();
         }
-        mChannelAdapter = new ChannelAdapter(channelList, controllerChannelItem);
+        mChannelAdapter = new MyChannelAdapter(channelList, controllerChannelItem);
         rvChannels.setAdapter(mChannelAdapter);
-
-        int gridColumnSpanCount = 2;
-        rvChannels.setLayoutManager(new GridLayoutManager(getContext(), gridColumnSpanCount));
+//        int gridColumnSpanCount = 1;
+//        rvChannels.setLayoutManager(new GridLayoutManager(getContext(), gridColumnSpanCount));
+        rvChannels.setLayoutManager(new LinearLayoutManager(TVGuideApp.getContext(), LinearLayoutManager.VERTICAL, false));
         srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
