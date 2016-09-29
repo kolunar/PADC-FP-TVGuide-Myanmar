@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;

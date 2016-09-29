@@ -1,6 +1,7 @@
 package com.padc.tvguide.activities;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.controllers.UserController;
+import com.padc.tvguide.data.models.ChannelModel;
 import com.padc.tvguide.data.vos.ChannelVO;
 import com.padc.tvguide.data.vos.ProgramVO;
 import com.padc.tvguide.events.DataEvent;
@@ -89,6 +91,7 @@ public class HomeActivity extends BaseActivity
             navigateToHome();
         }
         else {
+            Toast.makeText(TVGuideApp.getContext(), "HomeActivity:onCreate():savedInstanceState!=null ", Toast.LENGTH_LONG).show();
             selectedItemIdList = savedInstanceState.getIntegerArrayList("selectedItemIdList");
             isInChoiceMode = savedInstanceState.getBoolean("isInChoiceMode");
         }
@@ -185,7 +188,8 @@ public class HomeActivity extends BaseActivity
     @Override
     public void onTapChannel(ChannelVO channel, int drawableID) {
 //        Toast.makeText(TVGuideApp.getContext(), "HomeActivity:onTapChannel(): ", Toast.LENGTH_LONG).show();
-        Intent intent = ChannelDetailActivity.newIntent(drawableID);
+//        Intent intent = ChannelDetailActivity.newIntent(drawableID);
+        Intent intent = ChannelDetailActivity.newIntent(channel);
         startActivity(intent);
     }
 

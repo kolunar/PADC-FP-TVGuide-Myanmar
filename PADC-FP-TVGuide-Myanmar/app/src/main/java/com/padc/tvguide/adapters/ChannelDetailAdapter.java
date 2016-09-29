@@ -7,40 +7,50 @@ import android.view.ViewGroup;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
-import com.padc.tvguide.data.vos.ProgramVO;
-import com.padc.tvguide.views.holders.ProgramViewHolder;
+import com.padc.tvguide.data.vos.ChannelProgramVO;
+import com.padc.tvguide.views.holders.ChannelProgramViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator's user on 09-Sep-16.
  */
-public class ChannelDetailAdapter extends RecyclerView.Adapter<ProgramViewHolder> {
+public class ChannelDetailAdapter extends RecyclerView.Adapter<ChannelProgramViewHolder> {
 
     private LayoutInflater inflater;
-    private List<ProgramVO> mProgramList;
-    private ProgramViewHolder.ControllerProgramItem mControllerProgramItem;
+    private List<ChannelProgramVO> mChannelProgramList;
+    private ChannelProgramViewHolder.ControllerChannelProgramItem mControllerChannelProgramItem;
 
-    public ChannelDetailAdapter(List<ProgramVO> programList, ProgramViewHolder.ControllerProgramItem controllerProgramItem) {
+    public ChannelDetailAdapter(List<ChannelProgramVO> channel_programs, ChannelProgramViewHolder.ControllerChannelProgramItem controllerChannelProgramItem) {
         inflater = LayoutInflater.from(TVGuideApp.getContext());
-        mProgramList = programList;
-        mControllerProgramItem = controllerProgramItem;
+        if (channel_programs != null) {
+            this.mChannelProgramList = channel_programs;
+        } else {
+            this.mChannelProgramList = new ArrayList<>();
+        }
+        mControllerChannelProgramItem = controllerChannelProgramItem;
     }
 
     @Override
-    public ProgramViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ChannelProgramViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.view_item_program,parent,false);
-        ProgramViewHolder programVH = new ProgramViewHolder(view, mControllerProgramItem);
+        ChannelProgramViewHolder programVH = new ChannelProgramViewHolder(view, mControllerChannelProgramItem);
         return programVH;
     }
 
     @Override
-    public void onBindViewHolder(ProgramViewHolder holder, int position) {
-        holder.bindData(mProgramList.get(position));
+    public void onBindViewHolder(ChannelProgramViewHolder holder, int position) {
+        holder.bindData(mChannelProgramList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mProgramList.size();
+        return mChannelProgramList.size();
+    }
+
+    public void setNewData(List<ChannelProgramVO> newChannelProgramList) {
+        mChannelProgramList = newChannelProgramList;
+        notifyDataSetChanged();
     }
 }

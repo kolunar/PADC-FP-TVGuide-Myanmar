@@ -28,7 +28,7 @@ public class ProgramDetailViewHolder extends RecyclerView.ViewHolder {
 
     public void bindData(ProgramVO program) {
         mProgram = program;
-        tvProgramName.setText(program.getName());
+        tvProgramName.setText(program.getProgram_title());
     }
 
 }

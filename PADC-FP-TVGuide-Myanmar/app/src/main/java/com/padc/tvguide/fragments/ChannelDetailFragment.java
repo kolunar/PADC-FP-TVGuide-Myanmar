@@ -10,6 +10,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,13 @@ import com.padc.tvguide.activities.ProgramDetailActivity;
 import com.padc.tvguide.activities.ProgramParentActivity;
 import com.padc.tvguide.adapters.ChannelDetailAdapter;
 import com.padc.tvguide.adapters.ProgramAdapter;
+import com.padc.tvguide.data.models.ChannelModel;
+import com.padc.tvguide.data.vos.ChannelDetailsVO;
+import com.padc.tvguide.data.vos.ChannelProgramVO;
+import com.padc.tvguide.data.vos.ChannelVO;
 import com.padc.tvguide.data.vos.ProgramVO;
+import com.padc.tvguide.events.DataEvent;
+import com.padc.tvguide.views.holders.ChannelProgramViewHolder;
 import com.padc.tvguide.views.holders.ProgramViewHolder;
 
 import java.util.ArrayList;
@@ -30,6 +37,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by user on 9/10/2016.
@@ -45,10 +53,18 @@ public class ChannelDetailFragment extends BaseFragment {
 //    @BindView(R.id.cv_channel)
 //    CardView cvChannel;
 
-    private ChannelDetailAdapter mProgramAdapter;
-    private ProgramViewHolder.ControllerProgramItem controllerProgramItem;
+    private ChannelDetailAdapter mChannelDetailsAdapter;
+    private ChannelProgramViewHolder.ControllerChannelProgramItem controllerChannelProgramItem;
+    private static ChannelDetailsVO mChannelDetailsVO;
 
-    public static ChannelDetailFragment newInstance() {
+/*    public static ChannelDetailFragment newInstance() {
+        ChannelDetailFragment fragment = new ChannelDetailFragment();
+        return fragment;
+    }*/
+
+    public static ChannelDetailFragment newInstance(ChannelDetailsVO channelDetails) {
+        Log.e(TVGuideApp.TAG, "ChannelDetailFragment.newInstance.channelDetails.getChannel_programs().size:" + channelDetails.getChannel_programs().size());
+        mChannelDetailsVO = channelDetails;
         ChannelDetailFragment fragment = new ChannelDetailFragment();
         return fragment;
     }
@@ -57,7 +73,7 @@ public class ChannelDetailFragment extends BaseFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof ChannelDetailActivity)
-            controllerProgramItem = (ProgramViewHolder.ControllerProgramItem) context;
+            controllerChannelProgramItem = (ChannelProgramViewHolder.ControllerChannelProgramItem) context;
     }
 
     @Override
@@ -72,13 +88,14 @@ public class ChannelDetailFragment extends BaseFragment {
                 startActivity(intent);
             }
         });*/
-
-        List<ProgramVO> programList = getProgramList();
-        if(rvChannelDetail != null) {
+//        ChannelDetailsVO channelDetails = ChannelModel.getInstance().getChannelDetails();
+        List<ChannelProgramVO> programList = mChannelDetailsVO.getChannel_programs();
+//        List<ProgramVO> programList = getProgramList();
+/*        if(rvChannelDetail != null) {
             rvChannelDetail.removeAllViews();
-        }
-        mProgramAdapter = new ChannelDetailAdapter(programList, controllerProgramItem);
-        rvChannelDetail.setAdapter(mProgramAdapter);
+        }*/
+        mChannelDetailsAdapter = new ChannelDetailAdapter(programList, controllerChannelProgramItem);
+        rvChannelDetail.setAdapter(mChannelDetailsAdapter);
         rvChannelDetail.setLayoutManager(new LinearLayoutManager(TVGuideApp.getContext(), LinearLayoutManager.VERTICAL, false));
         srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -96,7 +113,7 @@ public class ChannelDetailFragment extends BaseFragment {
     }
 
     public void notifyDataSetChanged() {
-        mProgramAdapter.notifyDataSetChanged();
+        mChannelDetailsAdapter.notifyDataSetChanged();
     }
 
     private List<ProgramVO> getProgramList(){
@@ -106,5 +123,31 @@ public class ChannelDetailFragment extends BaseFragment {
             dummy.add(new ProgramVO(i, programListArray[i], ""));
         }
         return dummy;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus eventBus = EventBus.getDefault();
+        if (!eventBus.isRegistered(this)) {
+            eventBus.register(this);
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus eventBus = EventBus.getDefault();
+        eventBus.unregister(this);
+    }
+
+    public void onEventMainThread(DataEvent.ChannelDetailsLoadedEvent event) {
+        Log.e(TVGuideApp.TAG, "ChannelDetailFragment.onEventMainThread().ChannelDetailsLoadedEvent");
+        String extra = event.getExtraMessage();
+//        Toast.makeText(getContext(), "ChannelDetailFragment:onEventMainThread:Extra : " + extra, Toast.LENGTH_SHORT).show();
+
+        //List<ChannelVO> newChannelList = ChannelModel.getInstance().getChannelList();
+        ChannelDetailsVO newChannelDetails = event.getChannelDetails();
+        mChannelDetailsAdapter.setNewData(newChannelDetails.getChannel_programs());
     }
 }

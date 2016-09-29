@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TV Guide</string>
+    <string name="content_authority">com.padc.tvguide</string>
+
     <string name="action_settings">Settings</string>
     <string name="menu_title_save">Save</string>
 
