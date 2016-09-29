@@ -12,9 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
+import com.padc.tvguide.data.vos.ChannelProgramVO;
 import com.padc.tvguide.dialogs.TimePrefixDialog;
 import com.padc.tvguide.utils.MMFontUtils;
 
@@ -36,8 +40,28 @@ public class ProgramDetailActivity extends BaseActivity {
     @BindView(R.id.fab_share)
     FloatingActionButton fab;
 
+    @BindView(R.id.iv_program_photo)
+    ImageView ivProgramPhoto;
+
+    @BindView(R.id.tv_program_title)
+    TextView tvProgramTitle;
+
+    @BindView(R.id.tv_program_desc)
+    TextView tvProgramDesc;
+
     private String mProgramTitle;
     private static final String IE_PROGRAM_NAME = "IE_PROGRAM_NAME";
+
+    static ChannelProgramVO mChannelProgramVO;
+
+    public static Intent newIntent(ChannelProgramVO channelProgram){
+        Intent intent = new Intent(TVGuideApp.getContext(),ProgramDetailActivity.class);
+        if(channelProgram != null){
+            mChannelProgramVO = channelProgram;
+            intent.putExtra(IE_PROGRAM_NAME, channelProgram.getProgram().getProgram_title());
+        }
+        return intent;
+    }
 
     public static Intent newIntent(String programName){
         Intent intent = new Intent(TVGuideApp.getContext(),ProgramDetailActivity.class);
@@ -71,7 +95,21 @@ public class ProgramDetailActivity extends BaseActivity {
         mProgramTitle = getIntent().getStringExtra(IE_PROGRAM_NAME);
         collapsingToolbar.setCollapsedTitleTypeface(MMFontUtils.getMMTypeFace());
         collapsingToolbar.setExpandedTitleTypeface(MMFontUtils.getMMTypeFace());
-        collapsingToolbar.setTitle(mProgramTitle);
+
+        if(mChannelProgramVO != null){
+            collapsingToolbar.setTitle(mChannelProgramVO.getProgram().getProgram_title());
+
+            Glide.with(ivProgramPhoto.getContext())
+                    .load(mChannelProgramVO.getProgram().getProgram_image())
+                    .fitCenter()
+                    .placeholder(R.drawable.ic_more_horiz_gray_24dp)
+                    .error(R.drawable.ic_more_horiz_gray_24dp)
+                    .into(ivProgramPhoto);
+
+            tvProgramTitle.setText(mChannelProgramVO.getProgram().getProgram_title());
+            tvProgramDesc.setText(mChannelProgramVO.getProgram().getProgram_desc());
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

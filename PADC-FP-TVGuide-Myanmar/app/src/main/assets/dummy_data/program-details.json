@@ -2,334 +2,502 @@
   "code" : 200,
   "message" : "OK",
   "program_details" : {
-    "program_id" : 101,
-    "program_title" : "Game of Thrones (season 1)",
-    "program_desc" : "The series begins with Ned Stark (Sean Bean) being asked to be the chief advisor (known as the Hand of the King) to lecherous King Robert Baratheon (Mark Addy). Ned and his wife Catelyn (Michelle Fairley) receive a letter from Catelyn's sister, Lysa (Kate Dickie) that gives them reason to believe that rival House Lannister – to which the King's wife Cersei belongs – was the cause of the previous Hand's death. Ned must travel south to help the king and find out who killed the previous Hand of the King, Jon Arryn (John Standing), while trying to protect his family from the Lannisters. As he tries to uncover the reasons behind Jon Arryn's death he uncovers the dark secrets about the Lannisters that Arryn himself died trying to expose.",
-    "program_image" : "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Game_of_Thrones_Season_1.jpg/220px-Game_of_Thrones_Season_1.jpg",
-    "language" : "English",
-    "tags" : [
-      {
-        "tag_id" : 101,
-        "tag_name" : "Adventure"
-      },
-      {
-        "tag_id" : 102,
-        "tag_name" : "Drama"
-      },
-      {
-        "tag_id" : 103,
-        "tag_name" : "Fantasy"
-      },
-      {
-        "tag_id" : 104,
-        "tag_name" : "Romance"
-      }
-    ],
-    "ref_urls" : [
-      {
-        "label" : "Read More Wiki Info",
-        "url" : "https://en.wikipedia.org/wiki/Game_of_Thrones"
-      },
-      {
-        "label" : "Read More IMDb Info",
-        "url" : "http://www.imdb.com/title/tt0944947/"
-      }
-    ],
-    "program_root" : {
-      "program_id" : 100,
-      "program_title" : "Game of Thrones",
-      "program_desc" : "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martin's series of fantasy novels, the first of which is titled A Game of Thrones.",
-      "program_image" : "https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg",
+    "program_id" : 102,
+    "channel_program_id" : 101,
+    "program_parent" : {
+      "program_id" : 101,
+      "parent_id" : 100,
+      "program_title" : "Game of Thrones (season 1)",
+      "program_desc" : "The series begins with Ned Stark (Sean Bean) being asked to be the chief advisor (known as the Hand of the King) to lecherous King Robert Baratheon (Mark Addy). Ned and his wife Catelyn (Michelle Fairley) receive a letter from Catelyn's sister, Lysa (Kate Dickie) that gives them reason to believe that rival House Lannister – to which the King's wife Cersei belongs – was the cause of the previous Hand's death. Ned must travel south to help the king and find out who killed the previous Hand of the King, Jon Arryn (John Standing), while trying to protect his family from the Lannisters. As he tries to uncover the reasons behind Jon Arryn's death he uncovers the dark secrets about the Lannisters that Arryn himself died trying to expose.",
+      "program_image" : "https://upload.wikimedia.org/wikipedia/en/thumb/e/e8/Game_of_Thrones_Season_1.jpg/220px-Game_of_Thrones_Season_1.jpg",
       "language" : "English",
+      "program_type" : 3,
+      "row_timestamp" : 1475114383726517,
+      "record_status" : 1,
       "tags" : [
         {
           "tag_id" : 101,
-          "tag_name" : "Adventure"
+          "tag_name" : "Adventure",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
+        },
+        {
+          "tag_id" : 102,
+          "tag_name" : "Drama",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
+        },
+        {
+          "tag_id" : 103,
+          "tag_name" : "Fantasy",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
         },
         {
           "tag_id" : 104,
-          "tag_name" : "Serial drama"
+          "tag_name" : "Romance",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
         }
       ],
       "ref_urls" : [
         {
+          "type" : 1,
           "label" : "Read More Wiki Info",
-          "url" : "https://en.wikipedia.org/wiki/Winter_Is_Coming"
+          "url" : "https://en.wikipedia.org/wiki/Game_of_Thrones",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
         },
         {
+          "type" : 1,
           "label" : "Read More IMDb Info",
-          "url" : "http://www.imdb.com/title/tt1480055/?ref_=ttep_ep1"
+          "url" : "http://www.imdb.com/title/tt0944947/",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
+        }
+      ]
+    },
+    "program_root" : {
+      "program_id" : 100,
+      "parent_id" : 0,
+      "program_title" : "Game of Thrones",
+      "program_desc" : "Game of Thrones is an American fantasy drama television series created by David Benioff and D. B. Weiss. It is an adaptation of A Song of Ice and Fire, George R. R. Martin's series of fantasy novels, the first of which is titled A Game of Thrones.",
+      "program_image" : "https://upload.wikimedia.org/wikipedia/en/d/d8/Game_of_Thrones_title_card.jpg",
+      "language" : "English",
+      "program_type" : 4,
+      "row_timestamp" : 1475114383726517,
+      "record_status" : 1,
+      "tags" : [
+        {
+          "tag_id" : 101,
+          "tag_name" : "Adventure",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
+        },
+        {
+          "tag_id" : 104,
+          "tag_name" : "Serial drama",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
+        }
+      ],
+      "ref_urls" : [
+        {
+          "type" : 1,
+          "label" : "Read More Wiki Info",
+          "url" : "https://en.wikipedia.org/wiki/Winter_Is_Coming",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
+        },
+        {
+          "type" : 1,
+          "label" : "Read More IMDb Info",
+          "url" : "http://www.imdb.com/title/tt1480055/?ref_=ttep_ep1",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1
         }
       ]
     },
     "program_segments" : [
       {
         "program_id" : 102,
+        "parent_id" : 101,
         "program_title" : "Winter Is Coming : S1 Ep1",
         "program_desc" : "Jon Arryn, the Hand of the King, is dead. King Robert Baratheon plans to ask his oldest friend, Eddard Stark, to take Jon's place. Across the sea, Viserys Targaryen plans to wed his sister to a nomadic warlord in exchange for an army.",
         "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk5MDU3OTkzMF5BMl5BanBnXkFtZTcwOTc0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
         "language" : "English",
+        "program_type" : 2,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
         "tags" : [
           {
             "tag_id" : 110,
-            "tag_name" : "Ned Stark"
+            "tag_name" : "Ned Stark",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "tag_id" : 111,
-            "tag_name" : "Serial drama"
+            "tag_name" : "Serial drama",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "ref_urls" : [
           {
+            "type" : 1,
             "label" : "Read More Wiki Info",
-            "url" : "https://en.wikipedia.org/wiki/Winter_Is_Coming"
+            "url" : "https://en.wikipedia.org/wiki/Winter_Is_Coming",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
+            "type" : 1,
             "label" : "Read More IMDb Info",
-            "url" : "http://www.imdb.com/title/tt1480055/?ref_=ttep_ep1"
+            "url" : "http://www.imdb.com/title/tt1480055/?ref_=ttep_ep1",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "air_repeats" : [
           {
             "channel_program_id" : 101,
             "air_date" : "2016-09-26",
+            "ari_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 102,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "channel_program_id" : 102,
             "air_date" : "2016-09-27",
+            "ari_day" : "Thu",
             "start_time" : "10:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 102,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ]
       },
       {
         "program_id" : 103,
+        "parent_id" : 101,
         "program_title" : "The Kingsroad : S1 Ep2",
         "program_desc" : "Nearly all the action of the episode happens during travel: Eddard Stark and his daughters accompany the king's entourage to King's Landing to occupy the post of Hand of the King, Tyrion Lannister joins Jon in his travel to the Wall, and the newly wed Daenerys goes with her husband's khalasar to the city of Vaes Dothrak. Meanwhile in Winterfell a grieving Catelyn Stark watches over her unconscious son Bran.",
         "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM5NTk4MTk4N15BMl5BanBnXkFtZTcwNTk0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
         "language" : "English",
+        "program_type" : 2,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
         "tags" : [
           {
             "tag_id" : 112,
-            "tag_name" : "Sansa"
+            "tag_name" : "Sansa",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "tag_id" : 111,
-            "tag_name" : "Serial drama"
+            "tag_name" : "Serial drama",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "ref_urls" : [
           {
+            "type" : 1,
             "label" : "Read More Wiki Info",
-            "url" : "https://en.wikipedia.org/wiki/The_Kingsroad"
+            "url" : "https://en.wikipedia.org/wiki/The_Kingsroad",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
+            "type" : 1,
             "label" : "Read More IMDb Info",
-            "url" : "http://www.imdb.com/title/tt1668746/"
+            "url" : "http://www.imdb.com/title/tt1668746/",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "air_repeats" : [
           {
             "channel_program_id" : 103,
             "air_date" : "2016-09-27",
+            "ari_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 103,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "channel_program_id" : 104,
             "air_date" : "2016-09-28",
+            "ari_day" : "Thu",
             "start_time" : "10:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 103,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ]
       },
       {
         "program_id" : 104,
+        "parent_id" : 101,
         "program_title" : "Lord Snow  : S1 Ep3",
         "program_desc" : "Lord Stark and his daughters arrive at King's Landing to discover the intrigues of the king's realm.",
         "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE2OTA3NDY5Nl5BMl5BanBnXkFtZTcwMDg0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
         "language" : "English",
+        "program_type" : 2,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
         "tags" : [
           {
             "tag_id" : 114,
-            "tag_name" : "Jon Snow"
+            "tag_name" : "Jon Snow",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "tag_id" : 115,
-            "tag_name" : "Kit Harington"
+            "tag_name" : "Kit Harington",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "ref_urls" : [
           {
+            "type" : 1,
             "label" : "Read More Wiki Info",
-            "url" : "https://en.wikipedia.org/wiki/Lord_Snow"
+            "url" : "https://en.wikipedia.org/wiki/Lord_Snow",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
+            "type" : 1,
             "label" : "Read More IMDb Info",
-            "url" : "http://www.imdb.com/title/tt1829962/"
+            "url" : "http://www.imdb.com/title/tt1829962/",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "air_repeats" : [
           {
             "channel_program_id" : 105,
             "air_date" : "2016-09-29",
+            "ari_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 104,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "channel_program_id" : 106,
             "air_date" : "2016-09-30",
+            "ari_day" : "Thu",
             "start_time" : "10:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 104,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ]
       },
       {
         "program_id" : 105,
+        "parent_id" : 101,
         "program_title" : "Cripples, Bastards, and Broken Things  : S1 Ep4",
         "program_desc" : "Eddard investigates Jon Arryn's murder. Jon befriends Samwell Tarly, a coward who has come to join the Night's Watch.",
         "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MzYwNTcyMV5BMl5BanBnXkFtZTcwNjkxMzkxNA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
         "language" : "English",
+        "program_type" : 2,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
         "tags" : [
           {
             "tag_id" : 116,
-            "tag_name" : "Emilia Clarke"
+            "tag_name" : "Emilia Clarke",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "tag_id" : 117,
-            "tag_name" : "Daenerys Targaryen"
+            "tag_name" : "Daenerys Targaryen",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "ref_urls" : [
           {
+            "type" : 1,
             "label" : "Read More Wiki Info",
-            "url" : "https://en.wikipedia.org/wiki/Cripples,_Bastards,_and_Broken_Things"
+            "url" : "https://en.wikipedia.org/wiki/Cripples,_Bastards,_and_Broken_Things",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
+            "type" : 1,
             "label" : "Read More IMDb Info",
-            "url" : "http://www.imdb.com/title/tt1829963/"
+            "url" : "http://www.imdb.com/title/tt1829963/",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "air_repeats" : [
           {
             "channel_program_id" : 107,
             "air_date" : "2016-10-01",
+            "ari_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 105,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "channel_program_id" : 108,
             "air_date" : "2016-10-02",
+            "ari_day" : "Thu",
             "start_time" : "10:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 105,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ]
       },
       {
         "program_id" : 106,
+        "parent_id" : 101,
         "program_title" : "The Wolf and the Lion  : S1 Ep5",
         "program_desc" : "Catelyn has captured Tyrion and plans to bring him to her sister, Lysa Arryn, at The Vale, to be tried for his, supposed, crimes against Bran. Robert plans to have Daenerys killed, but Eddard refuses to be a part of it and quits.",
         "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4NjU0NjMzMV5BMl5BanBnXkFtZTcwMTczMDYyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
         "language" : "English",
+        "program_type" : 2,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
         "tags" : [
           {
             "tag_id" : 118,
-            "tag_name" : "Peter Dinklage"
+            "tag_name" : "Peter Dinklage",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "tag_id" : 119,
-            "tag_name" : "Tyrion Lannister"
+            "tag_name" : "Tyrion Lannister",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "ref_urls" : [
           {
+            "type" : 1,
             "label" : "Read More Wiki Info",
-            "url" : "https://en.wikipedia.org/wiki/The_Wolf_and_the_Lion"
+            "url" : "https://en.wikipedia.org/wiki/The_Wolf_and_the_Lion",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
+            "type" : 1,
             "label" : "Read More IMDb Info",
-            "url" : "http://www.imdb.com/title/tt1829964/"
+            "url" : "http://www.imdb.com/title/tt1829964/",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "air_repeats" : [
           {
             "channel_program_id" : 109,
             "air_date" : "2016-10-02",
+            "ari_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 106,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "channel_program_id" : 110,
             "air_date" : "2016-10-03",
+            "ari_day" : "Thu",
             "start_time" : "10:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 106,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ]
       },
       {
         "program_id" : 107,
+        "parent_id" : 101,
         "program_title" : "A Golden Crown  : S1 Ep6",
         "program_desc" : "While recovering from his battle with Jamie, Eddard is forced to run the kingdom while Robert goes hunting. Tyrion demands a trial by combat for his freedom. Viserys is losing his patience with Drogo.",
         "program_image" : "https://upload.wikimedia.org/wikipedia/en/thumb/1/10/GoT-S01-E06_A_Golden_Crown.jpg/280px-GoT-S01-E06_A_Golden_Crown.jpg",
         "language" : "English",
+        "program_type" : 2,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
         "tags" : [
           {
             "tag_id" : 118,
-            "tag_name" : "Harry Lloyd"
+            "tag_name" : "Harry Lloyd",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "tag_id" : 119,
-            "tag_name" : "Viserys Targaryen"
+            "tag_name" : "Viserys Targaryen",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "ref_urls" : [
           {
+            "type" : 1,
             "label" : "Read More Wiki Info",
-            "url" : "https://en.wikipedia.org/wiki/A_Golden_Crown"
+            "url" : "https://en.wikipedia.org/wiki/A_Golden_Crown",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
+            "type" : 1,
             "label" : "Read More IMDb Info",
-            "url" : "http://www.imdb.com/title/tt1837862/"
+            "url" : "http://www.imdb.com/title/tt1837862/",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ],
         "air_repeats" : [
           {
             "channel_program_id" : 111,
             "air_date" : "2016-10-04",
+            "ari_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 107,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           },
           {
             "channel_program_id" : 112,
             "air_date" : "2016-10-05",
+            "ari_day" : "Thu",
             "start_time" : "10:00",
             "duration" : 30,
             "channel_id" : 101,
-            "channel_name" : "4 Cinema"
+            "program_id" : 107,
+            "channel_name" : "4 Cinema",
+            "row_timestamp" : 1475114383726517,
+            "record_status" : 1
           }
         ]
       }

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.adapters.DayPagerAdapter;
+import com.padc.tvguide.data.vos.ChannelDetailsVO;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,8 +27,10 @@ public class DayPagerFragment extends BaseFragment {
     ViewPager pagerDays;
 
     private DayPagerAdapter mDayPagerAdapter;
+    private static ChannelDetailsVO mChannelDetailsVO;
 
-    public static DayPagerFragment newInstance() {
+    public static DayPagerFragment newInstance(ChannelDetailsVO channelDetails) {
+        mChannelDetailsVO = channelDetails;
         DayPagerFragment fragment = new DayPagerFragment();
         return fragment;
     }
@@ -36,13 +39,13 @@ public class DayPagerFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDayPagerAdapter = new DayPagerAdapter(getActivity().getSupportFragmentManager());
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Today");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Sun");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Mon");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Tue");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Wed");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Thu");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(), "Fri");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Today");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Sun");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Mon");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Tue");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Wed");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Thu");
+        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Fri");
     }
 
     @Override

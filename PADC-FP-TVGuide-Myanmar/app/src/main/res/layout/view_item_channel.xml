@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cv_channel"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -14,12 +15,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="160dp"
+        android:maxHeight="160dp"
         android:orientation="vertical"
         android:padding="@dimen/margin_small">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight = "0"
             android:orientation="horizontal">
             <com.padc.tvguide.components.MMTextView
                 android:id="@+id/tv_channel_name"
@@ -44,13 +48,27 @@
                 android:textSize="20dp" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_channel"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/drawer_background"
-            android:layout_marginTop="@dimen/margin_small"
-            />
+            android:layout_height="match_parent"
+            android:layout_weight = "1"
+            android:background="#FCFCFC"
+            android:padding="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_channel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:layout_gravity="center"
+                android:foregroundGravity="center"
+                android:paddingBottom="@dimen/margin_medium_2"
+                tools:src="@drawable/ic_more_horiz_gray_24dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

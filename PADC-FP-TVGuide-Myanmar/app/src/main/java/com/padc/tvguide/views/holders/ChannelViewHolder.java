@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.padc.tvguide.R;
 import com.padc.tvguide.data.vos.ChannelVO;
+import com.padc.tvguide.utils.TVGuideConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,25 +37,32 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
 
     public void bindData(ChannelVO channel) {
         mChannel = channel;
-        tvChannelName.setText(channel.getName());
-        ivChannel.setImageResource(getImageResourceById(channel.getId()));
+        tvChannelName.setText(channel.getChannel_name());
+//        ivChannel.setImageResource(getImageResourceById(channel.getChannel_id()));
+
+        Glide.with(ivChannel.getContext())
+                .load(channel.getChannel_icon())
+                .fitCenter()
+                .placeholder(R.drawable.ic_more_horiz_gray_24dp)
+                .error(R.drawable.ic_more_horiz_gray_24dp)
+                .into(ivChannel);
     }
 
     private int getImageResourceById(int id){
         switch(id){
-            case 0:
+            case 100:
                 return R.drawable.logo_4_tv_mm;
-            case 1:
+            case 101:
                 return R.drawable.logo_4_tv_mm_comedy;
-            case 2:
+            case 102:
                 return R.drawable.logo_4_tv_mm_edu;
-            case 3:
+            case 103:
                 return R.drawable.logo_4_tv_mm_info;
-            case 4:
+            case 104:
                 return R.drawable.logo_4_tv_mm_ladies;
-            case 5:
+            case 105:
                 return R.drawable.logo_4_tv_mm_sports;
-            case 6:
+            case 106:
                 return R.drawable.logo_4_tv_mm_tunes;
             case 7:
                 return R.drawable.logo_5_cartoons;
@@ -66,12 +75,12 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
             case 11:
                 return R.drawable.logo_buddha_tv_mm;
         }
-        return R.drawable.drawer_background;
+        return R.drawable.ic_more_horiz_gray_24dp;
     }
 
     @Override
     public void onClick(View view) {
-        mController.onTapChannel(mChannel, getImageResourceById(mChannel.getId()));
+        mController.onTapChannel(mChannel, getImageResourceById(mChannel.getChannel_id()));
     }
 
     public interface ControllerChannelItem {

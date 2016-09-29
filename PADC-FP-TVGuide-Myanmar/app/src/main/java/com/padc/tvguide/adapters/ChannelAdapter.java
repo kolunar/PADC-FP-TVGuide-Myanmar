@@ -1,6 +1,7 @@
 package com.padc.tvguide.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,10 @@ import android.view.ViewGroup;
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.vos.ChannelVO;
+import com.padc.tvguide.utils.TVGuideConstants;
 import com.padc.tvguide.views.holders.ChannelViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +26,11 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelViewHolder> {
 
     public ChannelAdapter(List<ChannelVO> channelList, ChannelViewHolder.ControllerChannelItem controllerChannelItem) {
         mInflater = LayoutInflater.from(TVGuideApp.getContext());
-        mChannelList = channelList;
+        if (channelList != null) {
+            this.mChannelList = channelList;
+        } else {
+            this.mChannelList = new ArrayList<>();
+        }
         mControllerChannelItem = controllerChannelItem;
     }
 
@@ -41,5 +48,10 @@ public class ChannelAdapter extends RecyclerView.Adapter<ChannelViewHolder> {
     @Override
     public int getItemCount() {
         return mChannelList.size();
+    }
+
+    public void setNewData(List<ChannelVO> newChannelList) {
+        mChannelList = newChannelList;
+        notifyDataSetChanged();
     }
 }
