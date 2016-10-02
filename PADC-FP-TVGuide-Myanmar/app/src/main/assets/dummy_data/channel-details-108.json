@@ -1,0 +1,906 @@
+{
+  "code" : 200,
+  "message" : "OK",
+  "channel_details" : {
+    "channel" : {
+      "channel_id" : 108,
+      "channel_name" : "Maha Bawdi",
+      "channel_icon" : "http://www.forevergroup.com.mm/assets/cache/images/channel/160x120-10867227_1524715091147145_1575865891_n.1d4.jpg",
+      "sort_order" : 8,
+      "channel_banner" : "http://",
+      "channel_desc" : "Free to Air channel in Myanmar and was aim to viewers who are devout in Buddha.",
+      "start_time" : "05:00",
+      "end_time" : "24:00",
+      "row_timestamp" : 1475114383726517,
+      "record_status" : 1
+    },
+    "categories" : [
+      {
+        "category_id" : 101,
+        "category_title" : "Movie",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1
+      },
+      {
+        "category_id" : 102,
+        "category_title" : "Entertainment",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1
+      }
+    ],
+    "programs" : [
+      {
+        "channel_program_id" : 801,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "07:00",
+        "duration" : 90,
+        "channel_id" : 108,
+        "program_id" : 811,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 811,
+          "parent_id" : 0,
+          "program_title" : "The Terminal",
+          "parent_title" : "",
+          "program_desc" : "An eastern immigrant finds himself stranded in JFK airport...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MTIwNTMxOF5BMl5BanBnXkFtZTcwNjIxMjQyMw@@._V1_UY268_CR8,0,182,268_AL_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 111,
+              "tag_name" : "Comedy",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 112,
+              "tag_name" : "Drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 113,
+              "tag_name" : "Romance",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 802,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "08:30",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 812,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 812,
+          "parent_id" : 0,
+          "program_title" : "My Music Brain",
+          "parent_title" : "",
+          "program_desc" : "Featuring top musicians such as Sting, Michael Bublé, Feist & Wyclef Jean...",
+          "program_image" : "http://assets.natgeotv.com/Photos/04/12080.ThumbL.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 113,
+              "tag_name" : "pop",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 114,
+              "tag_name" : "classical",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 803,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "09:00",
+        "duration" : 60,
+        "channel_id" : 108,
+        "program_id" : 822,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 822,
+          "parent_id" : 820,
+          "program_title" : "Must Love Cats Episode 2",
+          "parent_title" : "Must Love Cats",
+          "program_desc" : "From MUST LOVE CATS watch host John Fulton's favorite moments as he travels to each corner of the United States in search...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/I/512J1TL5NlL._AC_UL115_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 115,
+              "tag_name" : "cats",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 116,
+              "tag_name" : "pet",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 804,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "10:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 831,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 831,
+          "parent_id" : 830,
+          "program_title" : "Jurassic CSI : Walk Like a Dinosaur",
+          "parent_title" : "Must Love Cats",
+          "program_desc" : "Paleontologists have always struggled to answer the question, how did the dinosaurs move? New science now reveals evidence of quirky movements that dinosaurs made 70 million years ago...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3MDc2MDA1N15BMl5BanBnXkFtZTgwNDM5NTM2MjE@._V1_UY268_CR87,0,182,268_AL_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 117,
+              "tag_name" : "Paleontologists",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 118,
+              "tag_name" : "dinosaurs",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 805,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "10:30",
+        "duration" : 15,
+        "channel_id" : 108,
+        "program_id" : 841,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 841,
+          "parent_id" : 840,
+          "program_title" : "Magic of Science - Season 1, Episode 4",
+          "parent_title" : "Magic of Science",
+          "program_desc" : "Ben performs a secret agent trick; Billy shifts gravity; Wayne makes newspaper spontaneously combust; James uses superpowers...",
+          "program_image" : "https://s3.graphiq.com/sites/default/files/8464/media/images/t2/Magic_of_Science_7108688.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 119,
+              "tag_name" : "Science",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 120,
+              "tag_name" : "Discovery",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 806,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "10:45",
+        "duration" : 45,
+        "channel_id" : 108,
+        "program_id" : 851,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 851,
+          "parent_id" : 0,
+          "program_title" : "အရိပ္ ... ၿပီးေတာ့ ... သူ",
+          "parent_title" : "",
+          "program_desc" : "မေတာ္တဆတစ္ခု ျဖစ္ၿပီးကတည္းက စိတ္ေတြ ပံုမွန္မဟုတ္ေတာ့ဘဲ တစ္ခါတေလမွာ စိတ္ကေယာင္ေခ်ာက္ခ်ား ျဖစ္ျဖစ္ေနတတ္တဲ့ ဒိဝသာန္...",
+          "program_image" : "http://img.youtube.com/vi/C8FvwvTr7pY/hqdefault.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 120,
+              "tag_name" : "Myanmar Movie",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 112,
+              "tag_name" : "Drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 807,
+        "air_date" : "2016-10-01",
+        "air_day" : "Sat",
+        "start_time" : "20:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 802,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 802,
+          "parent_id" : 801,
+          "program_title" : "Winter Is Coming : S1 Ep1",
+          "parent_title" : "Game of Thrones (Season 1)",
+          "program_desc" : "Jon Arryn, the Hand of the King, is dead...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk5MDU3OTkzMF5BMl5BanBnXkFtZTcwOTc0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag-id" : 101,
+              "tag-name" : "Adventure",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag-id" : 104,
+              "tag-name" : "Serial drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 808,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "07:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 802,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 802,
+          "parent_id" : 801,
+          "program_title" : "Winter Is Coming : S1 Ep1",
+          "parent_title" : "Game of Thrones (Season 1)",
+          "program_desc" : "Jon Arryn, the Hand of the King, is dead...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk5MDU3OTkzMF5BMl5BanBnXkFtZTcwOTc0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag-id" : 101,
+              "tag-name" : "Adventure",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag-id" : 104,
+              "tag-name" : "Serial drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 809,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "07:30",
+        "duration" : 90,
+        "channel_id" : 108,
+        "program_id" : 811,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 811,
+          "parent_id" : 0,
+          "program_title" : "The Terminal",
+          "parent_title" : "",
+          "program_desc" : "An eastern immigrant finds himself stranded in JFK airport...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MTIwNTMxOF5BMl5BanBnXkFtZTcwNjIxMjQyMw@@._V1_UY268_CR8,0,182,268_AL_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 111,
+              "tag_name" : "Comedy",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 112,
+              "tag_name" : "Drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 113,
+              "tag_name" : "Romance",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 810,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "09:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 812,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 812,
+          "parent_id" : 0,
+          "program_title" : "My Music Brain",
+          "parent_title" : "",
+          "program_desc" : "Featuring top musicians such as Sting, Michael Bublé, Feist & Wyclef Jean...",
+          "program_image" : "http://assets.natgeotv.com/Photos/04/12080.ThumbL.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 113,
+              "tag_name" : "pop",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 114,
+              "tag_name" : "classical",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 811,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "09:30",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 822,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 822,
+          "parent_id" : 820,
+          "program_title" : "Must Love Cats Episode 2",
+          "parent_title" : "Must Love Cats",
+          "program_desc" : "From MUST LOVE CATS watch host John Fulton's favorite moments as he travels to each corner of the United States in search...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/I/512J1TL5NlL._AC_UL115_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 115,
+              "tag_name" : "cats",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 116,
+              "tag_name" : "pet",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 812,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "10:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 831,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 831,
+          "parent_id" : 830,
+          "program_title" : "Jurassic CSI : Walk Like a Dinosaur",
+          "parent_title" : "Must Love Cats",
+          "program_desc" : "Paleontologists have always struggled to answer the question, how did the dinosaurs move? New science now reveals evidence of quirky movements that dinosaurs made 70 million years ago...",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3MDc2MDA1N15BMl5BanBnXkFtZTgwNDM5NTM2MjE@._V1_UY268_CR87,0,182,268_AL_.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 117,
+              "tag_name" : "Paleontologists",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 118,
+              "tag_name" : "dinosaurs",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 813,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "10:30",
+        "duration" : 15,
+        "channel_id" : 108,
+        "program_id" : 841,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 841,
+          "parent_id" : 840,
+          "program_title" : "Magic of Science - Season 1, Episode 4",
+          "parent_title" : "Magic of Science",
+          "program_desc" : "Ben performs a secret agent trick; Billy shifts gravity; Wayne makes newspaper spontaneously combust; James uses superpowers...",
+          "program_image" : "https://s3.graphiq.com/sites/default/files/8464/media/images/t2/Magic_of_Science_7108688.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 119,
+              "tag_name" : "Science",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 120,
+              "tag_name" : "Discovery",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 814,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "10:45",
+        "duration" : 45,
+        "channel_id" : 108,
+        "program_id" : 851,
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 851,
+          "parent_id" : 0,
+          "program_title" : "အရိပ္ ... ၿပီးေတာ့ ... သူ",
+          "parent_title" : "",
+          "program_desc" : "မေတာ္တဆတစ္ခု ျဖစ္ၿပီးကတည္းက စိတ္ေတြ ပံုမွန္မဟုတ္ေတာ့ဘဲ တစ္ခါတေလမွာ စိတ္ကေယာင္ေခ်ာက္ခ်ား ျဖစ္ျဖစ္ေနတတ္တဲ့ ဒိဝသာန္...",
+          "program_image" : "http://img.youtube.com/vi/C8FvwvTr7pY/hqdefault.jpg",
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 120,
+              "tag_name" : "Myanmar Movie",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 112,
+              "tag_name" : "Drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 815,
+        "air_date" : "2016-10-02",
+        "air_day" : "Sun",
+        "start_time" : "20:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 803,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 803,
+          "parent_id" : 801,
+          "program_title" : "The Kingsroad : S1 Ep2",
+          "program_desc" : "Nearly all the action of the episode happens during travel: Eddard Stark and his daughters accompany the king's entourage to King's Landing to occupy the post of Hand of the King, Tyrion Lannister joins Jon in his travel to the Wall, and the newly wed Daenerys goes with her husband's khalasar to the city of Vaes Dothrak. Meanwhile in Winterfell a grieving Catelyn Stark watches over her unconscious son Bran.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM5NTk4MTk4N15BMl5BanBnXkFtZTcwNTk0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 112,
+              "tag_name" : "Sansa",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 111,
+              "tag_name" : "Serial drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 816,
+        "air_date" : "2016-10-03",
+        "air_day" : "Mon",
+        "start_time" : "07:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 803,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 803,
+          "parent_id" : 801,
+          "program_title" : "The Kingsroad : S1 Ep2",
+          "program_desc" : "Nearly all the action of the episode happens during travel: Eddard Stark and his daughters accompany the king's entourage to King's Landing to occupy the post of Hand of the King, Tyrion Lannister joins Jon in his travel to the Wall, and the newly wed Daenerys goes with her husband's khalasar to the city of Vaes Dothrak. Meanwhile in Winterfell a grieving Catelyn Stark watches over her unconscious son Bran.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM5NTk4MTk4N15BMl5BanBnXkFtZTcwNTk0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 112,
+              "tag_name" : "Sansa",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 111,
+              "tag_name" : "Serial drama",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 817,
+        "air_date" : "2016-10-03",
+        "air_day" : "Mon",
+        "start_time" : "20:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 804,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 804,
+          "parent_id" : 801,
+          "program_title" : "Lord Snow  : S1 Ep3",
+          "program_desc" : "Lord Stark and his daughters arrive at King's Landing to discover the intrigues of the king's realm.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE2OTA3NDY5Nl5BMl5BanBnXkFtZTcwMDg0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 114,
+              "tag_name" : "Jon Snow",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 115,
+              "tag_name" : "Kit Harington",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 818,
+        "air_date" : "2016-10-04",
+        "air_day" : "Tue",
+        "start_time" : "07:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 804,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 804,
+          "parent_id" : 801,
+          "program_title" : "Lord Snow  : S1 Ep3",
+          "program_desc" : "Lord Stark and his daughters arrive at King's Landing to discover the intrigues of the king's realm.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE2OTA3NDY5Nl5BMl5BanBnXkFtZTcwMDg0ODg5NA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 114,
+              "tag_name" : "Jon Snow",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 115,
+              "tag_name" : "Kit Harington",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 819,
+        "air_date" : "2016-10-04",
+        "air_day" : "Tue",
+        "start_time" : "20:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 805,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 805,
+          "parent_id" : 801,
+          "program_title" : "Cripples, Bastards, and Broken Things  : S1 Ep4",
+          "program_desc" : "Eddard investigates Jon Arryn's murder. Jon befriends Samwell Tarly, a coward who has come to join the Night's Watch.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MzYwNTcyMV5BMl5BanBnXkFtZTcwNjkxMzkxNA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 116,
+              "tag_name" : "Emilia Clarke",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 117,
+              "tag_name" : "Daenerys Targaryen",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 820,
+        "air_date" : "2016-10-05",
+        "air_day" : "Wed",
+        "start_time" : "07:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 805,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 805,
+          "parent_id" : 801,
+          "program_title" : "Cripples, Bastards, and Broken Things  : S1 Ep4",
+          "program_desc" : "Eddard investigates Jon Arryn's murder. Jon befriends Samwell Tarly, a coward who has come to join the Night's Watch.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM1MzYwNTcyMV5BMl5BanBnXkFtZTcwNjkxMzkxNA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 116,
+              "tag_name" : "Emilia Clarke",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 117,
+              "tag_name" : "Daenerys Targaryen",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 821,
+        "air_date" : "2016-10-05",
+        "air_day" : "Wed",
+        "start_time" : "20:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 806,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 806,
+          "parent_id" : 801,
+          "program_title" : "The Wolf and the Lion  : S1 Ep5",
+          "program_desc" : "Catelyn has captured Tyrion and plans to bring him to her sister, Lysa Arryn, at The Vale, to be tried for his, supposed, crimes against Bran. Robert plans to have Daenerys killed, but Eddard refuses to be a part of it and quits.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4NjU0NjMzMV5BMl5BanBnXkFtZTcwMTczMDYyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 118,
+              "tag_name" : "Peter Dinklage",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 119,
+              "tag_name" : "Tyrion Lannister",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 822,
+        "air_date" : "2016-10-06",
+        "air_day" : "Thu",
+        "start_time" : "07:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 806,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 806,
+          "parent_id" : 801,
+          "program_title" : "The Wolf and the Lion  : S1 Ep5",
+          "program_desc" : "Catelyn has captured Tyrion and plans to bring him to her sister, Lysa Arryn, at The Vale, to be tried for his, supposed, crimes against Bran. Robert plans to have Daenerys killed, but Eddard refuses to be a part of it and quits.",
+          "program_image" : "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4NjU0NjMzMV5BMl5BanBnXkFtZTcwMTczMDYyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 118,
+              "tag_name" : "Peter Dinklage",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 119,
+              "tag_name" : "Tyrion Lannister",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 823,
+        "air_date" : "2016-10-06",
+        "air_day" : "Thu",
+        "start_time" : "20:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 807,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 807,
+          "parent_id" : 801,
+          "program_title" : "A Golden Crown  : S1 Ep6",
+          "program_desc" : "While recovering from his battle with Jamie, Eddard is forced to run the kingdom while Robert goes hunting. Tyrion demands a trial by combat for his freedom. Viserys is losing his patience with Drogo.",
+          "program_image" : "https://upload.wikimedia.org/wikipedia/en/thumb/1/10/GoT-S01-E06_A_Golden_Crown.jpg/280px-GoT-S01-E06_A_Golden_Crown.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 118,
+              "tag_name" : "Harry Lloyd",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 119,
+              "tag_name" : "Viserys Targaryen",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      },
+      {
+        "channel_program_id" : 824,
+        "air_date" : "2016-10-07",
+        "air_day" : "Fri",
+        "start_time" : "07:00",
+        "duration" : 30,
+        "channel_id" : 108,
+        "program_id" : 807,
+        "channel_name" : "4 Cinema",
+        "row_timestamp" : 1475114383726517,
+        "record_status" : 1,
+        "program" : {
+          "program_id" : 807,
+          "parent_id" : 801,
+          "program_title" : "A Golden Crown  : S1 Ep6",
+          "program_desc" : "While recovering from his battle with Jamie, Eddard is forced to run the kingdom while Robert goes hunting. Tyrion demands a trial by combat for his freedom. Viserys is losing his patience with Drogo.",
+          "program_image" : "https://upload.wikimedia.org/wikipedia/en/thumb/1/10/GoT-S01-E06_A_Golden_Crown.jpg/280px-GoT-S01-E06_A_Golden_Crown.jpg",
+          "language" : "English",
+          "program_type" : 2,
+          "row_timestamp" : 1475114383726517,
+          "record_status" : 1,
+          "tags" : [
+            {
+              "tag_id" : 118,
+              "tag_name" : "Harry Lloyd",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            },
+            {
+              "tag_id" : 119,
+              "tag_name" : "Viserys Targaryen",
+              "row_timestamp" : 1475114383726517,
+              "record_status" : 1
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

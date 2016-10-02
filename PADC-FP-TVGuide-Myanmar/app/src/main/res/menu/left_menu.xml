@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_tv_guide_home"
+            android:icon="@drawable/ic_live_tv_black_24dp"
+            android:title="@string/nav_tv_guide_home"
+            android:checked="true"
+            />
+
+        <item
+            android:id="@+id/nav_tv_guide_my_channels"
+            android:icon="@drawable/ic_folder_special_black_24dp"
+            android:title="@string/nav_tv_guide_my_channels" />
+
+        <item
+            android:id="@+id/nav_tv_guide_my_watchlist"
+            android:icon="@drawable/ic_gps_fixed_black_24dp"
+            android:title="@string/nav_tv_guide_my_watchlist" />
+
+        <item
+            android:id="@+id/nav_tv_guide_my_reminders"
+            android:icon="@drawable/ic_access_alarm_black_24dp"
+            android:title="@string/nav_tv_guide_my_reminders" />
+
+        <item
+            android:id="@+id/nav_tv_guide_news_n_reviews"
+            android:icon="@drawable/ic_cast_black_24dp"
+            android:title="@string/nav_tv_guide_news_n_reviews" />
+
+        <item
+            android:id="@+id/nav_tv_guide_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_tv_guide_settings" />
+
+        <item
+            android:id="@+id/nav_tv_guide_help"
+            android:icon="@drawable/ic_help_outline_black_24dp"
+            android:title="@string/nav_tv_guide_help" />
+
+        <item
+            android:id="@+id/nav_tv_guide_about"
+            android:icon="@drawable/ic_info_outline_black_24dp"
+            android:title="@string/nav_tv_guide_about" />
+
+    </group>
+</menu>

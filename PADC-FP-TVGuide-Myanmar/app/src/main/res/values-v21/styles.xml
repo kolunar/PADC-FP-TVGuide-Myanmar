@@ -6,4 +6,12 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="PrimaryButton" parent="TVGuideButton">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="AccentButton" parent="TVGuideButton">
+        <item name="android:backgroundTint">@color/accent_dark</item>
+    </style>
 </resources>

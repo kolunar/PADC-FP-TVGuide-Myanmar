@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.padc.tvguide.activities.ProgramDetailActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_backdrop_height"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:collapsedTitleTextAppearance="@style/ProgramDetailTitleCollapsed"
+            app:expandedTitleMarginStart="@dimen/margin_medium_2"
+            app:expandedTitleMarginEnd="@dimen/margin_medium_2"
+            app:expandedTitleTextAppearance="@style/ProgramDetailTitleExpanded"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/iv_stock_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                android:alpha="0.2"
+                android:foreground="@color/black_full"
+                android:src="@drawable/drawer_background" />
+
+            <ImageView
+                android:id="@+id/iv_channel_icon"
+                android:layout_width="@dimen/channel_image_width"
+                android:layout_height="@dimen/channel_image_height"
+                android:layout_marginTop="80dp"
+                android:layout_marginLeft="0dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerInside"
+                app:layout_collapseMode="parallax"
+                android:src="@drawable/drawer_background" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="66dp"
+                android:layout_marginLeft="126dp"
+                android:layout_marginRight="16dp"
+                android:paddingTop="8dp"
+                android:orientation="vertical"
+                app:layout_collapseMode="parallax">
+                <com.padc.tvguide.components.MMTextView
+                    android:id="@+id/tv_channel_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Channel Name"
+                    android:textSize="@dimen/text_regular_2x" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:textSize="@dimen/text_small"
+                        android:text="From: "/>
+                    <TextView
+                        android:id="@+id/tv_channel_start_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="8dp"
+                        android:textSize="@dimen/text_small"
+                        android:text="6:00 AM"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:textSize="@dimen/text_small"
+                        android:text="To: "/>
+                    <TextView
+                        android:id="@+id/tv_channel_end_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:textSize="@dimen/text_small"
+                        android:text="To: 1:00 AM"/>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_channel_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="136dp"
+                android:layout_marginLeft="0dp"
+                android:padding="16dp"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                android:text="Channel description..."
+                />
+<!--            <TextView
+                android:id="@+id/tv_channel_show_more"
+                android:paddingTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_collapseMode="parallax"
+                android:text="Show more..."
+                android:layout_gravity="bottom|right"
+                />
+            <TextView
+                android:id="@+id/tv_channel_show_less"
+                android:paddingTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_collapseMode="parallax"
+                android:text="Show less..."
+                android:visibility="invisible"
+                android:layout_gravity="bottom|right"
+                />-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_channel_detail_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>
