@@ -1,6 +1,16 @@
 package com.padc.tvguide.data.vos;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.util.Log;
+
+import com.padc.tvguide.TVGuideApp;
+import com.padc.tvguide.data.persistence.TVGuideContract;
+import com.padc.tvguide.data.persistence.TVGuideContract.ProgramEntry;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 9/17/2016.
@@ -19,6 +29,9 @@ public class ProgramVO {
     private int record_status;
     private ArrayList<TagVO> tags;
     private ArrayList<UrlVO> ref_urls;
+    private ArrayList<ChannelProgramVO> air_repeats;
+
+    public ProgramVO(){}
 
     public ProgramVO(int id, String name, String icon) {
         this.program_id = id;
@@ -120,5 +133,84 @@ public class ProgramVO {
 
     public void setRef_urls(ArrayList<UrlVO> ref_urls) {
         this.ref_urls = ref_urls;
+    }
+
+    public ArrayList<ChannelProgramVO> getAir_repeats() {
+        return air_repeats;
+    }
+
+    public void setAir_repeats(ArrayList<ChannelProgramVO> air_repeats) {
+        this.air_repeats = air_repeats;
+    }
+
+    public static void saveProgram(ProgramVO program) {
+        Context context = TVGuideApp.getContext();
+        ContentValues channelCV = program.parseToContentValues();
+        //insert into channels.
+        context.getContentResolver().insert(ProgramEntry.CONTENT_URI, channelCV);
+
+        Log.d(TVGuideApp.TAG, "Channel inserted into channel table");
+    }
+
+    public static void savePrograms(List<ProgramVO> programList) {
+        Context context = TVGuideApp.getContext();
+        ContentValues[] programCVs = new ContentValues[programList.size()];
+        for (int index = 0; index < programList.size(); index++) {
+            ProgramVO program = programList.get(index);
+            programCVs[index] = program.parseToContentValues();
+        }
+
+        //Bulk insert into channels.
+        int insertedCount = context.getContentResolver().bulkInsert(TVGuideContract.ProgramEntry.CONTENT_URI, programCVs);
+
+        Log.d(TVGuideApp.TAG, "Bulk inserted into program table : " + insertedCount);
+    }
+
+    public static ProgramVO loadProgramByID(int program_id) {
+        Context context = TVGuideApp.getContext();
+
+        String selection = ProgramEntry.COLUMN_PROGRAM_ID+"=?";
+        String[] selectionArgs = {String.valueOf(program_id)};
+
+        Cursor cursor = context.getContentResolver().query(TVGuideContract.ProgramEntry.buildProgramUriWithID(program_id),
+                null, selection, selectionArgs, null);
+
+        ProgramVO program = new ProgramVO();
+        if(cursor != null && cursor.moveToFirst()) {
+            program = parseFromCursor(cursor);
+//            do {
+//                programVOList.add(parseFromCursor(cursor));
+//            } while (cursor.moveToNext());
+        }
+
+        return program;
+    }
+
+    private ContentValues parseToContentValues() {
+        ContentValues cv = new ContentValues();
+        cv.put(ProgramEntry.COLUMN_PROGRAM_ID, program_id);
+        cv.put(ProgramEntry.COLUMN_PARENT_ID, parent_id);
+        cv.put(ProgramEntry.COLUMN_PROGRAM_TITLE, program_title);
+        cv.put(ProgramEntry.COLUMN_PROGRAM_DESC, program_desc);
+        cv.put(ProgramEntry.COLUMN_PROGRAM_IMAGE, program_image);
+        cv.put(ProgramEntry.COLUMN_LANGUAGE, language);
+        cv.put(ProgramEntry.COLUMN_PROGRAM_TYPE, program_type);
+        cv.put(ProgramEntry.COLUMN_ROW_TIMESTAMP, row_timestamp);
+        cv.put(ProgramEntry.COLUMN_RECORD_STATUS, record_status);
+        return cv;
+    }
+
+    public static ProgramVO parseFromCursor(Cursor data) {
+        ProgramVO program = new ProgramVO();
+        program.program_id = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_ID));
+        program.parent_id = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_PARENT_ID));
+        program.program_title = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_TITLE));
+        program.program_desc = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_DESC));
+        program.program_image = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_IMAGE));
+        program.language = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_LANGUAGE));
+        program.program_type = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_TYPE));
+        program.row_timestamp = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_ROW_TIMESTAMP));
+        program.record_status = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_RECORD_STATUS));
+        return program;
     }
 }

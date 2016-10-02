@@ -18,7 +18,7 @@
             android:padding="@dimen/margin_small">
 
             <ImageView
-                android:id="@+id/iv_channel"
+                android:id="@+id/iv_my_channel"
                 android:layout_width="@dimen/program_parent_width"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
@@ -34,7 +34,7 @@
                 android:layout_marginRight="8dp"
                 android:orientation="vertical">
                 <com.padc.tvguide.components.MMTextView
-                    android:id="@+id/tv_channel_name"
+                    android:id="@+id/tv_my_channel_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight = "0"
@@ -44,7 +44,7 @@
                     android:textColor="@color/primary_text"
                     />
                 <com.padc.tvguide.components.MMTextView
-                    android:id="@+id/tv_channel_desc"
+                    android:id="@+id/tv_my_channel_desc"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight = "1"

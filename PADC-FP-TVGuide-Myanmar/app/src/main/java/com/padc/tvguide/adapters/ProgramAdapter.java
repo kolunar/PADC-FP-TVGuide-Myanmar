@@ -61,6 +61,7 @@ public class ProgramAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             case 0:
                 ((ProgramDetailViewHolder)holder).bindData(mProgramList.get(position));
                 break;
+            case 1:
             case 2:
             default:
                 ((ProgramViewHolder)holder).bindData(mProgramList.get(position));

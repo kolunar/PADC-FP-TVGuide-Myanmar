@@ -19,6 +19,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.padc.tvguide.R;
@@ -44,6 +47,15 @@ import de.greenrobot.event.EventBus;
  */
 public class ChannelListFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    @BindView(R.id.rl_container)
+    RelativeLayout rlContainer;
+
+    @BindView(R.id.pb_progress_bar)
+    ProgressBar pbProgressBar;
+
+    @BindView(R.id.ll_conn_layout)
+    LinearLayout llConnLayout;
+
     @BindView(R.id.rv_channel_list)
     RecyclerView rvChannels;
 
@@ -53,31 +65,12 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
     private ChannelAdapter mChannelAdapter;
     private ChannelViewHolder.ControllerChannelItem controllerChannelItem;
 
+    private List<ChannelVO> mChannelVOList;
+
     public static ChannelListFragment newInstance() {
         ChannelListFragment fragment = new ChannelListFragment();
         return fragment;
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        getActivity().getSupportLoaderManager().initLoader(TVGuideConstants.CHANNEL_DETAIL_LOADER, null, this);
-        if(TVGuideApp.hasInternet){
-            ChannelModel.getInstance().loadChannels();
-        }
-    }
-
-    /*    private BroadcastReceiver mDataLoadedBroadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            //TODO instructions when the new data is ready.
-            String extra = intent.getStringExtra("key-for-extra");
-            Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
-
-            List<ChannelVO> newAttractionList = ChannelModel.getInstance().getChannelList();
-            mChannelAdapter.setNewData(newAttractionList);
-        }
-    };*/
 
     @Override
     public void onStart() {
@@ -105,6 +98,8 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         if (context instanceof HomeActivity)
             controllerChannelItem = (ChannelViewHolder.ControllerChannelItem) context;
     }
+
+//    List<ChannelVO> mChannelList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -139,6 +134,17 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         return rootView;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        showProgressBar();
+        getActivity().getSupportLoaderManager().initLoader(TVGuideConstants.CHANNEL_LIST_LOADER, null, this);
+        if(TVGuideApp.hasInternet) {
+            ChannelModel.getInstance().loadChannels();
+        }
+    }
+
     private List<ChannelVO> getChannelList(){
         List<ChannelVO> dummy = new ArrayList<ChannelVO>();
         String[] channelListArray = getResources().getStringArray(R.array.dummy_channel_list);
@@ -153,6 +159,38 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         mChannelAdapter.notifyDataSetChanged();
     }
 
+    private void showProgressBar() {
+        if(mChannelAdapter.getItemCount() < 1) {
+//        if(!rlContainer.isShown())
+//            rlContainer.setVisibility(View.VISIBLE);
+            if (llConnLayout.isShown())
+                llConnLayout.setVisibility(View.GONE);
+            pbProgressBar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void hideProgressBar(){
+//        if(rlContainer.isShown())
+//            rlContainer.setVisibility(View.GONE);
+        pbProgressBar.setVisibility(View.GONE);
+    }
+
+    private void showConnBroken() {
+        if(mChannelAdapter.getItemCount() < 1) {
+//        if(!rlContainer.isShown())
+//            rlContainer.setVisibility(View.VISIBLE);
+            if (pbProgressBar.isShown())
+                pbProgressBar.setVisibility(View.GONE);
+            llConnLayout.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void hideConnBroken() {
+//        if(rlContainer.isShown())
+//            rlContainer.setVisibility(View.GONE);
+        llConnLayout.setVisibility(View.GONE);
+    }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         return new CursorLoader(getContext(),
@@ -160,11 +198,12 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
                 null,
                 null,
                 null,
-                TVGuideContract.ChannelEntry.COLUMN_CHANNEL_SORT_ORDER + " ASC");
+                TVGuideContract.ChannelEntry.COLUMN_SORT_ORDER + " ASC");
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+//        hideProgressBar();
         List<ChannelVO> channelList = new ArrayList<>();
         if (data != null && data.moveToFirst()) {
             do {
@@ -173,7 +212,8 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
             } while (data.moveToNext());
         }
 
-        Log.d(TVGuideApp.TAG, "Retrieved attractions DESC : " + channelList.size());
+        Log.e(TVGuideApp.TAG, "Retrieved channelList.size : " + channelList.size());
+        mChannelVOList = channelList;
         mChannelAdapter.setNewData(channelList);
 
         ChannelModel.getInstance().setStoredData(channelList);
@@ -184,7 +224,32 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
 
     }
 
+    /*    private BroadcastReceiver mDataLoadedBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            //TODO instructions when the new data is ready.
+            String extra = intent.getStringExtra("key-for-extra");
+            Toast.makeText(getContext(), "Extra : " + extra, Toast.LENGTH_SHORT).show();
+
+            List<ChannelVO> newAttractionList = ChannelModel.getInstance().getChannelList();
+            mChannelAdapter.setNewData(newAttractionList);
+        }
+    };*/
+
+    public void onEventMainThread(DataEvent.ChannelDataLoadedErrorEvent event) {
+        hideProgressBar();
+        Log.e(TVGuideApp.TAG, "ChannelListFragment.onEventMainThread().ChannelDataLoadedErrorEvent");
+        if(mChannelAdapter.getItemCount() < 1)
+            showConnBroken();
+        else
+            hideConnBroken();
+        String extra = event.getExtraMessage();
+//        Toast.makeText(getContext(), "ChannelListFragement:onEventMainThread:Extra : " + extra, Toast.LENGTH_SHORT).show();
+
+    }
+
     public void onEventMainThread(DataEvent.ChannelDataLoadedEvent event) {
+        hideProgressBar();
         Log.e(TVGuideApp.TAG, "ChannelListFragment.onEventMainThread().ChannelDataLoadedEvent");
         String extra = event.getExtraMessage();
 //        Toast.makeText(getContext(), "ChannelListFragement:onEventMainThread:Extra : " + extra, Toast.LENGTH_SHORT).show();
@@ -192,5 +257,6 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         //List<ChannelVO> newChannelList = ChannelModel.getInstance().getChannelList();
         List<ChannelVO> newChannelList = event.getChannelList();
         mChannelAdapter.setNewData(newChannelList);
+
     }
 }

@@ -45,6 +45,11 @@ public class ChannelDetailsVO {
         this.channel_programs = channel_programs;
     }
 
+    public ChannelDetailsVO(ChannelVO channelVO) {
+        this.channel = channelVO;
+        this.categories = new ArrayList<>();
+        this.channel_programs = new ArrayList<>();
+    }
 
     public ChannelDetailsVO(int channel_id, String channel_name, String channel_icon) {
         this.channel = new ChannelVO(channel_id, channel_name, channel_icon);
@@ -52,21 +57,25 @@ public class ChannelDetailsVO {
         this.channel_programs = new ArrayList<>();
     }
 
-    public static void saveChannelDetails(List<ChannelDetailsVO> channelDetailList) {
-        Context context = TVGuideApp.getContext();
-        ContentValues[] channelCVs = new ContentValues[channelDetailList.size()];
-        for (int index = 0; index < channelDetailList.size(); index++) {
-            ChannelDetailsVO channel = channelDetailList.get(index);
-//            channelCVs[index] = channel.parseToContentValues();
-
-            //Bulk insert into channel_details.
-            //TODO::ChannelVO.saveChannelDetails(channel.getId(), channel.getDetails());
+    public List<ChannelProgramVO> getChannelProgramsByAirDay(String air_day, Boolean fromNetworkLayer){
+        List<ChannelProgramVO> channelProgramVOList = new ArrayList<>();
+        if(channel_programs != null) {
+            for (int index = 0, size = channel_programs.size(); index < size; index++) {
+                if (channel_programs.get(index).getAir_day().equalsIgnoreCase(air_day))
+                    channelProgramVOList.add(channel_programs.get(index));
+            }
+            Log.e(TVGuideApp.TAG, "ChannelDetailsVO.getChannelProgramsByAirDay.size : " + channelProgramVOList.size() + " : " + air_day);
         }
-
-        //Bulk insert into channels.
-        int insertedCount = context.getContentResolver().bulkInsert(TVGuideContract.ChannelEntry.CONTENT_URI, channelCVs);
-
-        Log.d(TVGuideApp.TAG, "Bulk inserted into channel table : " + insertedCount);
+        if(fromNetworkLayer && air_day.equalsIgnoreCase("Sat")){
+            Log.e(TVGuideApp.TAG, "ChannelDetailsVO.getChannelProgramsByAirDay().channelProgramVOList.size(): " + channelProgramVOList.size());
+        }
+        return channelProgramVOList;
     }
 
+    public static void saveChannelDetails(ChannelDetailsVO channelDetailsVO) {
+        ChannelVO.saveChannel(channelDetailsVO.getChannel());
+
+        //Bulk insert into channel_programs.
+        ChannelProgramVO.saveChannelPrograms(channelDetailsVO.getChannel_programs());
+    }
 }

@@ -7,39 +7,44 @@ import android.view.ViewGroup;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
-import com.padc.tvguide.data.vos.ChannelVO;
-import com.padc.tvguide.views.holders.ChannelViewHolder;
+import com.padc.tvguide.data.vos.MyChannelVO;
+import com.padc.tvguide.views.holders.MyChannelViewHolder;
 
 import java.util.List;
 
 /**
  * Created by user on 9/10/2016.
  */
-public class MyChannelAdapter extends RecyclerView.Adapter<ChannelViewHolder> {
+public class MyChannelAdapter extends RecyclerView.Adapter<MyChannelViewHolder> {
 
     private LayoutInflater mInflater;
-    private List<ChannelVO> mChannelList;
-    private ChannelViewHolder.ControllerChannelItem mControllerChannelItem;
+    private List<MyChannelVO> mMyChannelList;
+    private MyChannelViewHolder.ControllerMyChannelItem mControllerMyChannelItem;
 
-    public MyChannelAdapter(List<ChannelVO> channelList, ChannelViewHolder.ControllerChannelItem controllerChannelItem) {
+    public MyChannelAdapter(List<MyChannelVO> channelList, MyChannelViewHolder.ControllerMyChannelItem controllerMyChannelItem) {
         mInflater = LayoutInflater.from(TVGuideApp.getContext());
-        mChannelList = channelList;
-        mControllerChannelItem = controllerChannelItem;
+        mMyChannelList = channelList;
+        mControllerMyChannelItem = controllerMyChannelItem;
     }
 
     @Override
-    public ChannelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyChannelViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.view_item_my_channel, parent, false);
-        return new ChannelViewHolder(itemView, mControllerChannelItem);
+        return new MyChannelViewHolder(itemView, mControllerMyChannelItem);
     }
 
     @Override
-    public void onBindViewHolder(ChannelViewHolder holder, int position) {
-        holder.bindData(mChannelList.get(position));
+    public void onBindViewHolder(MyChannelViewHolder holder, int position) {
+        holder.bindData(mMyChannelList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mChannelList.size();
+        return mMyChannelList.size();
+    }
+
+    public void setNewData(List<MyChannelVO> newMyChannelList) {
+        mMyChannelList = newMyChannelList;
+        notifyDataSetChanged();
     }
 }

@@ -10,7 +10,7 @@ public class TVGuideApp extends Application {
 
     private static Context context;
     public static final String TAG = "TVGuideApp";
-    public static boolean hasInternet = false;
+    public static boolean hasInternet = true;
 
     @Override
     public void onCreate() {

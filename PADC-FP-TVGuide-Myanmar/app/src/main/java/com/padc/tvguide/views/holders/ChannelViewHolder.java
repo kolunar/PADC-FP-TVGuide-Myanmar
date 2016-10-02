@@ -1,18 +1,20 @@
 package com.padc.tvguide.views.holders;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.padc.tvguide.R;
+import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.vos.ChannelVO;
-import com.padc.tvguide.utils.TVGuideConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by user on 9/10/2016.
@@ -24,6 +26,21 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
 
     @BindView(R.id.iv_channel)
     ImageView ivChannel;
+
+    @BindView(R.id.cb_channel)
+    CheckBox cbChannel;
+
+    @OnClick(R.id.cb_channel)
+    public void onTapMyChannelCheckBox(View view){
+        CheckBox checkBox = (CheckBox)view;
+        if(checkBox.isChecked()){
+            mController.onTapSaveMyChannel(mChannel);
+        }
+        else{
+//            Toast.makeText(TVGuideApp.getContext(), "ChannelViewHolder:onTapMyChannelCheckBox(): unchecked", Toast.LENGTH_LONG).show();
+            mController.onTapDeleteMyChannel(mChannel);
+        }
+    }
 
     private ControllerChannelItem mController;
     private ChannelVO mChannel;
@@ -85,6 +102,8 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
 
     public interface ControllerChannelItem {
         void onTapChannel(ChannelVO channel, int drawableID);
+        void onTapSaveMyChannel(ChannelVO myChannel);
+        void onTapDeleteMyChannel(ChannelVO myChannel);
         void onLongPressChannel(ChannelVO channel, ImageView ivChannel);
     }
 }

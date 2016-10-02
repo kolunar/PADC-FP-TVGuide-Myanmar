@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
  */
 public class MyWatchListFragment extends BaseFragment {
 
-    @BindView(R.id.rv_channel_detail)
+    @BindView(R.id.rv_my_watchlist)
     RecyclerView rvChannelDetail;
 
     @BindView(R.id.swipe_refresh_layout)
@@ -51,10 +51,11 @@ public class MyWatchListFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_channel_detail, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_my_watchlist, container, false);
         ButterKnife.bind(this, rootView);
 
-        List<ProgramVO> programList = getProgramList();
+//        List<ProgramVO> programList = getProgramList();
+        List<ProgramVO> programList = new ArrayList<>();
         if(rvChannelDetail != null) {
             rvChannelDetail.removeAllViews();
         }

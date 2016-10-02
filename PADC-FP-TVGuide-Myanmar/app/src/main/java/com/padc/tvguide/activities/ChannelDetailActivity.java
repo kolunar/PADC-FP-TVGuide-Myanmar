@@ -144,12 +144,9 @@ public class ChannelDetailActivity extends BaseActivity
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
-
-        ChannelModel.getInstance().loadChannelDetails();
-        ChannelDetailsVO channelDetails = ChannelModel.getInstance().getChannelDetails();
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fl_channel_detail_container, DayPagerFragment.newInstance(channelDetails))
+                    .replace(R.id.fl_channel_detail_container, DayPagerFragment.newInstance(new ChannelDetailsVO(mChannelVO)))
                     .commit();
 
             Bundle extras = getIntent().getExtras();
@@ -175,7 +172,13 @@ public class ChannelDetailActivity extends BaseActivity
 
         appbarHeight = getAppBarLayoutHeight();
 //        Toast.makeText(TVGuideApp.getContext(), "ChannelDetailActivity:onCreate(): ", Toast.LENGTH_LONG).show();
+
+        if(TVGuideApp.hasInternet) {
+            ChannelModel.getInstance().loadChannelDetails(mChannelVO.getChannel_id());
+        }
+        ChannelDetailsVO channelDetails = ChannelModel.getInstance().getChannelDetails();
     }
+
 
     private void bindChannelData(ChannelVO channel){
         collapsingToolbar.setTitle(channel.getChannel_name());

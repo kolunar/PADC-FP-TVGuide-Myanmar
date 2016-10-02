@@ -36,7 +36,7 @@
                 android:textColor="@color/primary_text"
                 />
             <CheckBox
-                android:id="@+id/cbChannel"
+                android:id="@+id/cb_channel"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_weight = "0"

@@ -3,17 +3,24 @@ package com.padc.tvguide.utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by user on 9/27/2016.
  */
 public class DateTimeUtils {
+    //DateFormat formatter = new SimpleDateFormat("HH:mm");
+    //java.sql.Time timeValue = new java.sql.Time(formatter.parse(start_time_string).getTime());
+
+    static DateFormat in_df = new SimpleDateFormat("HH:mm");
+    static DateFormat out_df = new SimpleDateFormat("h:mma");
+
     public static String getTimePeriod(String start_time, int duration){
-        DateFormat in_df = new SimpleDateFormat("HH:mm");
-        DateFormat out_df = new SimpleDateFormat("h:mma");
-        Date date_from = null;
+
+        Date date_from;
         String output = null;
         try{
             //Conversion of input String to date
@@ -33,5 +40,34 @@ public class DateTimeUtils {
 
     public static String getDuration(int duration){
         return "Duration: " + duration + "mins";
+    }
+
+    static SimpleDateFormat day_df = new SimpleDateFormat("E"); // the day of the week abbreviated
+    public static String[] getDaysOfWeek(){
+        Calendar calendar = Calendar.getInstance();
+        Date day = calendar.getTime();
+
+        String[] days = new String[7];
+        days[0] = day_df.format(day);
+        for (int i=1, size = days.length; i<size; i++)
+        {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            day = calendar.getTime();
+            days[i] = day_df.format(day);
+        }
+        return days;
+    }
+
+    public static int getDayNumber(String day) {
+        switch (day){
+            case "Sun":return 0;
+            case "Mon":return 1;
+            case "Tue":return 2;
+            case "Wed":return 3;
+            case "Thu":return 4;
+            case "Fri":return 5;
+            case "Sat":return 6;
+            default:return 0;
+        }
     }
 }

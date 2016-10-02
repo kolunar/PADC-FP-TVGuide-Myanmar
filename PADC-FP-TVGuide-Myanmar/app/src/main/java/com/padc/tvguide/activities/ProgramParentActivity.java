@@ -87,7 +87,7 @@ public class ProgramParentActivity extends BaseActivity
 
     @Override
     public void onTapProgram(ProgramVO program, ImageView ivProgram) {
-        Intent intent = ProgramDetailActivity.newIntent("Program Detail");
+        Intent intent = ProgramDetailActivity.newIntent(program);//"Program Detail");
         startActivity(intent);
     }
 }

@@ -6,14 +6,48 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_channel_list"
+    <RelativeLayout
+        android:id="@+id/rl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/padding_bottom_for_fab"
-        android:paddingLeft="@dimen/margin_medium"
-        android:paddingRight="@dimen/margin_medium"
-        android:scrollbarStyle="outsideOverlay" />
+        android:layout_height="match_parent">
+        <ProgressBar
+            android:id="@+id/pb_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
+        <LinearLayout
+            android:id="@+id/ll_conn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <ImageView
+                android:layout_width="@dimen/channel_image_width"
+                android:layout_height="@dimen/channel_image_width"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/margin_medium_2"
+                android:src="@drawable/ic_portable_wifi_off_gray_24dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Tap to Retry"
+                android:drawableLeft="@drawable/ic_refresh_black_24dp"/>
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_channel_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/padding_bottom_for_fab"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium"
+            android:scrollbarStyle="outsideOverlay" />
+    </RelativeLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

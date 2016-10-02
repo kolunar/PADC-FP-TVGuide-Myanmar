@@ -141,9 +141,9 @@
         ],
         "air_repeats" : [
           {
-            "channel_program_id" : 101,
-            "air_date" : "2016-09-26",
-            "ari_day" : "Thu",
+            "channel_program_id" : 107,
+            "air_date" : "2016-10-01",
+            "air_day" : "Sat",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
@@ -153,10 +153,10 @@
             "record_status" : 1
           },
           {
-            "channel_program_id" : 102,
-            "air_date" : "2016-09-27",
-            "ari_day" : "Thu",
-            "start_time" : "10:00",
+            "channel_program_id" : 108,
+            "air_date" : "2016-10-02",
+            "air_day" : "Sun",
+            "start_time" : "07:00",
             "duration" : 30,
             "channel_id" : 101,
             "program_id" : 102,
@@ -208,9 +208,9 @@
         ],
         "air_repeats" : [
           {
-            "channel_program_id" : 103,
-            "air_date" : "2016-09-27",
-            "ari_day" : "Thu",
+            "channel_program_id" : 115,
+            "air_date" : "2016-10-02",
+            "air_day" : "Sun",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
@@ -220,10 +220,10 @@
             "record_status" : 1
           },
           {
-            "channel_program_id" : 104,
-            "air_date" : "2016-09-28",
-            "ari_day" : "Thu",
-            "start_time" : "10:00",
+            "channel_program_id" : 116,
+            "air_date" : "2016-10-03",
+            "air_day" : "Mon",
+            "start_time" : "07:00",
             "duration" : 30,
             "channel_id" : 101,
             "program_id" : 103,
@@ -275,9 +275,9 @@
         ],
         "air_repeats" : [
           {
-            "channel_program_id" : 105,
-            "air_date" : "2016-09-29",
-            "ari_day" : "Thu",
+            "channel_program_id" : 117,
+            "air_date" : "2016-10-03",
+            "air_day" : "Mon",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
@@ -287,10 +287,10 @@
             "record_status" : 1
           },
           {
-            "channel_program_id" : 106,
-            "air_date" : "2016-09-30",
-            "ari_day" : "Thu",
-            "start_time" : "10:00",
+            "channel_program_id" : 118,
+            "air_date" : "2016-10-04",
+            "air_day" : "Tue",
+            "start_time" : "07:00",
             "duration" : 30,
             "channel_id" : 101,
             "program_id" : 104,
@@ -342,9 +342,9 @@
         ],
         "air_repeats" : [
           {
-            "channel_program_id" : 107,
-            "air_date" : "2016-10-01",
-            "ari_day" : "Thu",
+            "channel_program_id" : 119,
+            "air_date" : "2016-10-04",
+            "air_day" : "Tue",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
@@ -354,10 +354,10 @@
             "record_status" : 1
           },
           {
-            "channel_program_id" : 108,
-            "air_date" : "2016-10-02",
-            "ari_day" : "Thu",
-            "start_time" : "10:00",
+            "channel_program_id" : 120,
+            "air_date" : "2016-10-05",
+            "air_day" : "Wed",
+            "start_time" : "07:00",
             "duration" : 30,
             "channel_id" : 101,
             "program_id" : 105,
@@ -409,9 +409,9 @@
         ],
         "air_repeats" : [
           {
-            "channel_program_id" : 109,
-            "air_date" : "2016-10-02",
-            "ari_day" : "Thu",
+            "channel_program_id" : 121,
+            "air_date" : "2016-10-05",
+            "air_day" : "Wed",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
@@ -421,10 +421,10 @@
             "record_status" : 1
           },
           {
-            "channel_program_id" : 110,
-            "air_date" : "2016-10-03",
-            "ari_day" : "Thu",
-            "start_time" : "10:00",
+            "channel_program_id" : 122,
+            "air_date" : "2016-10-06",
+            "air_day" : "Thu",
+            "start_time" : "07:00",
             "duration" : 30,
             "channel_id" : 101,
             "program_id" : 106,
@@ -476,9 +476,9 @@
         ],
         "air_repeats" : [
           {
-            "channel_program_id" : 111,
-            "air_date" : "2016-10-04",
-            "ari_day" : "Thu",
+            "channel_program_id" : 123,
+            "air_date" : "2016-10-06",
+            "air_day" : "Thu",
             "start_time" : "20:00",
             "duration" : 30,
             "channel_id" : 101,
@@ -488,10 +488,10 @@
             "record_status" : 1
           },
           {
-            "channel_program_id" : 112,
-            "air_date" : "2016-10-05",
-            "ari_day" : "Thu",
-            "start_time" : "10:00",
+            "channel_program_id" : 124,
+            "air_date" : "2016-10-07",
+            "air_day" : "Fri",
+            "start_time" : "07:00",
             "duration" : 30,
             "channel_id" : 101,
             "program_id" : 107,

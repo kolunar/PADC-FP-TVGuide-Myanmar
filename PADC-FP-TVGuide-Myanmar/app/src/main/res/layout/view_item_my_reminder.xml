@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/iv_program_photo"
+            android:id="@+id/iv_rm_program_photo"
             android:layout_width="@dimen/program_parent_width"
             android:layout_height="@dimen/program_parent_height"
             android:layout_weight="0"
@@ -35,19 +35,18 @@
             android:orientation="vertical">
 
             <com.padc.tvguide.components.MMTextView
-                android:id="@+id/tv_program_title"
+                android:id="@+id/tv_rm_program_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Winter Is Coming"
-                android:singleLine="true"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:textColor="@color/primary_text"
                 android:textAppearance="?android:textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/tv_duration"
+                android:id="@+id/tv_rm_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -56,7 +55,7 @@
                 android:textAppearance="?android:textAppearanceSmall" />
 
             <TextView
-                android:id="@+id/tv_period"
+                android:id="@+id/tv_rm_period"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"

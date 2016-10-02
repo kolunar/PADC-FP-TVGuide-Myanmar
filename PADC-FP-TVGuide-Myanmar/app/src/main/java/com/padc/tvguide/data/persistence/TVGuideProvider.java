@@ -15,6 +15,10 @@ import android.support.annotation.Nullable;
  */
 public class TVGuideProvider extends ContentProvider {
     public static final int CHANNEL = 100;
+    public static final int PROGRAM = 200;
+    public static final int CHANNEL_PROGRAM = 400;
+    public static final int MY_CHANNEL = 500;
+
     public static final int LOGIN_USER = 300;
 
     private static final UriMatcher sUriMatcher = buildUriMatcher();
@@ -41,6 +45,33 @@ public class TVGuideProvider extends ContentProvider {
                         null, //having
                         sortOrder);
                 break;
+            case PROGRAM:
+                queryCursor = mTVGuideDBHelper.getReadableDatabase().query(TVGuideContract.ProgramEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null, //group_by
+                        null, //having
+                        sortOrder);
+                break;
+            case CHANNEL_PROGRAM:
+                queryCursor = mTVGuideDBHelper.getReadableDatabase().query(TVGuideContract.ChannelProgramEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null, //group_by
+                        null, //having
+                        sortOrder);
+                break;
+            case MY_CHANNEL:
+                queryCursor = mTVGuideDBHelper.getReadableDatabase().query(TVGuideContract.MyChannelEntry.TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null, //group_by
+                        null, //having
+                        sortOrder);
+                break;
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
         }
@@ -59,6 +90,12 @@ public class TVGuideProvider extends ContentProvider {
         switch (matchUri) {
             case CHANNEL:
                 return TVGuideContract.ChannelEntry.DIR_TYPE;
+            case PROGRAM:
+                return TVGuideContract.ProgramEntry.DIR_TYPE;
+            case CHANNEL_PROGRAM:
+                return TVGuideContract.ChannelProgramEntry.DIR_TYPE;
+            case MY_CHANNEL:
+                return TVGuideContract.MyChannelEntry.DIR_TYPE;
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
         }
@@ -76,6 +113,33 @@ public class TVGuideProvider extends ContentProvider {
                 long _id = db.insert(TVGuideContract.ChannelEntry.TABLE_NAME, null, contentValues);
                 if (_id > 0) {
                     insertedUri = TVGuideContract.ChannelEntry.buildChannelUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case PROGRAM: {
+                long _id = db.insert(TVGuideContract.ProgramEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TVGuideContract.ProgramEntry.buildProgramUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case CHANNEL_PROGRAM: {
+                long _id = db.insert(TVGuideContract.ChannelProgramEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TVGuideContract.ChannelProgramEntry.buildChannelProgramUri(_id);
+                } else {
+                    throw new SQLException("Failed to insert row into " + uri);
+                }
+                break;
+            }
+            case MY_CHANNEL: {
+                long _id = db.insert(TVGuideContract.MyChannelEntry.TABLE_NAME, null, contentValues);
+                if (_id > 0) {
+                    insertedUri = TVGuideContract.MyChannelEntry.buildMyChannelUri(_id);
                 } else {
                     throw new SQLException("Failed to insert row into " + uri);
                 }
@@ -153,6 +217,9 @@ public class TVGuideProvider extends ContentProvider {
         final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
         uriMatcher.addURI(TVGuideContract.CONTENT_AUTHORITY, TVGuideContract.PATH_CHANNELS, CHANNEL);
+        uriMatcher.addURI(TVGuideContract.CONTENT_AUTHORITY, TVGuideContract.PATH_PROGRAMS, PROGRAM);
+        uriMatcher.addURI(TVGuideContract.CONTENT_AUTHORITY, TVGuideContract.PATH_CHANNEL_PROGRAMS, CHANNEL_PROGRAM);
+        uriMatcher.addURI(TVGuideContract.CONTENT_AUTHORITY, TVGuideContract.PATH_MY_CHANNEL, MY_CHANNEL);
 
         return uriMatcher;
     }
@@ -163,7 +230,12 @@ public class TVGuideProvider extends ContentProvider {
         switch (matchUri) {
             case CHANNEL:
                 return TVGuideContract.ChannelEntry.TABLE_NAME;
-
+            case PROGRAM:
+                return TVGuideContract.ProgramEntry.TABLE_NAME;
+            case CHANNEL_PROGRAM:
+                return TVGuideContract.ChannelProgramEntry.TABLE_NAME;
+            case MY_CHANNEL:
+                return TVGuideContract.MyChannelEntry.TABLE_NAME;
             default:
                 throw new UnsupportedOperationException("Unknown uri : " + uri);
         }

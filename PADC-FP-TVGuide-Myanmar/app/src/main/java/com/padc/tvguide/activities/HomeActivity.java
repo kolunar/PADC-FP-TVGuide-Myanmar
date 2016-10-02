@@ -21,6 +21,7 @@ import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.controllers.UserController;
 import com.padc.tvguide.data.models.ChannelModel;
 import com.padc.tvguide.data.vos.ChannelVO;
+import com.padc.tvguide.data.vos.MyChannelVO;
 import com.padc.tvguide.data.vos.ProgramVO;
 import com.padc.tvguide.events.DataEvent;
 import com.padc.tvguide.fragments.BaseFragment;
@@ -29,6 +30,7 @@ import com.padc.tvguide.fragments.MyChannelFragment;
 import com.padc.tvguide.fragments.MyReminderFragment;
 import com.padc.tvguide.fragments.MyWatchListFragment;
 import com.padc.tvguide.views.holders.ChannelViewHolder;
+import com.padc.tvguide.views.holders.MyChannelViewHolder;
 import com.padc.tvguide.views.holders.ProgramViewHolder;
 import com.padc.tvguide.views.pods.ViewPodAccountControl;
 
@@ -42,6 +44,7 @@ import de.greenrobot.event.EventBus;
 public class HomeActivity extends BaseActivity
         implements ChannelViewHolder.ControllerChannelItem,
         ProgramViewHolder.ControllerProgramItem,
+        MyChannelViewHolder.ControllerMyChannelItem,
         UserController,
         NavigationView.OnNavigationItemSelectedListener {
 
@@ -181,7 +184,7 @@ public class HomeActivity extends BaseActivity
 
     @Override
     public void onTapProgram(ProgramVO program, ImageView ivProgram) {
-        Intent intent = ProgramDetailActivity.newIntent("Program Detail");
+        Intent intent = ProgramDetailActivity.newIntent(program);//"Program Detail");
         startActivity(intent);
     }
 
@@ -194,8 +197,24 @@ public class HomeActivity extends BaseActivity
     }
 
     @Override
+    public void onTapMyChannel(MyChannelVO myChannel) {
+        Intent intent = ChannelDetailActivity.newIntent(myChannel.getChannelVO());
+        startActivity(intent);
+    }
+
+    @Override
     public void onLongPressChannel(ChannelVO channel, ImageView ivChannel) {
 
+    }
+
+    @Override
+    public void onTapSaveMyChannel(ChannelVO channel){
+        MyChannelVO.saveMyChannel(new MyChannelVO(0, channel.getChannel_id()));
+    }
+
+    @Override
+    public void onTapDeleteMyChannel(ChannelVO channel){
+        MyChannelVO.deleteMyChannel(0, channel.getChannel_id());
     }
 
     boolean isUserLogin = false;
@@ -308,7 +327,7 @@ public class HomeActivity extends BaseActivity
                 .commit();
     }
 
-    /*cancel any selections*/
+    /*cancel any selections in long pressed mode*/
     private void cancelSelections() {
         /*empty the list of selected ids*/
         selectedItemIdList.clear();

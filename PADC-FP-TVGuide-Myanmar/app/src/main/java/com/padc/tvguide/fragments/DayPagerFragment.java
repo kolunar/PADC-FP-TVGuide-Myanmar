@@ -4,13 +4,20 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.padc.tvguide.R;
+import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.adapters.DayPagerAdapter;
 import com.padc.tvguide.data.vos.ChannelDetailsVO;
+import com.padc.tvguide.data.vos.ChannelProgramVO;
+import com.padc.tvguide.utils.DateTimeUtils;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,13 +46,22 @@ public class DayPagerFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mDayPagerAdapter = new DayPagerAdapter(getActivity().getSupportFragmentManager());
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Today");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Sun");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Mon");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Tue");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Wed");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Thu");
-        mDayPagerAdapter.addTab(ChannelDetailFragment.newInstance(mChannelDetailsVO), "Fri");
+        String[] days = DateTimeUtils.getDaysOfWeek();
+
+        if(savedInstanceState == null)
+            Toast.makeText(TVGuideApp.getContext(), "DayPagerFragment.onCreate():savedInstanceState==null ", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(TVGuideApp.getContext(), "DayPagerFragment.onCreate():savedInstanceState!=null ", Toast.LENGTH_LONG).show();
+
+        List<ChannelProgramVO> channelProgramVOList;
+        for (int i = 0, size = days.length; i < size; i++) {
+            channelProgramVOList = mChannelDetailsVO.getChannelProgramsByAirDay(days[i], false);
+            mDayPagerAdapter.addTab(
+                    ChannelDetailFragment.newInstance(channelProgramVOList, days[i], mChannelDetailsVO.getChannel().getChannel_id()),
+                    (i == 0 ? "Today" : days[i])
+            );
+            Log.e(TVGuideApp.TAG, "ChannelDetailsVO.getChannelProgramsByAirDay.size : " + channelProgramVOList);
+        }
     }
 
     @Override

@@ -52,8 +52,8 @@ public class ChannelModel extends BaseModel {
         dataAgent.loadChannels();
     }
 
-    public void loadChannelDetails() {
-        dataAgent.loadChannelDetails();
+    public void loadChannelDetails(int channel_id) {
+        dataAgent.loadChannelDetails(channel_id);
     }
 
     public List<ChannelVO> getChannelList() {
@@ -85,17 +85,19 @@ public class ChannelModel extends BaseModel {
         mChannelDetails = channelDetails;
 
         //keep the data in persistent layer.
-        //TODO::ChannelDetailsVO.saveChannelDetails(mChannelDetails);
+        ChannelDetailsVO.saveChannelDetails(mChannelDetails);
 
         broadcastChannelDetailsLoadedWithEventBus();
 //        broadcastChannelDetailsLoadedWithLocalBroadcastManager();
     }
 
     public void notifyErrorInLoadingChannels(String message) {
+        broadcastConnectionErrorWithEventBus();
 		Log.e(TVGuideApp.TAG, "ChannelModel.notifyErrorInLoadingChannels.message:" + message);
     }
 
     public void notifyErrorInLoadingChannelDetails(String message) {
+        broadcastConnectionErrorWithEventBus();
         Log.e(TVGuideApp.TAG, "ChannelModel.notifyErrorInLoadingChannelDetails.message:" + message);
     }
 
@@ -104,6 +106,10 @@ public class ChannelModel extends BaseModel {
         Intent intent = new Intent(BROADCAST_DATA_LOADED);
         intent.putExtra("key-for-extra", "extra-in-broadcast");
         LocalBroadcastManager.getInstance(TVGuideApp.getContext()).sendBroadcast(intent);
+    }
+
+    private void broadcastConnectionErrorWithEventBus() {
+        EventBus.getDefault().post(new DataEvent.ChannelDataLoadedErrorEvent("extra-in-broadcast"));
     }
 
     private void broadcastChannelLoadedWithEventBus() {

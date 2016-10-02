@@ -5,8 +5,10 @@ import android.util.Log;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.agents.TVGuideDataAgent;
 import com.padc.tvguide.data.models.ChannelModel;
+import com.padc.tvguide.data.models.ProgramModel;
 import com.padc.tvguide.data.reponses.ChannelDetailsResponse;
 import com.padc.tvguide.data.reponses.ChannelListResponse;
+import com.padc.tvguide.data.reponses.ProgramDetailsResponse;
 import com.padc.tvguide.utils.CommonInstances;
 import com.padc.tvguide.utils.TVGuideConstants;
 
@@ -77,8 +79,8 @@ public class RetrofitDataAgent implements TVGuideDataAgent {
     }
 
     @Override
-    public void loadChannelDetails() {
-        Call<ChannelDetailsResponse> loadChannelDetailCall = theApi.loadChannelDetails(TVGuideConstants.ACCESS_TOKEN);
+    public void loadChannelDetails(int channel_id) {
+        Call<ChannelDetailsResponse> loadChannelDetailCall = theApi.loadChannelDetails(TVGuideConstants.ACCESS_TOKEN, channel_id);
         loadChannelDetailCall.enqueue(new Callback<ChannelDetailsResponse>() {
             @Override
             public void onResponse(Call<ChannelDetailsResponse> call, Response<ChannelDetailsResponse> response) {
@@ -86,7 +88,7 @@ public class RetrofitDataAgent implements TVGuideDataAgent {
                 ChannelDetailsResponse channelDetailsResponse = response.body();
                 if(channelDetailsResponse == null) {
                     Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadChannelDetails().onResponse.channelDetailsResponse==null");
-                    ChannelModel.getInstance().notifyErrorInLoadingChannels(response.message());
+                    ChannelModel.getInstance().notifyErrorInLoadingChannelDetails(response.message());
                 }
                 else {
                     Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadChannelDetails().onResponse.channelDetailsResponse.getChannelDetails():"+channelDetailsResponse.getChannelDetails());
@@ -97,6 +99,31 @@ public class RetrofitDataAgent implements TVGuideDataAgent {
             @Override
             public void onFailure(Call<ChannelDetailsResponse> call, Throwable t) {
                 ChannelModel.getInstance().notifyErrorInLoadingChannelDetails(t.getMessage());
+            }
+        });
+    }
+
+    @Override
+    public void loadProgramDetails(int program_id) {
+        Call<ProgramDetailsResponse> loadChannelDetailCall = theApi.loadProgramDetails(TVGuideConstants.ACCESS_TOKEN, program_id);
+        loadChannelDetailCall.enqueue(new Callback<ProgramDetailsResponse>() {
+            @Override
+            public void onResponse(Call<ProgramDetailsResponse> call, Response<ProgramDetailsResponse> response) {
+                Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadProgramDetails().onResponse");
+                ProgramDetailsResponse programDetailsResponse = response.body();
+                if(programDetailsResponse == null) {
+                    Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadProgramDetails().onResponse.programDetailsResponse==null");
+                    ProgramModel.getInstance().notifyErrorInLoadingProgramDetails(response.message());
+                }
+                else {
+                    Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadProgramDetails().onResponse.programDetailsResponse.getProgramDetails():"+programDetailsResponse.getProgramDetails());
+                    ProgramModel.getInstance().notifyProgramDetailsLoaded(programDetailsResponse.getProgramDetails());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ProgramDetailsResponse> call, Throwable t) {
+                ProgramModel.getInstance().notifyErrorInLoadingProgramDetails(t.getMessage());
             }
         });
     }

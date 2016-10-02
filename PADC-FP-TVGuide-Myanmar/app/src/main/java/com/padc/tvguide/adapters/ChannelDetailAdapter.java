@@ -1,6 +1,7 @@
 package com.padc.tvguide.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,13 @@ public class ChannelDetailAdapter extends RecyclerView.Adapter<ChannelProgramVie
         return mChannelProgramList.size();
     }
 
-    public void setNewData(List<ChannelProgramVO> newChannelProgramList) {
+    public void setNewData(List<ChannelProgramVO> newChannelProgramList, Boolean isNetwork, Boolean isPersistence) {
+        if(isNetwork){
+            Log.e(TVGuideApp.TAG, "ChannelDetailAdapter.setNewData(isNetwork).newChannelProgramList.size(): " + newChannelProgramList.size());
+        }
+        else if(isPersistence){
+            Log.e(TVGuideApp.TAG, "ChannelDetailAdapter.setNewData(isPersistence).newChannelProgramList.size(): " + newChannelProgramList.size());
+        }
         mChannelProgramList = newChannelProgramList;
         notifyDataSetChanged();
     }

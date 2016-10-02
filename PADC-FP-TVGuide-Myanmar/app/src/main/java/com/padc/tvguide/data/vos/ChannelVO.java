@@ -117,15 +117,39 @@ public class ChannelVO {
         this.channel_icon = channel_icon;
     }
 
+    public static ChannelVO loadChannelByID(int channel_id) {
+        Context context = TVGuideApp.getContext();
+
+        String selection = TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ID + "=?";
+        String[] selectionArgs = {String.valueOf(channel_id)};
+
+        Cursor cursor = context.getContentResolver().query(TVGuideContract.ChannelEntry.buildChannelUriWithID(channel_id),
+                null, selection, selectionArgs, null);
+
+        ChannelVO channel = new ChannelVO();
+        if(cursor != null && cursor.moveToFirst()) {
+            channel = parseFromCursor(cursor);
+        }
+        return channel;
+    }
+
+    public static void saveChannel(ChannelVO channel) {
+        Context context = TVGuideApp.getContext();
+        ContentValues channelCV = new ContentValues();
+
+        channelCV = channel.parseToContentValues();
+        //insert into channels.
+        context.getContentResolver().insert(TVGuideContract.ChannelEntry.CONTENT_URI, channelCV);
+
+        Log.d(TVGuideApp.TAG, "Channel inserted into channel table");
+    }
+
     public static void saveChannels(List<ChannelVO> channelList) {
         Context context = TVGuideApp.getContext();
         ContentValues[] channelCVs = new ContentValues[channelList.size()];
         for (int index = 0; index < channelList.size(); index++) {
             ChannelVO channel = channelList.get(index);
             channelCVs[index] = channel.parseToContentValues();
-
-            //Bulk insert into channel_details.
-            //TODO::ChannelVO.saveChannelDetails(channel.getId(), channel.getDetails());
         }
 
         //Bulk insert into channels.
@@ -141,13 +165,11 @@ public class ChannelVO {
         cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_DESC, channel_desc);
         cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ICON, channel_icon);
         cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_BANNER, channel_banner);
-        cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_START_TIME, start_time);
-        cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_END_TIME, end_time);
-        //DateFormat formatter = new SimpleDateFormat("HH:mm");
-        //java.sql.Time timeValue = new java.sql.Time(formatter.parse(start_time_string).getTime());
-        cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_SORT_ORDER, sort_order);
-        cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ROW_TIMESTAMP, row_timestamp);
-        cv.put(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_RECORD_STATUS, record_status);
+        cv.put(TVGuideContract.ChannelEntry.COLUMN_START_TIME, start_time);
+        cv.put(TVGuideContract.ChannelEntry.COLUMN_END_TIME, end_time);
+        cv.put(TVGuideContract.ChannelEntry.COLUMN_SORT_ORDER, sort_order);
+        cv.put(TVGuideContract.ChannelEntry.COLUMN_ROW_TIMESTAMP, row_timestamp);
+        cv.put(TVGuideContract.ChannelEntry.COLUMN_RECORD_STATUS, record_status);
         return cv;
     }
 
@@ -158,11 +180,11 @@ public class ChannelVO {
         channel.channel_desc = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_DESC));
         channel.channel_icon = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ICON));
         channel.channel_banner = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_BANNER));
-        channel.start_time = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_START_TIME));
-        channel.end_time = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_END_TIME));
-        channel.sort_order = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_SORT_ORDER));
-        channel.row_timestamp = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ROW_TIMESTAMP));
-        channel.record_status = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_RECORD_STATUS));
+        channel.start_time = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_START_TIME));
+        channel.end_time = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_END_TIME));
+        channel.sort_order = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_SORT_ORDER));
+        channel.row_timestamp = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_ROW_TIMESTAMP));
+        channel.record_status = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_RECORD_STATUS));
         return channel;
     }
 }
