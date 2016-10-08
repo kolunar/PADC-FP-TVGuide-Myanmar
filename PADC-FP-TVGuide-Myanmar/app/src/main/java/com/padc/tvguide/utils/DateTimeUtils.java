@@ -17,6 +17,24 @@ public class DateTimeUtils {
 
     static DateFormat in_df = new SimpleDateFormat("HH:mm");
     static DateFormat out_df = new SimpleDateFormat("h:mma");
+    static SimpleDateFormat sp_df = new SimpleDateFormat("yyyy-mm-dd HH:mm");
+
+    public static long getAlarmTime(String air_date, String start_time, int time_ahead){
+        Date airDate;
+        long output = 0;
+        try{
+            //Conversion of input String to date
+            airDate = sp_df.parse(air_date + " " + start_time);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(airDate);
+            cal.add(Calendar.MINUTE, time_ahead);
+            output = cal.getTimeInMillis();
+            System.out.println(output);
+        }catch(ParseException pe){
+            pe.printStackTrace();
+        }
+        return output;
+    }
 
     public static String getTimePeriod(String start_time, int duration){
 

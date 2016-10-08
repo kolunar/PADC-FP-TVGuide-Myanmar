@@ -15,35 +15,35 @@ import java.util.List;
  */
 public class MyChannelVO {
 
-    private int my_channel_id;
-    private int user_id;
-    private int channel_id;
+    private long my_channel_id;
+    private long user_id;
+    private long channel_id;
     private int sort_order;
     private long row_timestamp;
     private int record_status;
     private ChannelVO channelVO;
 
-    public int getMy_channel_id() {
+    public long getMy_channel_id() {
         return my_channel_id;
     }
 
-    public void setMy_channel_id(int my_channel_id) {
+    public void setMy_channel_id(long my_channel_id) {
         this.my_channel_id = my_channel_id;
     }
 
-    public int getUser_id() {
+    public long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(long user_id) {
         this.user_id = user_id;
     }
 
-    public int getChannel_id() {
+    public long getChannel_id() {
         return channel_id;
     }
 
-    public void setChannel_id(int channel_id) {
+    public void setChannel_id(long channel_id) {
         this.channel_id = channel_id;
     }
 
@@ -83,9 +83,22 @@ public class MyChannelVO {
 
     }
 
-    public MyChannelVO(int user_id, int channel_id) {
+    public MyChannelVO(long user_id, long channel_id) {
         this.user_id = user_id;
         this.channel_id = channel_id;
+    }
+
+    public static boolean getIsMyChannel(long user_id, long channel_id){
+
+        String selection = MyChannelEntry.COLUMN_USER_ID+"=? AND "+MyChannelEntry.COLUMN_CHANNEL_ID+"=?";
+        String[] selectionArgs = {String.valueOf(user_id), String.valueOf(channel_id)};
+        Cursor cursor = TVGuideApp.getContext().getContentResolver().query(
+                MyChannelEntry.buildMyChannelUriWithIDs(user_id, channel_id),
+                null, selection, selectionArgs, null);
+        if(cursor != null && cursor.moveToFirst()) {
+            return true;
+        }
+        return false;
     }
 
     public static void saveMyChannel(MyChannelVO channel) {
@@ -99,7 +112,7 @@ public class MyChannelVO {
         Log.d(TVGuideApp.TAG, "Channel inserted into channel table");
     }
 
-    public static void deleteMyChannel(int user_id, int channel_id){
+    public static void deleteMyChannel(long user_id, long channel_id){
         Context context = TVGuideApp.getContext();
         String where = MyChannelEntry.COLUMN_USER_ID + "=? AND " + MyChannelEntry.COLUMN_CHANNEL_ID + "=?";
         String[] selectionArgs = {String.valueOf(user_id), String.valueOf(channel_id)};
@@ -133,11 +146,11 @@ public class MyChannelVO {
 
     public static MyChannelVO parseFromCursor(Cursor data) {
         MyChannelVO channel = new MyChannelVO();
-        channel.my_channel_id = data.getInt(data.getColumnIndex(MyChannelEntry.COLUMN_MY_CHANNEL_ID));
-        channel.user_id = data.getInt(data.getColumnIndex(MyChannelEntry.COLUMN_USER_ID));
-        channel.channel_id = data.getInt(data.getColumnIndex(MyChannelEntry.COLUMN_CHANNEL_ID));
+        channel.my_channel_id = data.getLong(data.getColumnIndex(MyChannelEntry.COLUMN_MY_CHANNEL_ID));
+        channel.user_id = data.getLong(data.getColumnIndex(MyChannelEntry.COLUMN_USER_ID));
+        channel.channel_id = data.getLong(data.getColumnIndex(MyChannelEntry.COLUMN_CHANNEL_ID));
         channel.sort_order = data.getInt(data.getColumnIndex(MyChannelEntry.COLUMN_SORT_ORDER));
-        channel.row_timestamp = data.getInt(data.getColumnIndex(MyChannelEntry.COLUMN_ROW_TIMESTAMP));
+        channel.row_timestamp = data.getLong(data.getColumnIndex(MyChannelEntry.COLUMN_ROW_TIMESTAMP));
         channel.record_status = data.getInt(data.getColumnIndex(MyChannelEntry.COLUMN_RECORD_STATUS));
         return channel;
     }

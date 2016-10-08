@@ -4,18 +4,18 @@ package com.padc.tvguide.data.vos;
  * Created by user on 9/25/2016.
  */
 public class UrlVO {
-    private int url_id;
+    private long url_id;
     private int type;
     private String label;
     private String url;
     private long row_timestamp;
     private int record_status;
 
-    public int getUrl_id() {
+    public long getUrl_id() {
         return url_id;
     }
 
-    public void setUrl_id(int url_id) {
+    public void setUrl_id(long url_id) {
         this.url_id = url_id;
     }
 

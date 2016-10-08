@@ -52,7 +52,7 @@ public class ChannelModel extends BaseModel {
         dataAgent.loadChannels();
     }
 
-    public void loadChannelDetails(int channel_id) {
+    public void loadChannelDetails(long channel_id) {
         dataAgent.loadChannelDetails(channel_id);
     }
 

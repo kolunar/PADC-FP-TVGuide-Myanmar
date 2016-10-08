@@ -1,6 +1,7 @@
 package com.padc.tvguide.activities;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.Toolbar;
@@ -8,21 +9,29 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.models.ChannelModel;
 import com.padc.tvguide.data.vos.ChannelDetailsVO;
 import com.padc.tvguide.data.vos.ChannelProgramVO;
 import com.padc.tvguide.data.vos.ChannelVO;
+import com.padc.tvguide.data.vos.MyChannelVO;
+import com.padc.tvguide.data.vos.MyReminderVO;
+import com.padc.tvguide.dialogs.TimePrefixDialog;
 import com.padc.tvguide.events.DataEvent;
+import com.padc.tvguide.fragments.ChannelDetailFragment;
 import com.padc.tvguide.fragments.DayPagerFragment;
 import com.padc.tvguide.utils.MMFontUtils;
 import com.padc.tvguide.views.holders.ChannelProgramViewHolder;
+import com.padc.tvguide.views.holders.ChannelViewHolder;
+import com.padc.tvguide.views.holders.MyReminderViewHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +42,8 @@ import de.greenrobot.event.EventBus;
  * Created by user on 9/10/2016.
  */
 public class ChannelDetailActivity extends BaseActivity
-        implements ChannelProgramViewHolder.ControllerChannelProgramItem {
+        implements ChannelProgramViewHolder.ControllerChannelProgramItem,
+        TimePrefixDialog.AddRemoveAlarmDelegate {
 
 //    @BindView(R.id.appbar)
 //    AppBarLayout appbar;
@@ -58,6 +68,7 @@ public class ChannelDetailActivity extends BaseActivity
 
     @BindView(R.id.tv_channel_desc)
     TextView tvChannelDesc;
+
 
 //    @BindView(R.id.tv_channel_show_more)
 //    TextView tvChannelDescShowMore;
@@ -112,6 +123,7 @@ public class ChannelDetailActivity extends BaseActivity
     static final String IE_IMG_SRC = "IMG_SRC";
     int imgSRC = 0;
     int appbarHeight = 0;
+    private ChannelViewHolder.ControllerChannelItem mController;
 
 /*    public static Intent newIntent(){
         Intent intent = new Intent(TVGuideApp.getContext(),ChannelDetailActivity.class);
@@ -127,6 +139,7 @@ public class ChannelDetailActivity extends BaseActivity
 //          intent.putExtra(IE_IMG_SRC, channel.getChannel_desc());
 //          intent.putExtra(IE_IMG_SRC, channel.getChannel_icon());
             mChannelVO = channel;
+            mChannelVO.setMyChannel(MyChannelVO.getIsMyChannel(0, mChannelVO.getChannel_id()));
         }
         return intent;
     }
@@ -176,7 +189,7 @@ public class ChannelDetailActivity extends BaseActivity
         if(TVGuideApp.hasInternet) {
             ChannelModel.getInstance().loadChannelDetails(mChannelVO.getChannel_id());
         }
-        ChannelDetailsVO channelDetails = ChannelModel.getInstance().getChannelDetails();
+//        ChannelDetailsVO channelDetails = ChannelModel.getInstance().getChannelDetails();
     }
 
 
@@ -185,6 +198,7 @@ public class ChannelDetailActivity extends BaseActivity
 
         Glide.with(ivChannelIcon.getContext())
                 .load(channel.getChannel_icon())
+				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
                 .error(R.drawable.ic_more_horiz_gray_24dp)
@@ -194,6 +208,8 @@ public class ChannelDetailActivity extends BaseActivity
         tvChannelStartTime.setText(channel.getStart_time() + " AM");
         tvChannelEndTime.setText(channel.getEnd_time() + " AM");
         tvChannelDesc.setText(channel.getChannel_desc());
+
+        updateMyChannelCheckState();
     }
 
     private int getAppBarLayoutHeight() {
@@ -217,11 +233,27 @@ public class ChannelDetailActivity extends BaseActivity
         super.onSaveInstanceState(outState);
     }
 
+    Menu menu;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.top_right_menu_home, menu);
+        this.menu = menu;
+        updateMyChannelCheckState();
         return true;
+    }
+
+    private void updateMyChannelCheckState() {
+        if(menu != null) {
+            MenuItem item = menu.findItem(R.id.action_is_my_channel);
+            item.setChecked(mChannelVO.isMyChannel());
+            updateMyChannelIcon(item);
+        }
+    }
+
+    private void updateMyChannelIcon(MenuItem item){
+        item.setIcon(item.isChecked() ? R.drawable.ic_star_white_24dp : R.drawable.ic_star_border_white_24dp);
     }
 
     @Override
@@ -234,15 +266,18 @@ public class ChannelDetailActivity extends BaseActivity
 //                Toast.makeText(TVGuideApp.getContext(), "ChannelDetailActivity:onOptionsItemSelected():android.R.id.home ", Toast.LENGTH_LONG).show();
                 super.onBackPressed();
                 return true;
+            case R.id.action_is_my_channel:
+                item.setChecked(!item.isChecked());
+                updateMyChannelIcon(item);
+                if(item.isChecked()) {
+                    MyChannelVO.saveMyChannel(new MyChannelVO(0, mChannelVO.getChannel_id()));
+                }
+                else {
+                    MyChannelVO.deleteMyChannel(0, mChannelVO.getChannel_id());
+                }
+                return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onTapChannelProgram(ChannelProgramVO program) {
-//        Intent intent = ProgramDetailActivity.newIntent(program.getProgram().getProgram_title());
-        Intent intent = ProgramDetailActivity.newIntent(program);
-        startActivity(intent);
     }
 
     @Override
@@ -261,12 +296,53 @@ public class ChannelDetailActivity extends BaseActivity
         eventBus.unregister(this);
     }
 
+    @Override
+    public void onTapChannelProgram(ChannelProgramVO channelProgramVO) {
+//        Intent intent = ProgramDetailActivity.newIntent(channelProgramVO.getProgram().getProgram_title());
+        Intent intent = ProgramDetailActivity.newIntent(channelProgramVO);
+        startActivity(intent);
+    }
+
+    Button btnReminder;
+
+    @Override
+    public void onTapReminder(ChannelProgramVO channelProgramVO, Button button) {
+        btnReminder = button;
+        new TimePrefixDialog().newInstance(channelProgramVO.getChannel_program_id(), channelProgramVO.getTime_ahead())
+                .show(getSupportFragmentManager(), "TimePrefixPicker");
+    }
+
+    @Override
+    public void onAddAlarm(long channel_program_id, int time_ahead) {
+        if(btnReminder != null)
+            btnReminder.setBackgroundResource(R.drawable.ic_notifications_black_24dp);
+        MyReminderVO.saveMyReminder(new MyReminderVO(0, channel_program_id, time_ahead));
+        ChannelProgramVO channelProgramVO = ChannelProgramVO.loadChannelProgramByID(channel_program_id);
+        TimePrefixDialog.AddAlarm((int)channel_program_id, channelProgramVO.getAir_date(), channelProgramVO.getStart_time(), time_ahead, false);
+        refreshFragment();
+    }
+
+    @Override
+    public void onRemoveAlarm(long channel_program_id) {
+        if(btnReminder != null)
+            btnReminder.setBackgroundResource(R.drawable.ic_notifications_none_black_24dp);
+        MyReminderVO.deleteMyReminder(0, channel_program_id);
+        TimePrefixDialog.AddAlarm((int)channel_program_id, "", "", 0, false);
+        refreshFragment();
+    }
+
+    private void refreshFragment() {
+//    xxxxxxxxxxxxxx
+//        ChannelDetailFragment.restartLoader();
+    }
+
     public void onEventMainThread(DataEvent.ChannelDetailsLoadedEvent event) {
         Log.e(TVGuideApp.TAG, "ChannelDetailActivity.onEventMainThread().ChannelDetailsLoadedEvent");
         String extra = event.getExtraMessage();
 //        Toast.makeText(getContext(), "ChannelDetailFragment:onEventMainThread:Extra : " + extra, Toast.LENGTH_SHORT).show();
         ChannelDetailsVO newChannelDetails = event.getChannelDetails();
         mChannelVO = newChannelDetails.getChannel();
+        mChannelVO.setMyChannel(MyChannelVO.getIsMyChannel(0, mChannelVO.getChannel_id()));
         Log.e(TVGuideApp.TAG, "ChannelDetailActivity.bindChannelData() via ChannelDetailsLoadedEvent");
         bindChannelData(mChannelVO);
     }

@@ -34,12 +34,12 @@ public class OkHttpDataAgent implements TVGuideDataAgent {
     }
 
     @Override
-    public void loadChannelDetails(int channel_id) {
+    public void loadChannelDetails(long channel_id) {
 
     }
 
     @Override
-    public void loadProgramDetails(int program_id) {
+    public void loadProgramDetails(long program_id) {
 
     }
 }

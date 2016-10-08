@@ -76,15 +76,16 @@
                     android:layout_height="24dp"
                     android:layout_marginRight="24dp"
                     android:src="@drawable/ic_share_black_24dp" />
-                <CheckBox
+                <Button
+                    android:id="@+id/btn_rm_set_reminder"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:text="Checked Checkbox"
+                    android:text=""
                     android:layout_marginRight="24dp"
-                    android:checked="false"
-                    android:button="@drawable/state_add_to_reminder"
+                    android:background="@drawable/ic_add_alert_black_24dp"
                     android:textSize="20dp" />
                 <Button
+                    android:id="@+id/btn_rm_delete"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:text=""

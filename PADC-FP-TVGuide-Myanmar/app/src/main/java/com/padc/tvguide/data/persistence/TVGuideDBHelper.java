@@ -8,6 +8,9 @@ import com.padc.tvguide.data.persistence.TVGuideContract.ChannelEntry;
 import com.padc.tvguide.data.persistence.TVGuideContract.ProgramEntry;
 import com.padc.tvguide.data.persistence.TVGuideContract.ChannelProgramEntry;
 import com.padc.tvguide.data.persistence.TVGuideContract.MyChannelEntry;
+import com.padc.tvguide.data.persistence.TVGuideContract.MyWatchListEntry;
+import com.padc.tvguide.data.persistence.TVGuideContract.MyRemindersEntry;
+
 
 /**
  * Created by user on 9/24/2016.
@@ -70,6 +73,30 @@ public class TVGuideDBHelper extends SQLiteOpenHelper {
             " UNIQUE (" + MyChannelEntry.COLUMN_USER_ID + ", " + MyChannelEntry.COLUMN_CHANNEL_ID + ") ON CONFLICT REPLACE" +
             " );";
 
+    private static final String SQL_CREATE_MY_WATCHLIST_TABLE = "CREATE TABLE " + MyWatchListEntry.TABLE_NAME + " (" +
+            MyWatchListEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            MyWatchListEntry.COLUMN_MY_WATCHLIST_ID + " INTEGER DEFAULT 0, " +
+            MyWatchListEntry.COLUMN_USER_ID + " INTEGER NOT NULL, " +
+            MyWatchListEntry.COLUMN_PROGRAM_ID + " INTEGER NOT NULL, " +
+            MyWatchListEntry.COLUMN_WATCHED + " INTEGER DEFAULT 0, " +
+            MyWatchListEntry.COLUMN_SORT_ORDER + " INTEGER DEFAULT 0, " +
+            MyWatchListEntry.COLUMN_ROW_TIMESTAMP + " INTEGER DEFAULT 0, " +
+            MyWatchListEntry.COLUMN_RECORD_STATUS + " INTEGER DEFAULT 0, " +
+            " UNIQUE (" + MyWatchListEntry.COLUMN_USER_ID + ", " + MyWatchListEntry.COLUMN_PROGRAM_ID + ") ON CONFLICT REPLACE" +
+            " );";
+
+    private static final String SQL_CREATE_MY_REMINDERS_TABLE = "CREATE TABLE " + MyRemindersEntry.TABLE_NAME + " (" +
+            MyRemindersEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            MyRemindersEntry.COLUMN_MY_REMINDER_ID + " INTEGER DEFAULT 0, " +
+            MyRemindersEntry.COLUMN_USER_ID + " INTEGER NOT NULL, " +
+            MyRemindersEntry.COLUMN_CHANNEL_PROGRAM_ID + " INTEGER NOT NULL, " +
+            MyRemindersEntry.COLUMN_TIME_AHEAD + " INTEGER DEFAULT 0, " +
+            MyRemindersEntry.COLUMN_SORT_ORDER + " INTEGER DEFAULT 0, " +
+            MyRemindersEntry.COLUMN_ROW_TIMESTAMP + " INTEGER DEFAULT 0, " +
+            MyRemindersEntry.COLUMN_RECORD_STATUS + " INTEGER DEFAULT 0, " +
+            " UNIQUE (" + MyRemindersEntry.COLUMN_USER_ID + ", " + MyRemindersEntry.COLUMN_CHANNEL_PROGRAM_ID + ") ON CONFLICT REPLACE" +
+            " );";
+
     public TVGuideDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -80,6 +107,8 @@ public class TVGuideDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(SQL_CREATE_PROGRAM_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_CHANNEL_PROGRAM_TABLE);
         sqLiteDatabase.execSQL(SQL_CREATE_MY_CHANNEL_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_MY_WATCHLIST_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_MY_REMINDERS_TABLE);
     }
 
     @Override
@@ -88,6 +117,8 @@ public class TVGuideDBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ProgramEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ChannelProgramEntry.TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyChannelEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyWatchListEntry.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyRemindersEntry.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

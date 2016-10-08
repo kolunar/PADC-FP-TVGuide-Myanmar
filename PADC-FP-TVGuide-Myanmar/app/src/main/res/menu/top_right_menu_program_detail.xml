@@ -9,6 +9,7 @@
         android:icon="@drawable/ic_gps_not_fixed_white_24dp"
         android:orderInCategory="100"
         android:title="Add to My Watchlist"
+        android:checkable="true"
         app:showAsAction="always"/>
 
     <item
@@ -16,5 +17,6 @@
         android:icon="@drawable/ic_add_alert_white_24dp"
         android:orderInCategory="100"
         android:title="Add to My Reminder"
+        android:checkable="true"
         app:showAsAction="always"/>
 </menu>

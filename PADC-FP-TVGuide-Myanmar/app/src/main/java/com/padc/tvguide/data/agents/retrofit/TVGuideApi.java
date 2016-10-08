@@ -23,11 +23,11 @@ public interface TVGuideApi {
     @POST(TVGuideConstants.API_GET_CHANNEL_DETAILS)
     Call<ChannelDetailsResponse> loadChannelDetails(
             @Field(TVGuideConstants.PARAM_ACCESS_TOKEN) String access_token,
-            @Field(TVGuideConstants.PARAM_CHANNEL_ID) Integer channel_id);
+            @Field(TVGuideConstants.PARAM_CHANNEL_ID) Long channel_id);
 
     @FormUrlEncoded
     @POST(TVGuideConstants.API_GET_PROGRAM_DETAILS)
     Call<ProgramDetailsResponse> loadProgramDetails(
             @Field(TVGuideConstants.PARAM_ACCESS_TOKEN) String access_token,
-            @Field(TVGuideConstants.PARAM_PROGRAM_ID) Integer program_id);
+            @Field(TVGuideConstants.PARAM_PROGRAM_ID) Long program_id);
 }

@@ -1,6 +1,7 @@
 package com.padc.tvguide.views.holders;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.vos.ChannelVO;
@@ -34,10 +36,12 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
     public void onTapMyChannelCheckBox(View view){
         CheckBox checkBox = (CheckBox)view;
         if(checkBox.isChecked()){
+            mChannel.setMyChannel(true);
             mController.onTapSaveMyChannel(mChannel);
         }
         else{
-//            Toast.makeText(TVGuideApp.getContext(), "ChannelViewHolder:onTapMyChannelCheckBox(): unchecked", Toast.LENGTH_LONG).show();
+//            Toast.makeText(TVGuideApp.getContext(), "ChannelViewHolder:onTapMyChannelCheckBox(): unchecked", Toast.LENGTH_SHORT).show();
+            mChannel.setMyChannel(false);
             mController.onTapDeleteMyChannel(mChannel);
         }
     }
@@ -53,12 +57,14 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
     }
 
     public void bindData(ChannelVO channel) {
+        Log.e(TVGuideApp.TAG, "ChannelViewHolder.bindData().channel_id = " + channel.getChannel_id());
         mChannel = channel;
         tvChannelName.setText(channel.getChannel_name());
 //        ivChannel.setImageResource(getImageResourceById(channel.getChannel_id()));
-
+        cbChannel.setChecked(channel.isMyChannel());
         Glide.with(ivChannel.getContext())
                 .load(channel.getChannel_icon())
+				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
                 .error(R.drawable.ic_more_horiz_gray_24dp)
@@ -97,7 +103,7 @@ public class ChannelViewHolder extends RecyclerView.ViewHolder implements View.O
 
     @Override
     public void onClick(View view) {
-        mController.onTapChannel(mChannel, getImageResourceById(mChannel.getChannel_id()));
+        mController.onTapChannel(mChannel, getImageResourceById((int)mChannel.getChannel_id()));
     }
 
     public interface ControllerChannelItem {

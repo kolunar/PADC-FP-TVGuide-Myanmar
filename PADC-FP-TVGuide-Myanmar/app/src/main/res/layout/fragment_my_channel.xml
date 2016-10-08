@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipe_refresh_layout"
+    android:id="@+id/swipe_refresh_layout_my_channel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_my_channel"
+    <RelativeLayout
+        android:id="@+id/rl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/padding_bottom_for_fab"
-        android:paddingLeft="@dimen/margin_medium"
-        android:paddingRight="@dimen/margin_medium"
-        android:scrollbarStyle="outsideOverlay" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_my_channel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="@dimen/padding_bottom_for_fab"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_medium"
+            android:scrollbarStyle="outsideOverlay" />
+
+        <LinearLayout
+            android:id="@+id/ll_no_data_my_channel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/text_regular_3x"
+                android:text="No data to show."
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:paddingTop="@dimen/margin_medium"
+                android:text=" Tap to add Channel"
+                android:drawableLeft="@drawable/ic_star_border_black_24dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>

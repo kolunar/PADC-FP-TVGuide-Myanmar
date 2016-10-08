@@ -73,20 +73,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:padding="0dp"
+                android:padding="8dp"
                 android:gravity="bottom|right"
                 android:orientation="horizontal">
 
-                <ImageView
+<!--                <ImageView
                     android:layout_width="48dp"
                     android:layout_height="40dp"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:layout_marginRight="0dp"
                     android:tint="@color/primary_dark"
+                    android:src="@drawable/ic_share_black_24dp" />-->
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="24dp"
                     android:src="@drawable/ic_share_black_24dp" />
 
-                <CheckBox
+                <Button
+                    android:id="@+id/btn_set_reminder"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text=""
+                    android:background="@drawable/ic_notifications_none_black_24dp"
+                    android:textSize="20dp" />
+<!--                <CheckBox
+                    android:id="@+id/cb_add_to_reminder"
                     android:layout_width="60dp"
                     android:layout_height="40dp"
                     android:paddingBottom="8dp"
@@ -96,7 +109,7 @@
                     android:button="@null"
                     android:drawableTint="@color/primary_dark"
                     android:drawableBottom="@drawable/state_add_to_reminder"
-                    android:textSize="20dp" />
+                    android:textSize="20dp" />-->
 <!--                <CheckBox
                     android:layout_width="24dp"
                     android:layout_height="24dp"

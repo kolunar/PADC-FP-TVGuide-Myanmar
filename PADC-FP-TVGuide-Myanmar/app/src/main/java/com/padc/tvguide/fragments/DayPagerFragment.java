@@ -48,10 +48,10 @@ public class DayPagerFragment extends BaseFragment {
         mDayPagerAdapter = new DayPagerAdapter(getActivity().getSupportFragmentManager());
         String[] days = DateTimeUtils.getDaysOfWeek();
 
-        if(savedInstanceState == null)
-            Toast.makeText(TVGuideApp.getContext(), "DayPagerFragment.onCreate():savedInstanceState==null ", Toast.LENGTH_LONG).show();
-        else
-            Toast.makeText(TVGuideApp.getContext(), "DayPagerFragment.onCreate():savedInstanceState!=null ", Toast.LENGTH_LONG).show();
+//        if(savedInstanceState == null)
+//            Toast.makeText(TVGuideApp.getContext(), "DayPagerFragment.onCreate():savedInstanceState==null ", Toast.LENGTH_LONG).show();
+//        else
+//            Toast.makeText(TVGuideApp.getContext(), "DayPagerFragment.onCreate():savedInstanceState!=null ", Toast.LENGTH_LONG).show();
 
         List<ChannelProgramVO> channelProgramVOList;
         for (int i = 0, size = days.length; i < size; i++) {
@@ -60,7 +60,7 @@ public class DayPagerFragment extends BaseFragment {
                     ChannelDetailFragment.newInstance(channelProgramVOList, days[i], mChannelDetailsVO.getChannel().getChannel_id()),
                     (i == 0 ? "Today" : days[i])
             );
-            Log.e(TVGuideApp.TAG, "ChannelDetailsVO.getChannelProgramsByAirDay.size : " + channelProgramVOList);
+            Log.e(TVGuideApp.TAG, "ChannelDetailsVO.getChannelProgramsByAirDay.size : " + channelProgramVOList.size());
         }
     }
 

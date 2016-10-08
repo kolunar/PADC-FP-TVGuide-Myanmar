@@ -16,4 +16,17 @@ public class NetworkUtils {
         //should check null because in air plan mode it will be null
         return (netInfo != null && netInfo.isConnected());
     }
+
+/*
+    private boolean hasNetworkConnection() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+*/
+
+    private static boolean isRemoteHostAvailable() {
+        // TODO:: to ping and verify the host API, may be not necessary
+        return false;
+    }
 }

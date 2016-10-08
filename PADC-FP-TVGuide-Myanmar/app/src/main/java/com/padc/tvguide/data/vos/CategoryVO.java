@@ -4,16 +4,16 @@ package com.padc.tvguide.data.vos;
  * Created by user on 9/25/2016.
  */
 public class CategoryVO {
-    private int category_id;
+    private long category_id;
     private String category_title;
     private long row_timestamp;
     private int record_status;
 
-    public int getCategory_id() {
+    public long getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(int category_id) {
+    public void setCategory_id(long category_id) {
         this.category_id = category_id;
     }
 

@@ -16,17 +16,18 @@ import java.util.List;
  */
 public class ChannelProgramVO {
 
-    private int channel_program_id;
+    private long channel_program_id;
     private String air_date;
     private String air_day;
     private String start_time;
     private int duration;
-    private int channel_id;
-    private int program_id;
+    private long channel_id;
+    private long program_id;
     private String channel_name;
     private long row_timestamp;
     private int record_status;
     private ProgramVO program;
+    private int time_ahead;
 /*    private int parent_id;
     private String program_title;
     private String parent_title;
@@ -34,11 +35,11 @@ public class ChannelProgramVO {
     private String program_image;
     private ArrayList<TagVO> tags;*/
 
-    public int getChannel_program_id() {
+    public long getChannel_program_id() {
         return channel_program_id;
     }
 
-    public void setChannel_program_id(int channel_program_id) {
+    public void setChannel_program_id(long channel_program_id) {
         this.channel_program_id = channel_program_id;
     }
 
@@ -74,19 +75,19 @@ public class ChannelProgramVO {
         this.duration = duration;
     }
 
-    public int getChannel_id() {
+    public long getChannel_id() {
         return channel_id;
     }
 
-    public void setChannel_id(int channel_id) {
+    public void setChannel_id(long channel_id) {
         this.channel_id = channel_id;
     }
 
-    public int getProgram_id() {
+    public long getProgram_id() {
         return program_id;
     }
 
-    public void setProgram_id(int program_id) {
+    public void setProgram_id(long program_id) {
         this.program_id = program_id;
     }
 
@@ -122,6 +123,14 @@ public class ChannelProgramVO {
         this.program = program;
     }
 
+    public int getTime_ahead() {
+        return time_ahead;
+    }
+
+    public void setTime_ahead(int time_ahead) {
+        this.time_ahead = time_ahead;
+    }
+
     public static void saveChannelPrograms(List<ChannelProgramVO> channelProgramVOList) {
         Context context = TVGuideApp.getContext();
         ContentValues[] channelProgramCVs = new ContentValues[channelProgramVOList.size()];
@@ -136,6 +145,45 @@ public class ChannelProgramVO {
         int insertedCount = context.getContentResolver().bulkInsert(ChannelProgramEntry.CONTENT_URI, channelProgramCVs);
 
         Log.d(TVGuideApp.TAG, "Bulk inserted into channel table : " + insertedCount);
+    }
+
+    public static ChannelProgramVO loadChannelProgramByID(long channel_program_id) {
+        Context context = TVGuideApp.getContext();
+
+        String selection = ChannelProgramEntry.COLUMN_CHANNEL_PROGRAM_ID + "=?";
+        String[] selectionArgs = {String.valueOf(channel_program_id)};
+
+        Cursor cursor = context.getContentResolver().query(ChannelProgramEntry.buildChannelProgramUriWithID(channel_program_id),
+                null, selection, selectionArgs, null);
+
+        ChannelProgramVO channelProgram = new ChannelProgramVO();
+        if(cursor != null && cursor.moveToFirst()) {
+            channelProgram = parseFromCursor(cursor);
+            channelProgram.setProgram(ProgramVO.loadProgramByID(channelProgram.getProgram_id()));
+            MyReminderVO reminder = MyReminderVO.getMyReminderItem((long)0, channel_program_id);
+            channelProgram.setTime_ahead(reminder != null ? reminder.getTime_ahead() : 0);
+        }
+
+        return channelProgram;
+    }
+
+    public static ChannelProgramVO loadChannelProgramByIDs(int channel_id, int program_id) {
+        Context context = TVGuideApp.getContext();
+
+        String selection = ChannelProgramEntry.COLUMN_CHANNEL_ID + "=? AND "+ChannelProgramEntry.COLUMN_PROGRAM_ID + "=?";
+        String[] selectionArgs = {String.valueOf(channel_id), String.valueOf(program_id)};
+
+        Cursor cursor = context.getContentResolver().query(ChannelProgramEntry.buildChannelProgramUriWithIDs(channel_id, program_id),
+                null, selection, selectionArgs, null);
+
+        ChannelProgramVO channelProgram = new ChannelProgramVO();
+        if(cursor != null && cursor.moveToFirst()) {
+            channelProgram = parseFromCursor(cursor);
+            MyReminderVO reminder = MyReminderVO.getMyReminderItem((long)0, channelProgram.getChannel_program_id());
+            channelProgram.setTime_ahead(reminder != null ? reminder.getTime_ahead() : 0);
+        }
+
+        return channelProgram;
     }
 
     private ContentValues parseToContentValues() {
@@ -154,14 +202,14 @@ public class ChannelProgramVO {
 
     public static ChannelProgramVO parseFromCursor(Cursor data) {
         ChannelProgramVO channelProgram = new ChannelProgramVO();
-        channelProgram.channel_program_id = data.getInt(data.getColumnIndex(ChannelProgramEntry.COLUMN_CHANNEL_PROGRAM_ID));
+        channelProgram.channel_program_id = data.getLong(data.getColumnIndex(ChannelProgramEntry.COLUMN_CHANNEL_PROGRAM_ID));
         channelProgram.air_date = data.getString(data.getColumnIndex(ChannelProgramEntry.COLUMN_AIR_DATE));
         channelProgram.air_day = data.getString(data.getColumnIndex(ChannelProgramEntry.COLUMN_AIR_DAY));
         channelProgram.start_time = data.getString(data.getColumnIndex(ChannelProgramEntry.COLUMN_START_TIME));
         channelProgram.duration = data.getInt(data.getColumnIndex(ChannelProgramEntry.COLUMN_DURATION));
-        channelProgram.channel_id = data.getInt(data.getColumnIndex(ChannelProgramEntry.COLUMN_CHANNEL_ID));
-        channelProgram.program_id = data.getInt(data.getColumnIndex(ChannelProgramEntry.COLUMN_PROGRAM_ID));
-        channelProgram.row_timestamp = data.getInt(data.getColumnIndex(ChannelProgramEntry.COLUMN_ROW_TIMESTAMP));
+        channelProgram.channel_id = data.getLong(data.getColumnIndex(ChannelProgramEntry.COLUMN_CHANNEL_ID));
+        channelProgram.program_id = data.getLong(data.getColumnIndex(ChannelProgramEntry.COLUMN_PROGRAM_ID));
+        channelProgram.row_timestamp = data.getLong(data.getColumnIndex(ChannelProgramEntry.COLUMN_ROW_TIMESTAMP));
         channelProgram.record_status = data.getInt(data.getColumnIndex(ChannelProgramEntry.COLUMN_RECORD_STATUS));
         return channelProgram;
     }

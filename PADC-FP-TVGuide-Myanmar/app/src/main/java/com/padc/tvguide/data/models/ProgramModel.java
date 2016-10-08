@@ -52,7 +52,7 @@ public class ProgramModel extends BaseModel {
 //        dataAgent.loadPrograms();
 //    }
 
-    public void loadProgramDetails(int program_id) {
+    public void loadProgramDetails(long program_id) {
         dataAgent.loadProgramDetails(program_id);
     }
 

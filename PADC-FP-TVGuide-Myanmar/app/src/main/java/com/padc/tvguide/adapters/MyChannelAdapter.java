@@ -1,9 +1,11 @@
 package com.padc.tvguide.adapters;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
@@ -46,5 +48,6 @@ public class MyChannelAdapter extends RecyclerView.Adapter<MyChannelViewHolder> 
     public void setNewData(List<MyChannelVO> newMyChannelList) {
         mMyChannelList = newMyChannelList;
         notifyDataSetChanged();
+        Log.e(TVGuideApp.TAG, "MyChannelAdapter.setNewData.newMyChannelList.size : " + newMyChannelList.size());
     }
 }

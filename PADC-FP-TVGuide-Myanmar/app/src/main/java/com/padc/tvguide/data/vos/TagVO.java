@@ -4,16 +4,16 @@ package com.padc.tvguide.data.vos;
  * Created by user on 9/25/2016.
  */
 public class TagVO {
-    private int tag_id;
+    private long tag_id;
     private String tag_name;
     private long row_timestamp;
     private int record_status;
 
-    public int getTag_id() {
+    public long getTag_id() {
         return tag_id;
     }
 
-    public void setTag_id(int tag_id) {
+    public void setTag_id(long tag_id) {
         this.tag_id = tag_id;
     }
 

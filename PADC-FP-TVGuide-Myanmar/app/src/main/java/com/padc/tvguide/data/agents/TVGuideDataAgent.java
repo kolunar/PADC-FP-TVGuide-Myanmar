@@ -5,6 +5,6 @@ package com.padc.tvguide.data.agents;
  */
 public interface TVGuideDataAgent {
     void loadChannels();
-    void loadChannelDetails(int channel_id);
-    void loadProgramDetails(int program_id);
+    void loadChannelDetails(long channel_id);
+    void loadProgramDetails(long program_id);
 }

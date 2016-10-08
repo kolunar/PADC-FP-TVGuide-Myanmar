@@ -17,8 +17,8 @@ import java.util.List;
  */
 public class ProgramVO {
 
-    private int program_id;
-    private int parent_id;
+    private long program_id;
+    private long parent_id;
     private String program_title;
     private String parent_title;
     private String program_desc;
@@ -30,6 +30,7 @@ public class ProgramVO {
     private ArrayList<TagVO> tags;
     private ArrayList<UrlVO> ref_urls;
     private ArrayList<ChannelProgramVO> air_repeats;
+    private int isMyWatchList;
 
     public ProgramVO(){}
 
@@ -39,19 +40,19 @@ public class ProgramVO {
         this.program_image = icon;
     }
 
-    public int getProgram_id() {
+    public long getProgram_id() {
         return program_id;
     }
 
-    public void setProgram_id(int program_id) {
+    public void setProgram_id(long program_id) {
         this.program_id = program_id;
     }
 
-    public int getParent_id() {
+    public long getParent_id() {
         return parent_id;
     }
 
-    public void setParent_id(int parent_id) {
+    public void setParent_id(long parent_id) {
         this.parent_id = parent_id;
     }
 
@@ -143,6 +144,14 @@ public class ProgramVO {
         this.air_repeats = air_repeats;
     }
 
+    public int isMyWatchList() {
+        return isMyWatchList;
+    }
+
+    public void setMyWatchList(int myWatchList) {
+        isMyWatchList = myWatchList;
+    }
+
     public static void saveProgram(ProgramVO program) {
         Context context = TVGuideApp.getContext();
         ContentValues channelCV = program.parseToContentValues();
@@ -166,7 +175,7 @@ public class ProgramVO {
         Log.d(TVGuideApp.TAG, "Bulk inserted into program table : " + insertedCount);
     }
 
-    public static ProgramVO loadProgramByID(int program_id) {
+    public static ProgramVO loadProgramByID(long program_id) {
         Context context = TVGuideApp.getContext();
 
         String selection = ProgramEntry.COLUMN_PROGRAM_ID+"=?";
@@ -202,14 +211,14 @@ public class ProgramVO {
 
     public static ProgramVO parseFromCursor(Cursor data) {
         ProgramVO program = new ProgramVO();
-        program.program_id = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_ID));
-        program.parent_id = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_PARENT_ID));
+        program.program_id = data.getLong(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_ID));
+        program.parent_id = data.getLong(data.getColumnIndex(ProgramEntry.COLUMN_PARENT_ID));
         program.program_title = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_TITLE));
         program.program_desc = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_DESC));
         program.program_image = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_IMAGE));
         program.language = data.getString(data.getColumnIndex(ProgramEntry.COLUMN_LANGUAGE));
         program.program_type = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_PROGRAM_TYPE));
-        program.row_timestamp = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_ROW_TIMESTAMP));
+        program.row_timestamp = data.getLong(data.getColumnIndex(ProgramEntry.COLUMN_ROW_TIMESTAMP));
         program.record_status = data.getInt(data.getColumnIndex(ProgramEntry.COLUMN_RECORD_STATUS));
         return program;
     }

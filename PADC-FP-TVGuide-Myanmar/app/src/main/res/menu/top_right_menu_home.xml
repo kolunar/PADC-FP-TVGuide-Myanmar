@@ -5,9 +5,10 @@
     tools:context=".activities.ChannelDetailActivity">
 
     <item
-        android:id="@+id/action_cart"
+        android:id="@+id/action_is_my_channel"
         android:icon="@drawable/ic_star_border_white_24dp"
         android:orderInCategory="100"
         android:title="Add to My Channel"
+        android:checkable="true"
         app:showAsAction="always"/>
 </menu>

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class ChannelVO {
 
-    private int channel_id;
+    private long channel_id;
     private String channel_name;
     private String channel_desc;
     private String channel_icon;
@@ -26,12 +26,13 @@ public class ChannelVO {
     private int sort_order;
     private long row_timestamp;
     private int record_status;
+    private boolean isMyChannel;
 
-    public int getChannel_id() {
+    public long getChannel_id() {
         return channel_id;
     }
 
-    public void setChannel_id(int channel_id) {
+    public void setChannel_id(long channel_id) {
         this.channel_id = channel_id;
     }
 
@@ -107,17 +108,25 @@ public class ChannelVO {
         this.record_status = record_status;
     }
 
+    public boolean isMyChannel() {
+        return isMyChannel;
+    }
+
+    public void setMyChannel(boolean myChannel) {
+        isMyChannel = myChannel;
+    }
+
     public ChannelVO(){
 
     }
 
-    public ChannelVO(int channel_id, String channel_name, String channel_icon) {
+    public ChannelVO(long channel_id, String channel_name, String channel_icon) {
         this.channel_id = channel_id;
         this.channel_name = channel_name;
         this.channel_icon = channel_icon;
     }
 
-    public static ChannelVO loadChannelByID(int channel_id) {
+    public static ChannelVO loadChannelByID(long channel_id) {
         Context context = TVGuideApp.getContext();
 
         String selection = TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ID + "=?";
@@ -175,7 +184,7 @@ public class ChannelVO {
 
     public static ChannelVO parseFromCursor(Cursor data) {
         ChannelVO channel = new ChannelVO();
-        channel.channel_id = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ID));
+        channel.channel_id = data.getLong(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ID));
         channel.channel_name = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_NAME));
         channel.channel_desc = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_DESC));
         channel.channel_icon = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_CHANNEL_ICON));
@@ -183,7 +192,7 @@ public class ChannelVO {
         channel.start_time = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_START_TIME));
         channel.end_time = data.getString(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_END_TIME));
         channel.sort_order = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_SORT_ORDER));
-        channel.row_timestamp = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_ROW_TIMESTAMP));
+        channel.row_timestamp = data.getLong(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_ROW_TIMESTAMP));
         channel.record_status = data.getInt(data.getColumnIndex(TVGuideContract.ChannelEntry.COLUMN_RECORD_STATUS));
         return channel;
     }

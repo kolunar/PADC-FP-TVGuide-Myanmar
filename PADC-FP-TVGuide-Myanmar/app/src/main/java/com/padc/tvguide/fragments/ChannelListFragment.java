@@ -31,6 +31,7 @@ import com.padc.tvguide.adapters.ChannelAdapter;
 import com.padc.tvguide.data.models.ChannelModel;
 import com.padc.tvguide.data.persistence.TVGuideContract;
 import com.padc.tvguide.data.vos.ChannelVO;
+import com.padc.tvguide.data.vos.MyChannelVO;
 import com.padc.tvguide.events.DataEvent;
 import com.padc.tvguide.utils.TVGuideConstants;
 import com.padc.tvguide.views.holders.ChannelViewHolder;
@@ -40,6 +41,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -56,6 +58,11 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
     @BindView(R.id.ll_conn_layout)
     LinearLayout llConnLayout;
 
+    @OnClick(R.id.ll_conn_layout)
+    public void onTapBrokenConnection(){
+        mControllerFragment.onSwipeRefresh(HomeActivity.HOME_FRAGMENT);
+    }
+
     @BindView(R.id.rv_channel_list)
     RecyclerView rvChannels;
 
@@ -66,6 +73,7 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
     private ChannelViewHolder.ControllerChannelItem controllerChannelItem;
 
     private List<ChannelVO> mChannelVOList;
+    private ControllerFragment mControllerFragment;
 
     public static ChannelListFragment newInstance() {
         ChannelListFragment fragment = new ChannelListFragment();
@@ -95,8 +103,10 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof HomeActivity)
+        if (context instanceof HomeActivity) {
             controllerChannelItem = (ChannelViewHolder.ControllerChannelItem) context;
+            mControllerFragment = (ControllerFragment) context;
+        }
     }
 
 //    List<ChannelVO> mChannelList;
@@ -122,6 +132,7 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                mControllerFragment.onSwipeRefresh(HomeActivity.HOME_FRAGMENT);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -145,6 +156,10 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         }
     }
 
+    public void restartLoader(){
+        getActivity().getSupportLoaderManager().restartLoader(TVGuideConstants.CHANNEL_LIST_LOADER, null, this);
+    }
+
     private List<ChannelVO> getChannelList(){
         List<ChannelVO> dummy = new ArrayList<ChannelVO>();
         String[] channelListArray = getResources().getStringArray(R.array.dummy_channel_list);
@@ -159,7 +174,8 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         mChannelAdapter.notifyDataSetChanged();
     }
 
-    private void showProgressBar() {
+    public void showProgressBar() {
+        Log.e(TVGuideApp.TAG, "ChannelListFragment.showProgressBar()");
         if(mChannelAdapter.getItemCount() < 1) {
 //        if(!rlContainer.isShown())
 //            rlContainer.setVisibility(View.VISIBLE);
@@ -169,13 +185,14 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         }
     }
 
-    private void hideProgressBar(){
+    public void hideProgressBar(){
 //        if(rlContainer.isShown())
 //            rlContainer.setVisibility(View.GONE);
         pbProgressBar.setVisibility(View.GONE);
     }
 
-    private void showConnBroken() {
+    public void showConnBroken() {
+        hideProgressBar();
         if(mChannelAdapter.getItemCount() < 1) {
 //        if(!rlContainer.isShown())
 //            rlContainer.setVisibility(View.VISIBLE);
@@ -185,7 +202,7 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         }
     }
 
-    private void hideConnBroken() {
+    public void hideConnBroken() {
 //        if(rlContainer.isShown())
 //            rlContainer.setVisibility(View.GONE);
         llConnLayout.setVisibility(View.GONE);
@@ -208,15 +225,30 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
         if (data != null && data.moveToFirst()) {
             do {
                 ChannelVO channel = ChannelVO.parseFromCursor(data);
+                channel.setMyChannel(MyChannelVO.getIsMyChannel(0, channel.getChannel_id()));
                 channelList.add(channel);
             } while (data.moveToNext());
         }
 
-        Log.e(TVGuideApp.TAG, "Retrieved channelList.size : " + channelList.size());
+        Log.e(TVGuideApp.TAG, "ChannelListFragment.onLoadFinished.Retrieved channelList.size : " + channelList.size());
         mChannelVOList = channelList;
         mChannelAdapter.setNewData(channelList);
 
         ChannelModel.getInstance().setStoredData(channelList);
+
+        if(channelList.size() > 0 && mChannelAdapter.getItemCount() > 0) {
+            hideProgressBar();
+            hideConnBroken();
+        }
+        else {
+            showConnBroken();
+            if(TVGuideApp.hasInternet){
+
+            }
+            else {
+
+            }
+        }
     }
 
     @Override
@@ -256,6 +288,9 @@ public class ChannelListFragment extends BaseFragment implements LoaderManager.L
 
         //List<ChannelVO> newChannelList = ChannelModel.getInstance().getChannelList();
         List<ChannelVO> newChannelList = event.getChannelList();
+        for(ChannelVO channel: newChannelList){
+            channel.setMyChannel(MyChannelVO.getIsMyChannel(0, channel.getChannel_id()));
+        }
         mChannelAdapter.setNewData(newChannelList);
 
     }

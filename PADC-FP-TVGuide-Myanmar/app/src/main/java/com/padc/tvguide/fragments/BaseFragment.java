@@ -11,4 +11,9 @@ public abstract class BaseFragment extends Fragment {
     public void onStart() {
         super.onStart();
     }
+
+    public interface ControllerFragment {
+        void onSwipeRefresh(int fragmentNo);
+        void onSwitchFragment(int fragmentNo);
+    }
 }

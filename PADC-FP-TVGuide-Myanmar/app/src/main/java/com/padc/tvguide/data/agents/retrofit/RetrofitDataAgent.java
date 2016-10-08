@@ -66,7 +66,7 @@ public class RetrofitDataAgent implements TVGuideDataAgent {
                     ChannelModel.getInstance().notifyErrorInLoadingChannels(response.message());
                 }
                 else {
-                    Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadChannels().onResponse.channelListResponse.getChannelList():"+channelListResponse.getChannelList());
+                    Log.e(TVGuideApp.TAG, "RetrofitDataAgent.loadChannels().onResponse.channelListResponse.getChannelList():"+channelListResponse.getChannelList().size());
                     ChannelModel.getInstance().notifyChannelsLoaded(channelListResponse.getChannelList());
                 }
             }
@@ -79,7 +79,7 @@ public class RetrofitDataAgent implements TVGuideDataAgent {
     }
 
     @Override
-    public void loadChannelDetails(int channel_id) {
+    public void loadChannelDetails(long channel_id) {
         Call<ChannelDetailsResponse> loadChannelDetailCall = theApi.loadChannelDetails(TVGuideConstants.ACCESS_TOKEN, channel_id);
         loadChannelDetailCall.enqueue(new Callback<ChannelDetailsResponse>() {
             @Override
@@ -104,7 +104,7 @@ public class RetrofitDataAgent implements TVGuideDataAgent {
     }
 
     @Override
-    public void loadProgramDetails(int program_id) {
+    public void loadProgramDetails(long program_id) {
         Call<ProgramDetailsResponse> loadChannelDetailCall = theApi.loadProgramDetails(TVGuideConstants.ACCESS_TOKEN, program_id);
         loadChannelDetailCall.enqueue(new Callback<ProgramDetailsResponse>() {
             @Override

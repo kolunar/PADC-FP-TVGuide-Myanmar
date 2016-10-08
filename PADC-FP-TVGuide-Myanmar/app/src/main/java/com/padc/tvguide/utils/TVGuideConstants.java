@@ -20,6 +20,8 @@ public class TVGuideConstants {
     //Loader ID
     public static final int CHANNEL_LIST_LOADER = 1;
     public static final int MY_CHANNEL_LIST_LOADER = 2;
+    public static final int MY_WATCHLIST_LOADER = 3;
+    public static final int MY_REMINDER_LOADER = 4;
     public static final int CHANNEL_DETAIL_LOADER = 200; // 200 to 206 for 7 week days Fragments {"Sat", "Sun", ... , "Fri"}
     public static final int RESPONSE_CODE_FAILED = 401;
 

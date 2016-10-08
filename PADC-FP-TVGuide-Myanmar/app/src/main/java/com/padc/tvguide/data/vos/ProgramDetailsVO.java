@@ -36,7 +36,7 @@ public class ProgramDetailsVO {
         this.program_segments = program_segments;
     }
 
-    public ChannelProgramVO getChannelProgramVOByID(int program_id, int channel_program_id){
+    public ChannelProgramVO getChannelProgramVOByID(long program_id, long channel_program_id){
         ChannelProgramVO channelProgramVO = null;
         for (int index = 0; index < program_segments.size(); index++) {
             if(program_segments.get(index).getProgram_id() == program_id) {
@@ -53,7 +53,7 @@ public class ProgramDetailsVO {
         return channelProgramVO;
     }
 
-    public ProgramVO getProgramVOByID(int program_id){
+    public ProgramVO getProgramVOByID(long program_id){
         ProgramVO programVO = new ProgramVO();
         for (ProgramVO program : program_segments){
             if(program.getProgram_id() == program_id){

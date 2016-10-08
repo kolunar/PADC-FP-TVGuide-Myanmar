@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TV Guide</string>
+    <string name="app_name">TV Channels</string>
     <string name="content_authority">com.padc.tvguide</string>
 
     <string name="action_settings">Settings</string>
@@ -11,6 +11,8 @@
     <string name="lbl_register">Register</string>
     <string name="lbl_register_action">Register</string>
     <string name="lbl_logout">Logout</string>
+
+    <string name="action_share">Share</string>
 
     <string name="nav_tv_guide_home">Home</string>
     <string name="nav_tv_guide_my_channels">My Channels</string>
@@ -79,13 +81,13 @@
     </string-array>
 
     <string-array name="dummy_alarm_prefix">
+        <item>none</item>
         <item>when program starts</item>
         <item>5 mins to start</item>
         <item>15 mins to start</item>
         <item>30 mins to start</item>
         <item>45 mins to start</item>
         <item>1 hour to start</item>
-        <item>none</item>
     </string-array>
 
 </resources>

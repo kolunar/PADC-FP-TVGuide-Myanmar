@@ -15,9 +15,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.padc.tvguide.R;
 import com.padc.tvguide.TVGuideApp;
+import com.padc.tvguide.activities.HomeActivity;
 import com.padc.tvguide.adapters.MyChannelAdapter;
 import com.padc.tvguide.data.models.MyChannelModel;
 import com.padc.tvguide.data.persistence.TVGuideContract.MyChannelEntry;
@@ -31,6 +33,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -40,8 +43,33 @@ public class MyChannelFragment extends BaseFragment implements LoaderManager.Loa
     @BindView(R.id.rv_my_channel)
     RecyclerView rvChannels;
 
-    @BindView(R.id.swipe_refresh_layout)
+    @BindView(R.id.swipe_refresh_layout_my_channel)
     SwipeRefreshLayout srLayout;
+
+    @BindView(R.id.ll_no_data_my_channel)
+    LinearLayout llDataStatus;
+
+    private ControllerFragment mControllerFragment;
+
+    @OnClick(R.id.ll_no_data_my_channel)
+    public void onTapNoDataStatus(){
+        mControllerFragment.onSwitchFragment(HomeActivity.HOME_FRAGMENT);
+    }
+
+    private void checkNoDataStatus(boolean hasData){
+        if(hasData)
+            showNoDataStatus();
+        else
+            hideNoDataStatus();
+    }
+
+    private void showNoDataStatus(){
+        llDataStatus.setVisibility(View.VISIBLE);
+    }
+
+    private void hideNoDataStatus(){
+        llDataStatus.setVisibility(View.GONE);
+    }
 
     private MyChannelAdapter mChannelAdapter;
     private MyChannelViewHolder.ControllerMyChannelItem mControllerMyChannelItem ;
@@ -55,6 +83,7 @@ public class MyChannelFragment extends BaseFragment implements LoaderManager.Loa
     public void onAttach(Context context) {
         super.onAttach(context);
         mControllerMyChannelItem = (MyChannelViewHolder.ControllerMyChannelItem) context;
+        mControllerFragment = (ControllerFragment) context;
     }
 
     @Override
@@ -75,6 +104,7 @@ public class MyChannelFragment extends BaseFragment implements LoaderManager.Loa
         srLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                mControllerFragment.onSwipeRefresh(HomeActivity.MY_CHANNEL_FRAGMENT);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -91,7 +121,6 @@ public class MyChannelFragment extends BaseFragment implements LoaderManager.Loa
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getActivity().getSupportLoaderManager().initLoader(TVGuideConstants.MY_CHANNEL_LIST_LOADER, null, this);
-
     }
 
     int mUserID = 0;
@@ -112,7 +141,7 @@ public class MyChannelFragment extends BaseFragment implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-//        hideProgressBar();
+
         List<MyChannelVO> myChannelList = new ArrayList<>();
         if (data != null && data.moveToFirst()) {
             do {
@@ -122,11 +151,13 @@ public class MyChannelFragment extends BaseFragment implements LoaderManager.Loa
             } while (data.moveToNext());
         }
 
-        Log.e(TVGuideApp.TAG, "Retrieved channelList.size : " + myChannelList.size());
+        Log.e(TVGuideApp.TAG, "MyChannelFragment.onLoadFinished.Retrieved MyChannelList.size : " + myChannelList.size());
         mMyChannelVOList = myChannelList;
         mChannelAdapter.setNewData(myChannelList);
 
         MyChannelModel.getInstance().setStoredData(myChannelList);
+
+        checkNoDataStatus(myChannelList.size() < 1);
     }
 
     @Override

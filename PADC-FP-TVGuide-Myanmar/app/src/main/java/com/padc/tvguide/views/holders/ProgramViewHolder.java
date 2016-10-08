@@ -35,7 +35,7 @@ public class ProgramViewHolder extends RecyclerView.ViewHolder implements View.O
     public void bindData(ProgramVO program) {
         mProgram = program;
         tvProgramName.setText(program.getProgram_title());
-        ivProgram.setImageResource(getImageResourceById(program.getProgram_id()));
+        ivProgram.setImageResource(getImageResourceById((int)program.getProgram_id()));
     }
 
     private int getImageResourceById(int id){

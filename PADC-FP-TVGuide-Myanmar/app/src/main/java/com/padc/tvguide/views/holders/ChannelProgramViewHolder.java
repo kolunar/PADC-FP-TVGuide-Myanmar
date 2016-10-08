@@ -1,17 +1,23 @@
 package com.padc.tvguide.views.holders;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.padc.tvguide.R;
+import com.padc.tvguide.TVGuideApp;
 import com.padc.tvguide.data.vos.ChannelProgramVO;
 import com.padc.tvguide.utils.DateTimeUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator's user on 09-Sep-16.
@@ -29,6 +35,14 @@ public class ChannelProgramViewHolder extends RecyclerView.ViewHolder implements
 
     @BindView(R.id.iv_program_photo)
     ImageView ivProgram;
+
+    @BindView(R.id.btn_set_reminder)
+    Button cbAddToReminder;
+
+    @OnClick(R.id.btn_set_reminder)
+    public void onTapAddToReminder(Button button){
+        mController.onTapReminder(mChannelProgram, button);
+    }
 
     private ControllerChannelProgramItem mController;
     private ChannelProgramVO mChannelProgram;
@@ -50,6 +64,7 @@ public class ChannelProgramViewHolder extends RecyclerView.ViewHolder implements
 
         Glide.with(ivProgram.getContext())
                 .load(channelProgram.getProgram().getProgram_image())
+				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
                 .error(R.drawable.ic_more_horiz_gray_24dp)
@@ -78,11 +93,12 @@ public class ChannelProgramViewHolder extends RecyclerView.ViewHolder implements
 
     @Override
     public void onClick(View view) {
+        Log.e(TVGuideApp.TAG, "ChannelProgramViewHolder.onClick.onTapChannelProgram");
         mController.onTapChannelProgram(mChannelProgram);
     }
 
     public interface ControllerChannelProgramItem {
         void onTapChannelProgram(ChannelProgramVO channelProgram);
-//        void onTapReminder(ChannelProgramVO channelProgram);
+        void onTapReminder(ChannelProgramVO channelProgram, Button button);
     }
 }
