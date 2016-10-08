@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:foreground="@drawable/ripple"
     android:clickable="true" >
-    <com.padc.tvguide.components.MMTextView
+    <com.padc.mmchannels.components.MMTextView
         android:id="@+id/tv_program_title"
         style="@style/ProgramDescStyle"
         android:layout_width="wrap_content"

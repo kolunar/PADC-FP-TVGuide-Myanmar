@@ -45,7 +45,7 @@
                 android:textSize="@dimen/text_small"
                 android:textAppearance="?android:textAppearanceSmall" />
 
-            <com.padc.tvguide.components.MMTextView
+            <com.padc.mmchannels.components.MMTextView
                 android:id="@+id/tv_program_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.padc.tvguide">
+    package="com.padc.mmchannels">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -8,14 +8,14 @@
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
     <application
-        android:name=".TVGuideApp"
+        android:name="com.padc.mmchannels.MMChannelsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.HomeActivity"
+            android:name="com.padc.mmchannels.activities.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -25,44 +25,48 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.ChannelDetailActivity"
+            android:name="com.padc.mmchannels.activities.ChannelDetailActivity"
             android:label="@string/title_activity_channel_detail"
-            android:parentActivityName=".activities.HomeActivity"
+            android:parentActivityName="com.padc.mmchannels.activities.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.padc.tvguide.activities.HomeActivity" />
+                android:value="com.padc.mmchannels.activities.HomeActivity" />
         </activity>
         <activity
-            android:name=".activities.ProgramDetailActivity"
+            android:name="com.padc.mmchannels.activities.ProgramDetailActivity"
             android:label="@string/title_activity_program_detail"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.padc.tvguide.activities.ChannelDetailActivity" />
+                android:value="com.padc.mmchannels.activities.ChannelDetailActivity" />
         </activity>
         <activity
-            android:name=".activities.ProgramParentActivity"
+            android:name="com.padc.mmchannels.activities.ProgramParentActivity"
             android:label="@string/title_activity_program_parent"
-            android:parentActivityName=".activities.ProgramDetailActivity"
+            android:parentActivityName="com.padc.mmchannels.activities.ProgramDetailActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.padc.tvguide.activities.ProgramDetailActivity" />
+                android:value="com.padc.mmchannels.activities.ProgramDetailActivity" />
         </activity>
 
         <provider
-            android:name=".data.persistence.TVGuideProvider"
+            android:name="com.padc.mmchannels.data.persistence.TVGuideProvider"
             android:authorities="@string/content_authority"
             android:exported="false"
             android:syncable="true" />
 
-        <receiver android:name=".receivers.system.InternetConnectivityStateReceiver">
+        <receiver android:name="com.padc.mmchannels.receivers.system.InternetConnectivityStateReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receivers.system.AlarmReceiver"/>
+        <receiver android:name="com.padc.mmchannels.receivers.system.AlarmReceiver"/>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="3a8e7b1c935ead32c3c62a31d97c68ee7a5480fb" />
     </application>
 
 </manifest>

@@ -34,7 +34,7 @@
             android:layout_marginRight="8dp"
             android:orientation="vertical">
 
-            <com.padc.tvguide.components.MMTextView
+            <com.padc.mmchannels.components.MMTextView
                 android:id="@+id/tv_rm_program_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

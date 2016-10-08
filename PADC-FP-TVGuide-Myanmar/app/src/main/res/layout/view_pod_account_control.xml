@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.padc.tvguide.views.pods.ViewPodAccountControl xmlns:android="http://schemas.android.com/apk/res/android"
+<com.padc.mmchannels.views.pods.ViewPodAccountControl xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/menu_header_height"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -18,4 +18,4 @@
         android:layout_height="match_parent"
         />
 
-</com.padc.tvguide.views.pods.ViewPodAccountControl>
+</com.padc.mmchannels.views.pods.ViewPodAccountControl>

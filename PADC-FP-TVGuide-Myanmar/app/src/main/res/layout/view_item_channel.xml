@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight = "0"
             android:orientation="horizontal">
-            <com.padc.tvguide.components.MMTextView
+            <com.padc.mmchannels.components.MMTextView
                 android:id="@+id/tv_channel_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

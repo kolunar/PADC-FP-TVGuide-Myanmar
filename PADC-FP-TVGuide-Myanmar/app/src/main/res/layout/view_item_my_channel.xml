@@ -33,7 +33,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:orientation="vertical">
-            <com.padc.tvguide.components.MMTextView
+            <com.padc.mmchannels.components.MMTextView
                 android:id="@+id/tv_my_channel_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                 android:textSize="@dimen/text_regular_2x"
                 android:textColor="@color/primary_text"
                 />
-            <com.padc.tvguide.components.MMTextView
+            <com.padc.mmchannels.components.MMTextView
                 android:id="@+id/tv_my_channel_desc"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
