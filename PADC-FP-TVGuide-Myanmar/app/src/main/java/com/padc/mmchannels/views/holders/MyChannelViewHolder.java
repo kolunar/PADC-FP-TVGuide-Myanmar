@@ -50,7 +50,7 @@ public class MyChannelViewHolder extends RecyclerView.ViewHolder implements View
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                .error(R.drawable.ic_more_horiz_gray_24dp)
+                .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                 .into(ivChannel);
     }
 

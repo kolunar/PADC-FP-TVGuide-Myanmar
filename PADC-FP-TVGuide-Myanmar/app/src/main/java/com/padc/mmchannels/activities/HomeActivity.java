@@ -203,6 +203,11 @@ public class HomeActivity extends BaseActivity
     }
 
     @Override
+    public void onTapShareProgram(MyWatchListVO myWatchListVO) {
+        sendViaShareIntent(myWatchListVO.getProgram().getParent_title() + " - " + "...");
+    }
+
+    @Override
     public void onTapProgram(ProgramVO program, ImageView ivProgram) {
         Intent intent = ProgramDetailActivity.newIntent(program);//"Program Detail");
         startActivity(intent);

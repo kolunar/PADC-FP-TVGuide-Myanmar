@@ -43,6 +43,11 @@ public class ChannelProgramViewHolder extends RecyclerView.ViewHolder implements
         mController.onTapReminder(mChannelProgram, button);
     }
 
+    @OnClick(R.id.iv_program_share)
+    public void onTapShareProgram(){
+        mController.onTapShareProgram(mChannelProgram);
+    }
+
     private ControllerChannelProgramItem mController;
     private ChannelProgramVO mChannelProgram;
 
@@ -66,7 +71,7 @@ public class ChannelProgramViewHolder extends RecyclerView.ViewHolder implements
 				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                .error(R.drawable.ic_more_horiz_gray_24dp)
+                .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                 .into(ivProgram);
     }
 
@@ -99,5 +104,6 @@ public class ChannelProgramViewHolder extends RecyclerView.ViewHolder implements
     public interface ControllerChannelProgramItem {
         void onTapChannelProgram(ChannelProgramVO channelProgram);
         void onTapReminder(ChannelProgramVO channelProgram, Button button);
+        void onTapShareProgram(ChannelProgramVO channelProgram);
     }
 }

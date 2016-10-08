@@ -44,9 +44,8 @@ import de.greenrobot.event.EventBus;
 /**
  * Created by user on 9/10/2016.
  */
-public class ChannelDetailFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor>,
-ChannelProgramViewHolder.ControllerChannelProgramItem,
-        TimePrefixDialog.AddRemoveAlarmDelegate{
+public class ChannelDetailFragment extends BaseFragment
+        implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @BindView(R.id.rv_channel_detail)
     RecyclerView rvChannelDetail;
@@ -175,7 +174,7 @@ ChannelProgramViewHolder.ControllerChannelProgramItem,
     }
 
 
-    @Override
+/*    @Override
     public void onTapChannelProgram(ChannelProgramVO channelProgramVO) {
 //        Intent intent = ProgramDetailActivity.newIntent(channelProgramVO.getProgram().getProgram_title());
         Intent intent = ProgramDetailActivity.newIntent(channelProgramVO);
@@ -208,7 +207,7 @@ ChannelProgramViewHolder.ControllerChannelProgramItem,
         MyReminderVO.deleteMyReminder(0, channel_program_id);
         TimePrefixDialog.AddAlarm((int)channel_program_id, "", "", 0, false);
         restartLoader();
-    }
+    }*/
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
