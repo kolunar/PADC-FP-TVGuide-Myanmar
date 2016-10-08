@@ -207,10 +207,10 @@ public class ProgramDetailActivity extends BaseActivity implements TimePrefixDia
 
         Glide.with(ivProgramPhoto.getContext())
                 .load(program.getProgram_image())
-				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
+//				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                .error(R.drawable.ic_more_horiz_gray_24dp)
+                .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                 .into(ivProgramPhoto);
 
         tvProgramTitle.setText(program.getProgram_title());
@@ -229,7 +229,7 @@ public class ProgramDetailActivity extends BaseActivity implements TimePrefixDia
                     .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .fitCenter()
                     .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                    .error(R.drawable.ic_more_horiz_gray_24dp)
+                    .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                     .into(ivParentPhoto);
             tvParentTitle.setText(programDetails.getProgram_parent().getProgram_title());
         }
@@ -246,7 +246,7 @@ public class ProgramDetailActivity extends BaseActivity implements TimePrefixDia
 					.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                     .fitCenter()
                     .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                    .error(R.drawable.ic_more_horiz_gray_24dp)
+                    .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                     .into(ivRootPhoto);
             tvRootTitle.setText(programDetails.getProgram_root().getProgram_title());
         }

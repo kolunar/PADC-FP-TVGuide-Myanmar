@@ -28,6 +28,11 @@ public class MyWatchListViewHolder extends RecyclerView.ViewHolder implements Vi
     @BindView(R.id.tv_wl_desc)
     TextView tvDescription;
 
+    @OnClick(R.id.iv_wl_share)
+    public void onTapShareProgram(){
+        mController.onTapShareProgram(mMyWatchListVO);
+    }
+
     @OnClick(R.id.btn_wl_delete)
     public void onTapDeleteMyWatchList(View view){
         mController.onTapDeleteMyWatchList(mMyWatchListVO);
@@ -55,7 +60,7 @@ public class MyWatchListViewHolder extends RecyclerView.ViewHolder implements Vi
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                .error(R.drawable.ic_more_horiz_gray_24dp)
+                .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                 .into(ivWatchListImage);
     }
 
@@ -65,8 +70,9 @@ public class MyWatchListViewHolder extends RecyclerView.ViewHolder implements Vi
     }
 
     public interface ControllerMyWatchListItem {
-        void onTapMyWatchList(MyWatchListVO myChannel);
-        void onTapDeleteMyWatchList(MyWatchListVO myChannel);
+        void onTapMyWatchList(MyWatchListVO myWatchListVO);
+        void onTapDeleteMyWatchList(MyWatchListVO myWatchListVO);
+        void onTapShareProgram(MyWatchListVO myWatchListVO);
 //        void onLongPressChannel(ChannelVO channel, ImageView ivChannel);
     }
 }

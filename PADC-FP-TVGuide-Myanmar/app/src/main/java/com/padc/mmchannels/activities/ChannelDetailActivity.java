@@ -195,7 +195,7 @@ public class ChannelDetailActivity extends BaseActivity
 				.diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .fitCenter()
                 .placeholder(R.drawable.ic_more_horiz_gray_24dp)
-                .error(R.drawable.ic_more_horiz_gray_24dp)
+                .error(R.drawable.ic_portable_wifi_off_gray_24dp)
                 .into(ivChannelIcon);
 
         tvChannelName.setText(channel.getChannel_name());
@@ -297,11 +297,18 @@ public class ChannelDetailActivity extends BaseActivity
         startActivity(intent);
     }
 
+    @Override
+    public void onTapShareProgram(ChannelProgramVO channelProgramVO) {
+        sendViaShareIntent(channelProgramVO.getChannel_name() + " - " + "...");
+    }
+
     Button btnReminder;
 
     @Override
     public void onTapReminder(ChannelProgramVO channelProgramVO, Button button) {
         btnReminder = button;
+        MyReminderVO reminder = MyReminderVO.getMyReminderItem(0, channelProgramVO.getChannel_program_id());
+        channelProgramVO.setTime_ahead(reminder != null ? reminder.getTime_ahead() : 0);
         new TimePrefixDialog().newInstance(channelProgramVO.getChannel_program_id(), channelProgramVO.getTime_ahead())
                 .show(getSupportFragmentManager(), "TimePrefixPicker");
     }
